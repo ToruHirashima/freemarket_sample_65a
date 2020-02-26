@@ -1,4 +1,83 @@
-%h2 商品詳細ページ
+.Details
+  .DetailMain
+    .DetailMainHeading
+      .DetailMainHeading__itemName Personal Computer
+    .DetailMainPhoto
+      .DetailMainPhoto__main
+        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+      .DetailMainPhoto__sub
+        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: 'DetailMainPhoto__sub--img'
+        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: 'DetailMainPhoto__sub--img'
+        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: 'DetailMainPhoto__sub--img'
+    .DetailMainPrice
+      .DetailMainPrice__main
+        .DetailMainPrice__main--text ¥250000
+      .DetailMainPrice__sub
+        .DetailMainPrice__sub--text (税込) 送料込み
+    .DetailMainDescription
+      .DetailMainDescription__header
+        .DetailMainDescription__header--text Personal Computer
+      %table.DetailMainDescription__table
+        %tr
+          %th.DetailMainDescription__table--th 出品者
+          %td.DetailMainDescription__table--td hoge
+        %tr
+          %th.DetailMainDescription__table--th カテゴリー
+          %td.DetailMainDescription__table--td
+            = link_to '#' do
+              %div 家電・スマホ・カメラ
+            = link_to '#' do
+              %div PC/タブレット
+            = link_to '#' do
+              %div ノートPC
+        %tr
+          %th.DetailMainDescription__table--th ブランド
+          %td.DetailMainDescription__table--td
+        %tr
+          %th.DetailMainDescription__table--th 商品のサイズ
+          %td.DetailMainDescription__table--td
+        %tr
+          %th.DetailMainDescription__table--th 商品の状態
+          %td.DetailMainDescription__table--td 新品、未使用
+        %tr
+          %th.DetailMainDescription__table--th 配送料の負担
+          %td.DetailMainDescription__table--td 送料込み(出品者負担)
+        %tr
+          %th.DetailMainDescription__table--th 発送元の地域
+          %td.DetailMainDescription__table--td
+            = link_to '#' do
+              %div 北海道
+        %tr
+          %th.DetailMainDescription__table--th 発送日の目安
+          %td.DetailMainDescription__table--td 2~3日で発送
+    .DetailMainButtonContainer
+      .DetailMainButtonContainer__bookmark
+        %button{name: :bookmark, class: :"DetailMainButtonContainer__bookmark--btn"} お気に入り 0
+      .DetailMainButtonContainer__report 不適切な商品の通報
+  = form_with(url: '#', local: true, method: :get, class: :DetailComment) do |f|
+    = f.text_area :comment, class: :DetailComment__textbox
+    .DetailComment__notice
+      相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    .DetailComment__button
+      = f.submit "コメントする", class: :"DetailComment__button--submit"
+  .DetailLink
+    .DetailLink__prev
+      = link_to '前の商品', '#', class: :"DetailLink__text"
+    .DetailLink__next
+      = link_to '次の商品', '#', class: :"DetailLink__text"
+
+  .DetailSns
+  .DetailUserItems
+  .DetailCategoryItems
+    .DetailCategoryItems__head
+      = link_to '家電・スマホ・カメラをもっと見る', "#", class: :"DetailCategoryItems__head--text"
+    .DetailCategoryItems__container
+      .DetailCategoryItems__box
+        .DetailCategoryItems__photo
+        .DetailCategoryItems__content
+
+
+
 = link_to '商品購入', edit_item_path(1)
 %br
 = link_to '商品削除', item_path(1), method: :delete

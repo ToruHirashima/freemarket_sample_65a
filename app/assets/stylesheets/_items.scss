@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+.HeaderDummy {
+  width: 100%;
+  height: 160px;
+  background-color: #dddddd;
+}
+.FooterDummy {
+  width: 100%;
+  height: 350px;
+  background-color: #dddddd;
+}
+
+
+.Details {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  background-color: #f8f8f8;
+}
+
+.DetailMain {
+  width: 700px;
+  margin: 0 auto;
+  padding: 25px 40px;
+  background-color: #fff;
+}
+
+.DetailMainHeading {
+  width: 560px;
+  height: 65px;
+  margin: 0 auto;
+  &__itemName {
+    line-height: 65px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.DetailMainPhoto {
+  &__main {
+    width: 560px;
+    height: 346px;
+    margin: 0 auto;
+    &--img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__sub {
+    width: 440px;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    &--img {
+      width: 140px;
+      height: 87px;
+      object-fit: cover;
+    }
+  }
+}
+
+.DetailMainPrice {
+  width: 560px;
+  margin: 25px auto;
+  &__main {
+    width: 100%;
+    height: 53px;
+    &--text {
+      line-height: 53px;
+      font-size: 46px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  &__sub {
+    width: 100%;
+    height: 24px;
+    &--text {
+      line-height: 24px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+
+.DetailMainDescription {
+  &__header {
+    width: 620px;
+    height: 30px;
+    margin: 0 auto 30px;
+    &--text {
+      line-height: 30px;
+      font-size: 18px;
+    }
+  }
+  &__table {
+    width: 620px;
+    margin: 0 auto;
+    font-size: 14px;
+    &--th {
+      width: 20%;
+      padding: 8px;
+      text-align: center;
+      border:solid 1px #dedede;
+      background-color: #eee;
+    }
+    &--td {
+      width: 61%;
+      padding: 15px;
+      border:solid 1px #dedede;
+      & a {
+        text-decoration: none;
+        color: #3ccace;
+      }
+    }
+  }
+}
+
+.DetailMainButtonContainer {
+  width: 620px;
+  height: 48px;
+  margin: 20px auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  &__bookmark {
+    &--btn {
+      height: 38px;
+      width: 135px;
+      line-height: 38px;
+      border-radius: 20px;
+      border: solid 1px #ffb340;
+      text-align: center;
+      font-size: 16px;
+      color: #3ccace;
+    }
+  }
+  &__report {
+    height: 35px;
+    width: 165px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    border: solid 1px;
+  }
+}
+
+.DetailComment {
+  width: 700px;
+  height: 305px;
+  background-color: #fff;
+  margin: 10px auto;
+  padding: 24px;
+  &__textbox {
+    width: 100%;
+    height: 104px;
+    background-color: #fff;
+  }
+  &__notice {
+    width: 100%;
+    height: 58px;
+    margin: 15px 0;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #f8f8f8;
+  }
+  &__button {
+    width: 390px;
+    margin: 20px auto 0;
+    &--submit {
+      width: 100%;
+      height: 54px;
+      border-radius: 27px;
+      background-color: #3ccace;
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+}
+
+.DetailLink {
+  width: 700px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  &__text {
+    text-decoration: none;
+    color: #3ccace;
+  }
+}
+
+.DetailCategoryItems {
+  width: 700px;
+  margin: 0 auto;
+  &__head {
+    font-size: 22px;
+    font-weight: bold;
+    &--text {
+      text-decoration: none;
+      color: #3ccace;
+    }
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
