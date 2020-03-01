@@ -1,0 +1,161 @@
+// main(1-2)陵域
+.single-main{
+  display: block;
+  .l-single-container.buy-item-container {
+    background: #fff; // これ要復活
+    // background:green; // 一旦記載。
+    // height: 100vh; // 一旦記載。
+    // width: 100vh; // 一旦記載。
+    .l-single-head.buy-head{
+      padding: 16px;
+      // padding: 24px 8px;
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .buy-content.buy-item{
+      text-align: center;
+      padding: 24px 16px;
+      border-top: 1px solid;
+      .buy-content-inner{
+        max-width: 343px;
+        margin: 0 auto;
+        .buy-item-box{
+          display: -webkit-box;
+          display: flex;
+          .buy-item-image{
+            height: 80px;
+            width: 80px;
+            min-width: 80px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+          }
+          .buy-item-detail{
+            margin-left: 16px;
+            .buy-item-name{
+              font-size: 14px;
+              margin: 0;
+              padding: 0 0 8px;
+              line-height: 1.5;
+              text-align: left;
+            }
+            .buy-price-ja.bold{
+              margin: 0;
+              text-align: left;
+              font-size: 15px;
+              .item-shipping-fee{
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .buy-content.buy-item2{
+      list-style: none;
+      padding: 24px 16px;
+      border-top: 1px solid #f5f5f5;
+      text-align: center;
+      .buy-content-inner2{
+        max-width: 343px;
+        margin: 0 auto;
+        .buy-form{
+          .buy-price-table{
+            list-style: none;
+            .buy-price-row.buy-you-pay.bold{
+              .buy-price-cell.buy-price-cell-label{
+                text-align: left;
+                font-size: 18px;
+                display: table-cell;
+                padding: 0;
+                width:220px; //サイズ調整で記載
+              }
+              .buy-price-cell2{
+                display: table-cell;
+                padding: 0;
+                text-align: right;
+              }
+            }
+          }
+          .buy-accordion.buy-not-have-point{
+            color: #888;
+            margin: 24px 0;
+            .accordion-parent{
+              list-style: none;
+              width: 350px; //サイズ確保のため記載
+              height:15px; //サイズ確保のため記載
+              .checkbox-default.buy-use-point{
+                text-align: left;
+                position: relative;
+                font-size: 0;
+                // display: none;
+                .checkbox{
+                  width: 180px; //サイズ確保のため記載
+                }
+                .icon-check{
+                  text-align: right;
+                  color: #ccc;
+                  background: #ccc;
+                }
+              }
+            }
+          }
+          .buy-content.buy-user-info{
+            margin: 0;
+            transition: all ease-out .3s;
+            text-align: left;
+            padding: 24px 0;
+            margin: 0;
+            width:350px; //サイズ調整で記載
+            // height:100px; //サイズ調整で記載
+            .buy-content-inner{
+              max-width: 343px;
+              max-height: 100px; //サイズ調整で記載
+              margin: 0 auto;
+              .h3{
+                margin: 0;
+                font-size: 14px;
+                .buy-user-info-text{
+                  .p{
+                    line-height: 1.5;
+                  }
+                  text-align: left;
+                  margin: 8px 0 0;
+                  font-size: 14px;
+                  line-height: 1.4;
+                  .icon-plus-circle{
+                    // 要記載
+                  }
+                  .buy-register-text{
+                    margin: 0 0 0 4px;
+                  }
+                }
+              }
+            }
+          }
+          .buy-content.buy-user-info3{
+            padding-bottom: 0;
+            btn-default.btn-red.bold{
+              border: 1px solid #888;
+              background: #888;
+              color: #fff;
+              width: 350px; //サイズ調整で記載
+              height: 100px; //サイズ調整で記載
+              btn-default.btn-red.bold{
+                max-width: 343px; //サイズ調整で記載
+                max-height: 100px; //サイズ調整で記載
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

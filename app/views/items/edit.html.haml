@@ -1,2 +1,61 @@
+-# 命名変更予定。prefixは、buyConfirm
 %h2 商品購入確認ページ
 = link_to '購入確定', item_path, method: :patch
+
+.single-main
+  %section.l-single-container.buy-item-container
+    %h2.l-single-head.buy-head
+      購入内容の確認
+    %section.buy-content.buy-item
+      .buy-content-inner
+        .buy-item-box
+          .buy-item-image
+            %img{src: "sample.jpeg", alt: " ", width: "80", height: "74"}
+          .buy-item-detail
+            .buy-item-name
+              【再入荷】XXXXXXXX3点セット
+            .buy-price-ja.bold
+              %span{}
+                ¥550
+              %span.item-shipping-fee
+                （税込）送料込み
+
+    %section.buy-content.buy-item2
+      .buy-content-inner2
+        %form.buy-form
+          -# サンプルは"ul"。"・"が付くため一旦はそうしない。「list-style: none;」を入れる　
+          %li.buy-price-table
+            %ul.buy-price-row.buy-you-pay.bold
+              .buy-price-cell.buy-price-cell-label
+                支払い金額
+              .buy-price-cell2
+                %span{}
+                  ¥550
+            %ul.buy-accordion.buy-not-have-point
+              %li.accordion-parent
+                .checkbox-default.buy-use-point
+                  %input{type: "checkbox", class:"checkbox", disabled:"disabled"}
+                    ポイントを使用 (所持ポイント: P＊)
+
+            %section.buy-content.buy-user-info
+              .buy-content-inner
+                %h3.h3{}
+                  支払い方法
+                  %p.buy-user-info-text
+                    %i.icon-plus-circle
+                    %span.buy-register-text
+                      登録してください
+
+            %section.buy-content.buy-user-info
+              .buy-content-inner
+                %h3.h3{}
+                  配送先
+                  %p.buy-user-info-text
+                    %i.icon-plus-circle
+                    %span.buy-register-text
+                      登録してください
+
+            %section.buy-content.buy-user-info3
+              -# %button{type: "submit", class: 'btn-default.btn-red.bold', width: "350", height: "100"}
+              %button{type: "submit", class: 'btn-default.btn-red.bold'}
+                購入する
