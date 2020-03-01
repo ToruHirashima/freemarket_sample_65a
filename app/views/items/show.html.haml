@@ -4,11 +4,11 @@
       .DetailMainHeading__itemName Personal Computer
     .DetailMainPhoto
       .DetailMainPhoto__main
-        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: :'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: :'DetailMainPhoto__main--img'
       .DetailMainPhoto__sub
-        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img'
-        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img'
-        = image_tag '/temp/home-office-336378_1280.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img', id: :img1
+        = image_tag '/temp/home-office-336377_640.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img', id: :img2
+        = image_tag '/temp/macbook-336704_640.jpg', alt: 'sub_photo', class: :'DetailMainPhoto__sub--img', id: :img3
     .DetailMainPrice
       .DetailMainPrice__main
         .DetailMainPrice__main--text ¥250000
@@ -86,28 +86,23 @@
       = link_to '家電・スマホ・カメラをもっと見る', "#", class: :"DetailCategoryItems__head--text"
     .DetailCategoryItems__container
       .DetailCategoryItems__box
-        .DetailCategoryItems__photo
-          = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: 'DetailCategoryItems__photo'
         .DetailCategoryItems__content
           %div test_text
           %div test_text
           %div test_text
           %div test_text
       .DetailCategoryItems__box
-        .DetailCategoryItems__photo
-          = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: 'DetailCategoryItems__photo'
         .DetailCategoryItems__content
       .DetailCategoryItems__box
-        .DetailCategoryItems__photo
-          = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: 'DetailCategoryItems__photo'
         .DetailCategoryItems__content
       .DetailCategoryItems__box
-        .DetailCategoryItems__photo
-          = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: 'DetailCategoryItems__photo'
         .DetailCategoryItems__content
       .DetailCategoryItems__box
-        .DetailCategoryItems__photo
-          = image_tag '/temp/home-office-336378_1280.jpg', alt: 'main_photo', class: 'DetailMainPhoto__main--img'
+        = image_tag '/temp/home-office-336378_640.jpg', alt: 'main_photo', class: 'DetailCategoryItems__photo'
         .DetailCategoryItems__content
 
 = link_to '商品削除（これはマイページで実装か）', item_path(1), method: :delete

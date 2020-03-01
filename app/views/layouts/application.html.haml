@@ -9,8 +9,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .HeaderDummy
-      = link_to root_path do
-        = image_tag '/temp/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', alt: 'top_icon', class: :HeaderDummy__icon
+      .HeaderDummy__icon
+        = link_to root_path do
+          = image_tag '/temp/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', alt: 'top_icon', class: :"HeaderDummy__icon--img"
+      .HeaderDummy__btn
+        = link_to new_user_registration_path ,class: :"HeaderDummy__btn--link" do
+          SignUp
+        = link_to new_user_session_path ,class: :"HeaderDummy__btn--link" do
+          LogIn
+        = link_to user_path(1) ,class: :"HeaderDummy__btn--link" do
+          UserPage
     = yield
     = link_to new_item_path do
       .ExhibitionBtn

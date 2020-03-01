@@ -10,11 +10,30 @@ body {
   width: 100%;
   height: 60px;
   padding: 10px 60px;
-  text-decoration: none;
-  color: #fff;
   background-color: #dddddd;
+  display: flex;
+  justify-content: space-between;
   &__icon {
-    width: 140px;
+    &--img {
+      text-decoration: none;
+      color: #fff;
+      width: 140px;
+    }
+  }
+  &__btn {
+    height: 40px;
+    line-height: 40px;
+    &--link {
+      display: inline-block;
+      width: 100px;
+      margin-left: 10px;
+      border: solid 1px #999;
+      background-color: #3ccace;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+    }
   }
 }
 
@@ -559,7 +578,7 @@ body {
   &__photo {
     width: 100%;
     height: 220px;
-    background-color: cornflowerblue;
+    // background-color: cornflowerblue;
     object-fit: cover;
   }
   &__content {
