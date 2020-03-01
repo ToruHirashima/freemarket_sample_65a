@@ -140,22 +140,18 @@
               }
             }
           }
-          .buy-content.buy-user-info3{
-            padding-bottom: 0;
-            btn-default.btn-red.bold{
-              border: 1px solid #888;
-              background: #888;
-              color: #fff;
-              width: 350px; //サイズ調整で記載
-              height: 100px; //サイズ調整で記載
-              btn-default.btn-red.bold{
-                max-width: 343px; //サイズ調整で記載
-                max-height: 100px; //サイズ調整で記載
-              }
-            }
-          }
         }
       }
     }
+  }
+}
+.buy-user-info3{
+  width: 350px; //サイズ調整で記載
+  &__btn-default3{
+    width: 100%;
+    height: 50px; //サイズ調整で記載
+    font-size: 16px;
+    background-color: #888;
+    color: #fff;
   }
 }
