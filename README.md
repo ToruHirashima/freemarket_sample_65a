@@ -4,7 +4,7 @@
 |nickname|string|null: false, unique: true|
 |Email|string|null: false, unique: true|
 |password|string|null: false, unique: true|
-|family_name|string	null: false|
+|family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
@@ -14,7 +14,7 @@
 
 ### Association		
 - has_many  :items		
-- belongs_to  :addresses		
+- belongs_to  :address		
 - has_many  :orders		
 - has_many  :comments		
 - has_many  :likes		
@@ -29,14 +29,13 @@
 |size_id|references|null: false, FK: true|
 |brand_id|references|null: false, FK: true|
 |condition|integer|null: false|
-|delivery_id|references|null: false, FK: true|
 |price|integer|null: false|
 |seller_id|references|null: false, FK:  true|
 |status|integer|null: false|
 
 ### Association		
 - belongs_to  :user		
-- has_many  :image		
+- has_many  :images		
 - belongs_to :delivery		
 - has_one  :order		
 - has_many  :comments		
@@ -96,13 +95,14 @@
 - belongs_to  :user		
 - belongs_to  :item		
 		
-## addresses_table
+## deliveries_table
 |Column|Type|Options|
 |------|----|-------|
 |fee_burden|integer|null: false|
 |service|integer|null: false|
 |area|string|null: false|
 |handling_time|integer|null: false|
+|item_id|references|null: false, FK: true|
 
 ### Association		
 - belongs_to  :item		
