@@ -1,0 +1,106 @@
+.exhibition
+  .exhibition__top
+    manecari
+    .exhibition__top__logo
+  .exhibition__main
+    .exhibition__main_form
+      .exhibition__main__form__image
+        .exhibition__main__form__image__title
+          商品画像
+          %span.exhibition__main__form__image__title{label: "出品画像", value: "必須"}
+        .exhibition__main__form__image__upload1
+        .exhibition__main__form__image__upload2
+        .exhibition__main__form__image__upload3
+        .exhibition__main__form__image__upload4
+        .exhibition__main__form__image__upload5
+        .exhibition__main__form__image__upload6
+        .exhibition__main__form__image__upload7
+        .exhibition__main__form__image__upload8
+        .exhibition__main__form__image__upload9
+        .exhibition__main__form__image__upload10
+      .exhibition__main__form__name
+        .exhibition__main__form__name__title
+          商品名
+        .exhibition__main__form__name__text
+          %input.exhibition__main__form__name__text{placeholder: "  40文字まで", type: "name"}
+      .exhibition__main__form__info
+        .exhibition__main__form__info__title
+          商品の説明
+        .exhibition__main__form__info__text
+          %textarea.exhibition__main__form__info__text{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)                                                                    (色、素材、重さ、定価、注意点など）                                                                 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
+      .exhibition__main__form__detail
+        商品の詳細
+        .exhibition__main__form__detail__category
+          .exhibition__main__form__detail__category__title
+            カテゴリー
+          .exhibition__main__form__detail__category__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+          .exhibition__main__form__detail__category__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+          .exhibition__main__form__detail__category__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+        .exhibition__main__form__detail__size
+          .exhibition__main__form__detail__size__title
+            サイズ
+          .exhibition__main__form__detail__size__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+        .exhibition__main__form__detail__brand
+          .exhibition__main__form__detail__brand__title
+            ブランド
+          .exhibition__main__form__detail__brand__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  例）シャネル", type: "text"}
+        .exhibition__main__form__detail__condition
+          .exhibition__main__form__detail__condition__title
+            商品の状態
+          .exhibition__main__form__detail__comdition__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+      .exhibition__main__form__delivery
+        配送について
+        .exhibition__main__form__delivery__fee
+          .exhibition__main__form__delivery__fee__title
+            配送料の負担
+          .exhibition__main__form__delivery__fee__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+        .exhibition__main__form__delivery__service
+          .exhibition__main__form__delivery__service__title
+            配送の方法
+          .exhibition__main__form__delivery__service__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+        .exhibition__main__form__delivery__area
+          .exhibition__main__form__delivery__area__title
+            発送元の地域
+          .exhibition__main__form__delivery__area__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+        .exhibition__main__form__delivery__handlingtime
+          .exhibition__main__form__delivery__handlingtime__title
+            発送までの日数
+          .exhibition__main__form__delivery__handlingtime__text
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+      .exhibition__main__form__price
+        価格（¥300〜9,999,999)
+        .exhibition__main__form__price__amount
+          .exhibition__main__form__price__amount__title
+            販売金額
+          .exhibition__main__form__price__amount__text
+        .exhibition__main__form__price__fee
+          .exhibition__main__form__price__fee__title
+            販売手数料（10％）
+          .exhibition__main__form__price__fee__text
+        .exhibition__main__form__price__gains
+          .exhibition__main__form__price__gains__title
+            販売利益
+          .exhibition__main__form__price__gains__text
+      .exhibition__main__form__submit
+        .exhibition__main__form__submit__exhibition
+          %input.exhibition__main__form__submit__exhibition{id: "exhibit",type:"submit", value:"出品する"}
+        .exhibition__main__form__submit__return
+          = link_to 'もどる', "#", id: "return"
+        .exhibition__main__form__submit__attention
+  .exhibition__bottom
+    .exhibition__bottom__policy
+      .exhibition__bottom__policy__praivacy
+      .exhibition__bottom__policy__rules
+      .exhibition__bottom__policy__notation
+    .exhibition__bottom__logo
+    .exhibition__bottom__company-name
+ 
