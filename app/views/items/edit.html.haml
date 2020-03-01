@@ -23,7 +23,6 @@
     %section.buy-content.buy-item2
       .buy-content-inner2
         %form.buy-form
-          -# サンプルは"ul"。"・"が付くため一旦はそうしない。「list-style: none;」を入れる　
           %li.buy-price-table
             %ul.buy-price-row.buy-you-pay.bold
               .buy-price-cell.buy-price-cell-label
@@ -34,7 +33,7 @@
             %ul.buy-accordion.buy-not-have-point
               %li.accordion-parent
                 .checkbox-default.buy-use-point
-                  %input{type: "checkbox", class:"checkbox", disabled:"disabled"}
+                  %input{type: :checkbox, name:"hoge", value: "1"}
                     ポイントを使用 (所持ポイント: P＊)
 
             %section.buy-content.buy-user-info
@@ -56,6 +55,5 @@
                       登録してください
 
             %section.buy-content.buy-user-info3
-              -# %button{type: "submit", class: 'btn-default.btn-red.bold', width: "350", height: "100"}
               %button{type: "submit", class: 'btn-default.btn-red.bold'}
                 購入する
