@@ -91,10 +91,9 @@
             販売利益
           .exhibition__main__form__price__gains__text
       .exhibition__main__form__submit
-        .exhibition__main__form__submit__exhibition
-          %input.exhibition__main__form__submit__exhibition{id: "exhibit",type:"submit", value:"出品する"}
+        %input.exhibition__main__form__submit__exhibition{type:"submit", value:"出品する"}
         .exhibition__main__form__submit__return
-          = link_to 'もどる', "#", id: "return"
+          = link_to 'もどる', "#", class: "return"
         .exhibition__main__form__submit__attention
   .exhibition__bottom
     .exhibition__bottom__policy
