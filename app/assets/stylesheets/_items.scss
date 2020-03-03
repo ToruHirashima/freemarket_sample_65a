@@ -13,20 +13,49 @@
     height: 110px;
     line-height: 100px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
   }
   &__main {
     background-color: #ffffff;
-    height: 3000px;
+    height: 2400px;
     padding: 40px 40px 40px 40px;
     &__form{
       &__image{
         height: 250px;
         &__title{
           height: 50px;
-          line-height: 50px;
+          line-height: 10px;
           font-size: 14px;
-          font-weight: bold;
+          font-weight: 600;
+        }
+        &__upload{
+          display: flex;
+          flex-wrap: wrap;
+          &__image{
+            height: 100px;
+            width: 120px;
+            background-color: lightgrey;
+            border: 1px solid white;
+          }
+        }
+        .limit{
+          font-size: 12px;
+          font-weight: normal;
+        }
+        .must{
+          background: #FF1A00;
+        }
+        .free{
+          background: #999;
+        }
+        .must,
+        .free {
+          color: #fff;
+          border-radius: 3px;
+          font-size: 11px;
+          margin-right: 5px 10px;
+          letter-spacing: 0.1em;
+          border: 3px solid #FF1A00;
         }
       }
       &__name{
@@ -35,7 +64,7 @@
           height: 50px;
           line-height: 50px;
           font-size: 14px;
-          font-weight: bold;
+          font-weight: 600;
         }
         &__text{
           width: 600px;
@@ -45,6 +74,21 @@
           box-sizing: border-box;
           font-size: 16px;
         }
+        .must{
+          background: #FF1A00;
+        }
+        .free{
+          background: #999;
+        }
+        .must,
+        .free {
+          color: #fff;
+          border-radius: 3px;
+          font-size: 11px;
+          margin-right: 5px 10px;
+          letter-spacing: 0.1em;
+          border: 3px solid #FF1A00;
+        }
       }
       &__info{
         height: 270px;
@@ -52,7 +96,7 @@
           height: 50px;
           line-height: 50px;
           font-size: 14px;
-          font-weight: bold;
+          font-weight: 600;
         }
         &__text{
           width: 600px;
@@ -61,6 +105,21 @@
           border-radius: 4px;
           box-sizing: border-box;
           font-size: 16px;
+        }
+        .must{
+          background: #FF1A00;
+        }
+        .free{
+          background: #999;
+        }
+        .must,
+        .free {
+          color: #fff;
+          border-radius: 3px;
+          font-size: 11px;
+          margin-right: 5px 10px;
+          letter-spacing: 0.1em;
+          border: 3px solid #FF1A00;
         }
       }
       &__detail{
@@ -74,7 +133,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -86,6 +145,21 @@
             font-weight: normal;
             margin-bottom: 20px;
           }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
+          }
         }
         &__size{
           color: black;
@@ -93,8 +167,8 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
-          }
+            font-weight: 600;
+        }
           &__text{
             width: 600px;
             height:50px;
@@ -103,6 +177,21 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+          }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
           }
         }
         &__brand{
@@ -111,7 +200,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -121,6 +210,21 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+          }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #999;
           }
         }
         &__condition{
@@ -129,7 +233,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -139,6 +243,21 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+          }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
           }
         }
       }
@@ -153,7 +272,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -163,6 +282,21 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+          }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
           }
         }
         &__service{
@@ -171,7 +305,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -181,6 +315,21 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+          }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
           }
         }
         &__area{
@@ -189,7 +338,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             width: 600px;
@@ -200,6 +349,21 @@
             font-size: 16px;
             font-weight: normal;
           }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
+          }
         }
         &__handlingtime{
           color: black;
@@ -207,7 +371,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             height: 100px;
@@ -219,6 +383,21 @@
             font-size: 16px;
             font-weight: normal;
             color: black;
+          }
+          .must{
+          background: #FF1A00;
+          }
+          .free{
+          background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
           }
         }
       }
@@ -233,7 +412,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             height: 100px;
@@ -245,6 +424,21 @@
             color: black;
             font-size: 16px;
           }
+          .must{
+            background: #FF1A00;
+          }
+          .free{
+            background: #999;
+          }
+          .must,
+          .free {
+            color: #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-right: 5px 10px;
+            letter-spacing: 0.1em;
+            border: 3px solid #FF1A00;
+          }
         }
         &__fee{
           color: black;
@@ -252,7 +446,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             height: 100px;
@@ -271,7 +465,7 @@
             height: 50px;
             line-height: 50px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 600;
           }
           &__text{
             height: 100px;
@@ -308,8 +502,21 @@
         .return{
           color: black;
           text-decoration-line: none;
-        }  
-      }
+        } 
+        &__attention{
+          font-size: 7px;
+          margin: 50px 100px 0 100px; 
+        }
+        .blue{
+          color: mediumturquoise;
+        }
+        .black{
+          color: black;
+        }
+      } 
     }
+  }
+  &__bottom{
+    height: 300px;
   }
 }
