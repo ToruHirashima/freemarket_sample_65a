@@ -107,7 +107,7 @@
               }
             }
           }
-          .buy-content.buy-user-info{
+          &__content{
             margin: 0;
             transition: all ease-out .3s;
             text-align: left;
@@ -115,14 +115,14 @@
             margin: 0;
             width:350px; //サイズ調整で記載
             // height:100px; //サイズ調整で記載
-            .buy-content-inner{
+            &__inner{
               max-width: 343px;
               max-height: 100px; //サイズ調整で記載
               margin: 0 auto;
               .h3{
                 margin: 0;
                 font-size: 14px;
-                .buy-user-info-text{
+                &__info{
                   .p{
                     line-height: 1.5;
                   }
@@ -130,10 +130,10 @@
                   margin: 8px 0 0;
                   font-size: 14px;
                   line-height: 1.4;
-                  .icon-plus-circle{
+                  &__icon{
                     // 要記載
                   }
-                  .buy-register-text{
+                  &__register{
                     margin: 0 0 0 4px;
                   }
                 }
