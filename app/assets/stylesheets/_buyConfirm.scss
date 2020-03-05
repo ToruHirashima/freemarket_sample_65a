@@ -1,29 +1,29 @@
 // main(1-2)陵域
-.single-main{
+.buy-confirm{
   display: block;
-  .l-single-container.buy-item-container {
+  &__item-container {
     background: #fff; // これ要復活
     // background:green; // 一旦記載。
     // height: 100vh; // 一旦記載。
     // width: 100vh; // 一旦記載。
-    .l-single-head.buy-head{
+    &__buy-head{
       padding: 16px;
       // padding: 24px 8px;
       font-size: 18px;
       line-height: 1.5;
       text-align: center;
     }
-    .buy-content.buy-item{
+    &__buy-item{
       text-align: center;
       padding: 24px 16px;
       border-top: 1px solid;
-      .buy-content-inner{
+      &__inner{
         max-width: 343px;
         margin: 0 auto;
-        .buy-item-box{
+        &__item-box{
           display: -webkit-box;
           display: flex;
-          .buy-item-image{
+          &__image{
             height: 80px;
             width: 80px;
             min-width: 80px;
@@ -37,20 +37,20 @@
             -ms-flex-align: center;
             align-items: center;
           }
-          .buy-item-detail{
+          &__detail{
             margin-left: 16px;
-            .buy-item-name{
+            &__name{
               font-size: 14px;
               margin: 0;
               padding: 0 0 8px;
               line-height: 1.5;
               text-align: left;
             }
-            .buy-price-ja.bold{
+            &__price{
               margin: 0;
               text-align: left;
               font-size: 15px;
-              .item-shipping-fee{
+              &__fee{
                 font-size: 12px;
               }
             }
@@ -155,7 +155,3 @@
     color: #fff;
   }
 }
-
-
-
-

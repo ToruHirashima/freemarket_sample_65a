@@ -2,22 +2,22 @@
 %h2 商品購入確認ページ
 = link_to '購入確定', item_path, method: :patch
 
-.single-main
-  %section.l-single-container.buy-item-container
-    %h2.l-single-head.buy-head
+.buy-confirm
+  %section.buy-confirm__item-container
+    %h2.buy-confirm__item-container__buy-head
       購入内容の確認
-    %section.buy-content.buy-item
-      .buy-content-inner
-        .buy-item-box
-          .buy-item-image
+    %section.buy-confirm__item-container__buy-item
+      .buy-confirm__item-container__buy-item__inner
+        .buy-confirm__item-container__buy-item__inner__item-box
+          .buy-confirm__item-container__buy-item__inner__item-box__image
             %img{src: "/sample.jpeg", alt: " ", width: "80", height: "74"}
-          .buy-item-detail
-            .buy-item-name
+          .buy-confirm__item-container__buy-item__inner__item-box__detail
+            .buy-confirm__item-container__buy-item__inner__item-box__detail__name
               【再入荷】XXXXXXXX3点セット
-            .buy-price-ja.bold
+            .buy-confirm__item-container__buy-item__inner__item-box__detail__price
               %span{}
                 ¥550
-              %span.item-shipping-fee
+              %span.buy-confirm__item-container__buy-item__inner__item-box__detail__price__fee
                 （税込）送料込み
 
     %section.buy-content.buy-item2
