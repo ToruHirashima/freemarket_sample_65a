@@ -10,10 +10,11 @@
     background-color: rgb(245, 245, 245);
     font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
     font-size: 30px;
-    height: 110px;
+    height: 120px;
     line-height: 100px;
     text-align: center;
     font-weight: 600;
+    padding-top: 30px;
   }
   &__main {
     background-color: #ffffff;
@@ -518,5 +519,20 @@
   }
   &__bottom{
     height: 300px;
+    text-align: center;
+    &__policy{
+      display: flex;
+      margin-top: 30px;
+      font-size: 12px;
+      &__praivacy{
+        margin: 0 15px 0 150px;
+      }
+      &__rules{
+        margin-right: 15px;
+      }
+    }
+    &__logo{
+      margin-top: 50px;
+    }
   }
 }

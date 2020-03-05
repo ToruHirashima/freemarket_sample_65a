@@ -1,6 +1,6 @@
 .exhibition
   .exhibition__top
-    manecari
+    = image_tag "logo.png", width: "150", height: "50", alt: "logo"
     .exhibition__top__logo
   .exhibition__main
     .exhibition__main_form
@@ -14,15 +14,25 @@
             最大１０枚までアップロードできます
         .exhibition__main__form__image__upload
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
           .exhibition__main__form__image__upload__image
+            = image_tag "icon_camera.png", width: "30", height: "30", class: "camera", alt: "camera"
       .exhibition__main__form__name
         .exhibition__main__form__name__title
           商品名
@@ -36,7 +46,7 @@
           %span.must
             必須
         .exhibition__main__form__info__text
-          %textarea.exhibition__main__form__info__text{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)                                                                    (色、素材、重さ、定価、注意点など）                                                                 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
+          %textarea.exhibition__main__form__info__text{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)(色、素材、重さ、定価、注意点など） 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
       .exhibition__main__form__detail
         商品の詳細
         %span.must
@@ -47,7 +57,9 @@
             %span.must
               必須
           .exhibition__main__form__detail__category__text
-            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
+            .exhibition__main__form__detail__category__text
+              = form_with model: @item, local: true do |f|
+                = f.select :category_1,[["選択してください", 0],["レーディス", 1]["メンズ", 2], ["ベビー・キッズ", 3], ["インテリア・住まい・小物", 4],["本・音楽・ゲーム", 5],["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7], ["家電・スマホ・カメラ", 8], ["スポーツ・レジャー", 10], ["ハンドメイド", 11], ["チケット", 12], ["自動車・オートバイ", 13], ["その他", 14]]
           .exhibition__main__form__detail__category__text
             %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
           .exhibition__main__form__detail__category__text
@@ -149,8 +161,13 @@
   .exhibition__bottom
     .exhibition__bottom__policy
       .exhibition__bottom__policy__praivacy
+        プライバシーポリシー
       .exhibition__bottom__policy__rules
+        フリマ利用規約
       .exhibition__bottom__policy__notation
+        特定商取引に関する表記
     .exhibition__bottom__logo
+      = image_tag "logo-white.png", width: "150", height: "50", alt: "logo-white"
     .exhibition__bottom__company-name
+      ©FURIMA,inc
  
