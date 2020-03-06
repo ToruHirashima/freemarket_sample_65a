@@ -1,14 +1,9 @@
-// main(1-2)陵域
 .buy-confirm{
   display: block;
   &__item-container {
-    background: #fff; // これ要復活
-    // background:green; // 一旦記載。
-    // height: 100vh; // 一旦記載。
-    // width: 100vh; // 一旦記載。
+    background: #fff;
     &__buy-head{
       padding: 16px;
-      // padding: 24px 8px;
       font-size: 18px;
       line-height: 1.5;
       text-align: center;
@@ -75,7 +70,7 @@
                 font-size: 18px;
                 display: table-cell;
                 padding: 0;
-                width:220px; //サイズ調整で記載
+                width:220px;
               }
               &__cell2{
                 display: table-cell;
@@ -89,15 +84,13 @@
             margin: 24px 0;
             .accordion-parent{
               list-style: none;
-              width: 350px; //サイズ確保のため記載
-              height:15px; //サイズ確保のため記載
+              width: 350px;
+              height:15px;
               .checkbox-default.buy-use-point{
                 text-align: left;
                 position: relative;
-                // font-size: 0;
-                // display: none;
                 .checkbox{
-                  width: 180px; //サイズ確保のため記載
+                  width: 180px;
                 }
                 .icon-check{
                   text-align: right;
@@ -113,11 +106,10 @@
             text-align: left;
             padding: 24px 0;
             margin: 0;
-            width:350px; //サイズ調整で記載
-            // height:100px; //サイズ調整で記載
+            width:350px;
             &__inner{
               max-width: 343px;
-              max-height: 100px; //サイズ調整で記載
+              max-height: 100px;
               margin: 0 auto;
               .h3{
                 margin: 0;
@@ -130,21 +122,15 @@
                   margin: 8px 0 0;
                   font-size: 14px;
                   line-height: 1.4;
-                  &__icon{
-                    // 要記載
-                  }
-                  &__register{
-                    margin: 0 0 0 4px;
-                  }
                 }
               }
             }
           }
           &__user-info{
-            width: 350px; //サイズ調整で記載
+            width: 350px;
             &__btn-default{
               width: 100%;
-              height: 50px; //サイズ調整で記載
+              height: 50px;
               font-size: 16px;
               background-color: #888;
               color: #fff;
