@@ -1,1 +1,61 @@
-ユーザーページ
+.mypage-nav-bar
+  %ul
+    %li 
+      = link_to 'FURIMA', 'item_path', class:"mypage-nav-bar--link"
+    %li ＞
+    %li マイページ
+
+.mypage
+  .mypage__area
+    .mypage__content
+      .mypage--left
+        = render 'users/side-bar'
+      .mypage--right
+        .mypage--right__innr
+          .mypage--right__upper
+            .mypage__user-icon
+              = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-icon'
+              .mypage__user-name
+                ニックネーム
+              .mypage__user-status
+                評価
+                %span 0
+                出品数
+                %span 0
+          .mypage__container
+            .mypage__container__tab
+              .mypage__container__tab--left
+                お知らせ
+              .mypage__container__tab--right
+                やることリスト
+            .mypage__container__info
+              .info__content
+                .info__content-left
+                  = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    事務局から個別メッセージ「ログイン通知」
+                  .info-data
+                    24時間前
+              .info__content
+                .info__content-left
+                  = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    事務局から個別メッセージ「ログイン通知」
+                  .info-data
+                    24時間前
+            .mypage__container__lower
+              .info-index-btn 一覧を見る
+          .mypage__purchased-item
+            .mypage__purchased-item__title
+              購入した商品
+            .mypage__container__tab
+              .mypage__container__tab--left
+                取引中
+              .mypage__container__tab--right
+                過去の取引
+            .mypage__purchased-item__info
+              .mypage__purchased-item__info__text
+            .mypage__container__lower
+              .info-index-btn 一覧を見る
