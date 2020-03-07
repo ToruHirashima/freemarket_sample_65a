@@ -157,7 +157,7 @@ belongs_to  :item
 - has_many  :categories  through:  :categories_brands		
 - belongs_to  :categories_brands		
 		
-## categories_sizes_table
+## categories_brands_table
 |Column|Type|Options|
 |------|----|-------|
 |category_id|integer|null: false|
