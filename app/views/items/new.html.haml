@@ -46,20 +46,16 @@
           %span.must
             必須
         .exhibition__main__form__info__text
-          %textarea.exhibition__main__form__info__text{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)(色、素材、重さ、定価、注意点など） 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
+          %textarea.exhibition__main__form__info__text{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)&#13;&#10; (色、素材、重さ、定価、注意点など）&#13;&#10; 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe} 
       .exhibition__main__form__detail
         商品の詳細
-        %span.must
-          必須
         .exhibition__main__form__detail__category
           .exhibition__main__form__detail__category__title
             カテゴリー
             %span.must
               必須
           .exhibition__main__form__detail__category__text
-            .exhibition__main__form__detail__category__text
-              = form_with model: @item, local: true do |f|
-                = f.select :category_1,[["選択してください", 0],["レーディス", 1]["メンズ", 2], ["ベビー・キッズ", 3], ["インテリア・住まい・小物", 4],["本・音楽・ゲーム", 5],["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7], ["家電・スマホ・カメラ", 8], ["スポーツ・レジャー", 10], ["ハンドメイド", 11], ["チケット", 12], ["自動車・オートバイ", 13], ["その他", 14]]
+            %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
           .exhibition__main__form__detail__category__text
             %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
           .exhibition__main__form__detail__category__text
@@ -127,6 +123,8 @@
           .exhibition__main__form__price__fee__title
             販売手数料（10％）
           .exhibition__main__form__price__fee__text
+          %span.mainasu
+            ➖
         .exhibition__main__form__price__gains
           .exhibition__main__form__price__gains__title
             販売利益
