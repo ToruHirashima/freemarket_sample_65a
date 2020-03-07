@@ -1,97 +1,95 @@
 .details
-  .detailBox
-    .detailBoxHeading Personal Computer
-    .detailBoxPhoto
-      = image_tag '/temp/a001.png', alt: 'main_photo', class: :detailBoxPhoto__main
-      .detailBoxPhoto__sub
-        = image_tag '/temp/a001.png', alt: 'sub_photo', class: :detailBoxPhoto__tmb
-        = image_tag '/temp/a003.png', alt: 'sub_photo', class: :detailBoxPhoto__tmb
-        = image_tag '/temp/a007.png', alt: 'sub_photo', class: :detailBoxPhoto__tmb
-    .detailBoxPrice
-      .detailBoxPrice__main ¥250000
-      .detailBoxPrice__sub (税込) 送料込み
-    .detailBoxBuy
-      = link_to '購入画面に進む', edit_item_path(1), class: :detailBoxBuy__link
-    .detailBoxDescription
-      .detailBoxDescription__header Personal Computer
-      %table.detailBoxTable
+  .detail-box
+    .detail-box-heading Personal Computer
+    .detail-box-photo
+      = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-box-photo__main"
+      .detail-box-photo__sub
+        = image_tag '/temp/a001.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+        = image_tag '/temp/a003.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+        = image_tag '/temp/a007.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+    .detail-box-price
+      .detail-box-price__main ¥250000
+      .detail-box-price__sub (税込) 送料込み
+    .detail-box-buy
+      = link_to '購入画面に進む', edit_item_path(1), class: :"detail-box-buy__link"
+    .detail-box-description
+      .detail-box-description__header Personal Computer
+      %table.detail-box-table
         %tr
-          %th.detailBoxTable__th 出品者
-          %td.detailBoxTable__td hoge
+          %th.detail-box-table__th 出品者
+          %td.detail-box-table__td hoge
         %tr
-          %th.detailBoxTable__th カテゴリー
-          %td.detailBoxTable__td
-            = link_to '#', class: :detailBoxTable__link do
+          %th.detail-box-table__th カテゴリー
+          %td.detail-box-table__td
+            = link_to '#', class: :"detail-box-table__link" do
               %div 家電・スマホ・カメラ
-            = link_to '#', class: :detailBoxTable__link do
+            = link_to '#', class: :"detail-box-table__link" do
               %div PC/タブレット
-            = link_to '#', class: :detailBoxTable__link do
+            = link_to '#', class: :"detail-box-table__link" do
               %div ノートPC
         %tr
-          %th.detailBoxTable__th ブランド
-          %td.detailBoxTable__td
+          %th.detail-box-table__th ブランド
+          %td.detail-box-table__td
         %tr
-          %th.detailBoxTable__th 商品のサイズ
-          %td.detailBoxTable__td
+          %th.detail-box-table__th 商品のサイズ
+          %td.detail-box-table__td
         %tr
-          %th.detailBoxTable__th 商品の状態
-          %td.detailBoxTable__td 新品、未使用
+          %th.detail-box-table__th 商品の状態
+          %td.detail-box-table__td 新品、未使用
         %tr
-          %th.detailBoxTable__th 配送料の負担
-          %td.detailBoxTable__td 送料込み(出品者負担)
+          %th.detail-box-table__th 配送料の負担
+          %td.detail-box-table__td 送料込み(出品者負担)
         %tr
-          %th.detailBoxTable__th 発送元の地域
-          %td.detailBoxTable__td
-            = link_to '#', class: :detailBoxTable__link do
+          %th.detail-box-table__th 発送元の地域
+          %td.detail-box-table__td
+            = link_to '#', class: :"detail-box-table__link" do
               %div 北海道
         %tr
-          %th.detailBoxTable__th 発送日の目安
-          %td.detailBoxTable__td 2~3日で発送
-    .detailBoxButtonContainer
-      %button{type: :button, name: :bookmark, class: :detailBoxButtonContainer__bookmark}
+          %th.detail-box-table__th 発送日の目安
+          %td.detail-box-table__td 2~3日で発送
+    .detail-box-button-container
+      %button{type: :button, name: :bookmark, class: :"detail-box-button-container__bookmark"}
         = icon 'fa', 'star'
         お気に入り 0
-      = link_to '#', class: :detailBoxButtonContainer__report do
+      = link_to '#', class: :"detail-box-button-container__report" do
         = icon 'fa', 'flag'
         不適切な商品の通報
-  = form_with(url: '#', local: true, method: :get, class: :detailComment) do |f|
-    = f.text_area :comment, class: :detailComment__textbox
-    .detailComment__notice
+  = form_with(url: '#', local: true, method: :get, class: :"detail-comment") do |f|
+    = f.text_area :comment, class: :"detail-comment__textbox"
+    .detail-comment__notice
       相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    .detailComment__button
-      %button{type: :submit, class: :detailComment__submit}
+    .detail-comment__button
+      %button{type: :submit, class: :"detail-comment__submit"}
         = icon 'fa', 'comment'
         コメントする
-  .detailLink
-    = link_to '#', class: :detailLink__text do
+  .detail-link
+    = link_to '#', class: :"detail-link__text" do
       = icon 'fa', 'angle-left'
       前の商品
-    = link_to '#', class: :detailLink__text do
+    = link_to '#', class: :"detail-link__text" do
       次の商品
       = icon 'fa', 'angle-right'
-  .detailSns
-  .detailUserItems
-  .detailCategoryItems
-    .detailCategoryItems__head
-      = link_to '家電・スマホ・カメラをもっと見る', "#", class: :detailCategoryItems__link
-    .detailCategoryItems__container
-      .detailCategoryItems__box
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :detailCategoryItems__photo
-        .detailCategoryItems__content
-          .detailCategoryItems__content--name Curry Rice
-          .detailCategoryItems__content--price ¥880
-      .detailCategoryItems__box
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :detailCategoryItems__photo
-        .detailCategoryItems__content
-          .detailCategoryItems__content--name Curry Rice
-          .detailCategoryItems__content--price ¥880
-      .detailCategoryItems__box
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :detailCategoryItems__photo
-        .detailCategoryItems__content
-          .detailCategoryItems__content--name Curry Rice
-          .detailCategoryItems__content--price ¥880
-      .detailCategoryItems__box
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :detailCategoryItems__photo
-        .detailCategoryItems__content
-          .detailCategoryItems__content--name Curry Rice
-          .detailCategoryItems__content--price ¥880
+  .detail-category-items
+    .detail-category-items__head
+      = link_to '家電・スマホ・カメラをもっと見る', "#", class: :"detail-category-items__link"
+    .detail-category-items__container
+      .detail-category-items__box
+        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
+        .detail-category-items__content
+          .detail-category-items__content--name Curry Rice
+          .detail-category-items__content--price ¥880
+      .detail-category-items__box
+        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
+        .detail-category-items__content
+          .detail-category-items__content--name Curry Rice
+          .detail-category-items__content--price ¥880
+      .detail-category-items__box
+        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
+        .detail-category-items__content
+          .detail-category-items__content--name Curry Rice
+          .detail-category-items__content--price ¥880
+      .detail-category-items__box
+        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
+        .detail-category-items__content
+          .detail-category-items__content--name Curry Rice
+          .detail-category-items__content--price ¥880
