@@ -1,0 +1,218 @@
+$white: #ffffff;
+$light_green: #3ccace;
+$light_gray: #f8f8f8;
+
+@mixin fo_nodec_col($color) {
+  text-decoration: none;
+  color: $color;
+}
+
+.details {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  background-color: $light_gray;
+}
+
+.detail-box {
+  width: 700px;
+  margin: 0 auto;
+  padding: 25px 40px;
+  background-color: $white;
+}
+
+.detail-box-heading {
+  width: 100%;
+  margin: 0 auto 16px;
+  padding: 0 30px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.detail-box-photo {
+  margin: 0 auto;
+  &__main {
+    width: 100%;
+    height: 346px;
+    padding: 0 30px;
+    object-fit: cover;
+  }
+  &__sub {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  &__tmb {
+    width: 140px;
+    height: 87px;
+    margin: 0 5px;
+    object-fit: cover;
+  }
+}
+
+.detail-box-price {
+  width: 100%px;
+  margin: 25px auto;
+  &__main {
+    line-height: 53px;
+    font-size: 46px;
+    font-weight: bold;
+    text-align: center;
+  }
+  &__sub {
+    line-height: 24px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.detail-box-buy {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: $light_green;
+  text-align: center;
+  &__link {
+    @include fo_nodec_col($white);
+    font-size: 24px;
+  }
+}
+
+.detail-box-description {
+  &__header {
+    width: 100%;
+    line-height: 30px;
+    margin: 30px auto;
+    font-size: 18px;
+  }
+}
+
+.detail-box-table {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  &__th {
+    width: 20%;
+    padding: 8px;
+    text-align: center;
+    border: solid 1px #dedede;
+    background-color: #eeeeee;
+  }
+  &__td {
+    width: 61%;
+    padding: 15px;
+    border:solid 1px #dedede;
+  }
+  &__link {
+    @include fo_nodec_col($light_green);
+  }
+}
+
+.detail-box-button-container {
+  width: 100%;
+  line-height: 36px;
+  margin: 30px auto 15px;
+  display: flex;
+  justify-content: space-between;
+  &__bookmark {
+    padding: 0 10px;
+    text-align: center;
+    font-size: 16px;
+    color: $light_green;
+    border: solid 1px #ffb340;
+    border-radius: 20px;
+  }
+  &__report {
+    padding: 0 10px;
+    text-align: center;
+    @include fo_nodec_col(#000000);
+    font-size: 14px;
+    border: solid 1px;
+    border-radius: 5px;
+  }
+}
+
+.detail-comment {
+  width: 700px;
+  height: 305px;
+  background-color: $white;
+  margin: 10px auto;
+  padding: 24px;
+  &__textbox {
+    width: 100%;
+    height: 104px;
+    background-color: $white;
+  }
+  &__notice {
+    width: 100%;
+    height: 58px;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 14px;
+    background-color: $light_gray;
+  }
+  &__button {
+    width: 390px;
+    margin: 25px auto 0;
+  }
+  &__submit {
+    width: 100%;
+    height: 54px;
+    font-size: 18px;
+    color: $white;
+    border-radius: 27px;
+    background-color: $light_green;
+  }
+}
+
+.detail-link {
+  width: 700px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  &__text {
+    @include fo_nodec_col($light_green);
+  }
+}
+
+.detail-category-items {
+  width: 700px;
+  margin: 0 auto;
+  &__head {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &__link {
+    @include fo_nodec_col($light_green);
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 720px;
+  }
+  &__box {
+    width: 220px;
+    height: 330px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: $white;
+  }
+  &__photo {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  &__content {
+    width: 100%;
+    height: 110px;
+    padding: 16px;
+    &--name {
+      height: 3em;
+    }
+    &--price {
+      font-weight: bold;
+    }
+  }
+}
