@@ -14,11 +14,11 @@
 
 ### Association		
 - has_many  :items		
-- belongs_to  :address		
+- has_one  :address		
 - has_many  :orders		
 - has_many  :comments		
 - has_many  :likes		
-- belongs_to  :sns_credential		
+- has_one  :sns_credential		
 		
 ## items_table		
 |Column|Type|Options|
@@ -36,7 +36,7 @@
 ### Association		
 - belongs_to  :user		
 - has_many  :images		
-- belongs_to :delivery		
+- has_one :delivery		
 - has_one  :order		
 - has_many  :comments		
 - has_many  :likes		
