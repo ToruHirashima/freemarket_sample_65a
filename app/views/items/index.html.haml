@@ -1,2 +1,207 @@
-%h2 トップページ（商品一覧表示）
-= link_to '商品詳細', item_path(1)
+.main
+  .top-visual
+    .content
+      .content__sub-title
+        人生を変えるフリマアプリ
+      .content__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .content__btn
+        = link_to root_path, class: "content__btn__app" do
+          = image_tag "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: ""
+        = link_to root_path, class: "content__btn__google" do
+          = image_tag "google-play-badge.png", alt: ""
+  .top-intro
+    .sub-title
+      FURIMAが選ばれる３つの理由
+    %ul.top-lists
+      %li.top-list
+        .top-list__img
+          %span.top-list__img__number
+            1
+          = image_tag "pict-reason-01.jpg", alt: ""
+        .top-list__title
+          %span
+            3分
+          ですぐに出品
+        %p.top-list__text
+          スマホで入力するだけで簡単に出品できる！
+      %li.top-list
+        .top-list__img
+          %span.top-list__img__number
+            2
+          = image_tag "pict-reason-02.jpg", alt: ""
+        .top-list__title
+          %span
+            シンプル
+          で使いやすい
+        %p.top-list__text
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.top-list__last
+        .top-list__img
+          %span.top-list__img__number
+            3
+          = image_tag "pict-reason-03.jpg", alt: ""
+        .top-list__title
+          %span
+            手数料
+          業界最安
+        %p.top-list__text
+          最大3%でお得に出品&購入！
+
+  .middle-visual
+    .content
+      .content__sub-title
+        会員数日本一位
+      %p.content__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .content__btn
+        = link_to root_path, class: "content__btn__app" do
+          = image_tag "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: ""
+        = link_to root_path, class: "content__btn__google" do
+          = image_tag "google-play-badge.png", alt: ""
+  .middle-intro
+    .head
+      FURIMAの特徴
+    %ul.middle-lists
+      %li.middle-list
+        .middle-list__img
+          = image_tag "icon-01.png", alt: ""
+        .middle-list__title
+          簡単に売り買いできる
+        .middle-list__text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %li.middle-list
+        .middle-list__img
+          = image_tag "icon-03.png", alt: ""
+        .middle-list__title
+          売上金は即日振込みに対応
+        .middle-list__text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします！
+      %li.middle-list
+        .middle-list__img
+          = image_tag "icon-04.png", alt: ""
+        .middle-list__title
+          様々な支払いに対応
+        .middle-list__text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .pickup-categories
+    .head
+      ピックアップカテゴリー
+    .products
+      = link_to root_path, class: "product-head" do
+        新規投稿商品
+      .product-lists
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product3
+              .product-list__body__detail
+                %ul
+                  %li
+                    30000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product2
+              .product-list__body__detail
+                %ul
+                  %li
+                    20000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product1
+              .product-list__body__detail
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+  .pickup-brand
+    .head
+      ピックアップブランド
+    .products
+      = link_to root_path, class: "product-head" do
+        新規投稿商品
+      .product-lists
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product3
+              .product-list__body__detail
+                %ul
+                  %li
+                    30000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product2
+              .product-list__body__detail
+                %ul
+                  %li
+                    20000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+        .product-list
+          = link_to root_path, class: "product-list__img" do
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", alt: ""
+            .product-list__body
+              .product-list__body__name
+                product1
+              .product-list__body__detail
+                %ul
+                  %li
+                    10000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p
+                  (税込)
+%aside.banner
+  .inner
+    .inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード！
+    .inner__btn
+      = link_to root_path, class: "inner__btn__app" do
+        = image_tag "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg", alt: ""
+      = link_to root_path, class: "inner__btn__google" do
+        = image_tag "google-play-badge.png", alt: ""
