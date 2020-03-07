@@ -11,27 +11,27 @@
           %span.User-field__require
             必須
           .User-field__input
-            -# = f.text_field :name, placeholder: '例)フリマ太郎', autofocus: true
+            -# = f.text_field :name, placeholder: '例)フリマ太郎', autofocus: true, class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :email, "メールアドレス"
           %span.User-field__require
             必須
           .User-field__input
-            = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :password
           %span.User-field__require
             必須
           .User-field__input
-            = f.password_field :password, placeholder: '英数字8文字以上', autocomplete: "off"
+            = f.password_field :password, placeholder: '英数字8文字以上', autocomplete: "off", class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :password_confirmation
           %span.User-field__require
             必須
           .User-field__input
-            = f.password_field :password_confirmation, autocomplete: "off"
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'User-field__input--inner'
         .User-actions
           = f.submit "次へ進む", class: 'User-actions__btn'
