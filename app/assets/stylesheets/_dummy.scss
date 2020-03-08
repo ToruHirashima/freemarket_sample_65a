@@ -1,0 +1,66 @@
+// こちらは、作業用のために作成している仮のヘッダー、フッターです
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+.HeaderDummy {
+  width: 100%;
+  height: 60px;
+  padding: 10px 60px;
+  background-color: #dddddd;
+  display: flex;
+  justify-content: space-between;
+  &__icon {
+    &--img {
+      text-decoration: none;
+      color: #ffffff;
+      width: 140px;
+    }
+  }
+  &__btn {
+    height: 40px;
+    line-height: 40px;
+    &--link {
+      display: inline-block;
+      width: 100px;
+      margin-left: 10px;
+      border: solid 1px #999999;
+      background-color: #3ccace;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+}
+
+.ExhibitionBtn {
+  width: 120px;
+  padding: 15px;
+  position: fixed;
+  bottom: 32px;
+  right: 30px;
+  border-radius: 4px;
+  background-color: #3ccace;
+  text-align: center;
+  &__text {
+    color: #ffffff;
+    font-size: 18px;
+  }
+  &__image {
+    width: 60%;
+    margin-top: 5px;
+    vertical-align: bottom;
+  }
+}
+
+.FooterDummy {
+  width: 100%;
+  height: 60px;
+  background-color: #dddddd;
+}
