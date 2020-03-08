@@ -10,11 +10,11 @@
     .mypage__content
       .mypage--left
         = render 'users/side-bar'
-      .mypage--right
-        .mypage--right__innr
-          .mypage--right__upper
+      .mypage__right
+        .mypage__right--innr
+          .mypage__right--upper
             .mypage__user-icon
-              = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-icon'
+              = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-image'
               .mypage__user-name
                 ニックネーム
               .mypage__user-status
@@ -23,12 +23,12 @@
                 出品数
                 %span 0
           .mypage__container
-            .mypage__container__tab
-              .mypage__container__tab--left
+            .mypage__container--tab
+              .mypage__container--tab--left
                 お知らせ
-              .mypage__container__tab--right
+              .mypage__container--tab--right
                 やることリスト
-            .mypage__container__info
+            .mypage__container--info
               .info__content
                 .info__content-left
                   = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
@@ -45,17 +45,17 @@
                     事務局から個別メッセージ「ログイン通知」
                   .info-data
                     24時間前
-            .mypage__container__lower
+            .mypage__container--lower
               .info-index-btn 一覧を見る
           .mypage__purchased-item
-            .mypage__purchased-item__title
+            .mypage__purchased-item--title
               購入した商品
-            .mypage__container__tab
-              .mypage__container__tab--left
+            .mypage__container--tab
+              .mypage__container--tab--left
                 取引中
-              .mypage__container__tab--right
+              .mypage__container--tab--right
                 過去の取引
-            .mypage__purchased-item__info
-              .mypage__purchased-item__info__text
-            .mypage__container__lower
+            .mypage__purchased-item--info
+              .mypage__purchased-item--info--text
+            .mypage__container--lower
               .info-index-btn 一覧を見る

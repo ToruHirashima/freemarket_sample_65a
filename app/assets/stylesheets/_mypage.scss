@@ -9,13 +9,13 @@
     display: flex;
     justify-content: space-between;
   }
-  &--right {
-    &__innr {
+  &__right {
+    &--innr {
       background-color: #FFFFFF;
       width:700px;
       margin-bottom:50px;
     }
-    &__upper {
+    &--upper {
       height:160px;
       background-image: url(asset_path("pict/mypage_user_bg.jpeg"));
       position: relative;
@@ -39,7 +39,7 @@
   &__user-status span {
     font-weight: bold;
   }
-  &__container__tab {
+  &__container--tab {
     display:flex;
     height:74px;
     color:black;
@@ -58,14 +58,14 @@
       line-height:74px;
     }
   }
-  &__container__lower {
+  &__container--lower {
     padding:16px;
     text-align: center;
   }
   &__purchased-item {
     margin: 40px 0 0;
     background: #fff;
-    &__title{
+    &--title{
       padding: 0 16px;
       box-sizing: border-box;
       background: #FAFAFA;
@@ -75,7 +75,7 @@
   }
 }
 
-.mypage-user-icon {
+.mypage-user-image {
   height: 60px;
   width: 60px;
 }
