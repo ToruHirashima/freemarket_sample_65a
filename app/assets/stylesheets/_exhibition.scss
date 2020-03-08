@@ -4,7 +4,7 @@
 .exhibition{
   min-height: 100vh;
   background-color: rgb(245, 245, 245);
-  padding:0 45vh 0 45vh;
+  padding:40px 45vh 0 45vh;
   &__top {
     color: rgb(51, 51, 51);
     background-color: rgb(245, 245, 245);
@@ -15,11 +15,11 @@
     text-align: center;
     font-weight: 600;
     padding-top: 30px;
+    width: 100%;
   }
   &__main {
     background-color: #ffffff;
-    height: 2400px;
-    padding: 40px 40px 40px 40px;
+    height: 3000px;
     @mixin must {
       background: #FF1A00;
       color: #fff;
@@ -34,12 +34,15 @@
     }
     &__form{
       &__image{
-        height: 250px;
+        height: 350px;
+        padding: 40px 40px 40px 40px;
+        border-bottom: 1px solid rgb(245, 245, 245);
         &__title{
           height: 50px;
           line-height: 10px;
           font-size: 14px;
           font-weight: 600;
+          
         }
         &__upload{
           display: flex;
@@ -48,7 +51,7 @@
             height: 100px;
             width: 120px;
             background-color: lightgrey;
-            border: 1px solid white;
+            border: 2px solid white;
           }
         }
         .limit{
@@ -58,6 +61,7 @@
       }
       &__name{
         height: 150px;
+        padding: 40px 40px 40px 40px;
         &__title{
           height: 50px;
           line-height: 50px;
@@ -74,7 +78,9 @@
         } 
       }
       &__info{
-        height: 270px;
+        height: 350px;
+        padding: 40px 40px 0 40px;
+        border-bottom: 2px solid rgb(245, 245, 245);
         &__title{
           height: 50px;
           line-height: 50px;
@@ -94,7 +100,8 @@
         font-size: 14px;
         font-weight: bold;
         color: gray;
-        padding-top: 10px; 
+        padding: 40px 40px 40px 40px;
+        border-bottom: 2px solid rgb(245, 245, 245);
         &__category{
           color: black;
           &__title{
@@ -102,6 +109,7 @@
             line-height: 50px;
             font-size: 14px;
             font-weight: 600;
+            margin-top: 20px;
           }
           &__text{
             width: 600px;
@@ -111,7 +119,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
           } 
         }
         &__size{
@@ -130,6 +138,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+            margin-bottom: 30px;
           }
         }
         &__brand{
@@ -157,6 +166,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+            margin-bottom: 30px;
           }
         }
         &__condition{
@@ -182,7 +192,8 @@
         font-size: 14px;
         font-weight: bold;
         color: gray;
-        padding-top: 10px;
+        padding: 40px 40px 40px 40px;
+        border-bottom: 2px solid rgb(245, 245, 245);
         &__fee{
           color: black;
           &__title{
@@ -190,6 +201,7 @@
             line-height: 50px;
             font-size: 14px;
             font-weight: 600;
+            margin-top: 30px;
           }
           &__text{
             width: 600px;
@@ -199,6 +211,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+            margin-bottom: 30px;
           }
         }
         &__service{
@@ -217,6 +230,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+            margin-bottom: 30px;
           }
         }
         &__area{
@@ -235,6 +249,7 @@
             box-sizing: border-box;
             font-size: 16px;
             font-weight: normal;
+            margin-bottom: 30px;
           }
         }
         &__handlingtime{
@@ -255,6 +270,7 @@
             font-size: 16px;
             font-weight: normal;
             color: black;
+            margin-bottom: 30px;
           }
         }
       }
@@ -262,9 +278,12 @@
         font-size: 12px;
         font-weight: bold;
         color: gray;
-        padding-top: 10px;
+        padding: 40px 40px 40px 40px;
         &__amount{
           color: black;
+          padding-top: 40px;
+          display: flex;
+          justify-content: space-between;
           &__title{
             height: 50px;
             line-height: 50px;
@@ -273,17 +292,20 @@
           }
           &__text{
             height: 100px;
-            width: 600px;
+            width: 300px;
             height:50px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             color: black;
             font-size: 16px;
+            margin-bottom: 30px;
           }
         }
         &__fee{
           color: black;
+          display: flex;
+          justify-content: space-between;
           &__title{
             height: 50px;
             line-height: 50px;
@@ -292,17 +314,20 @@
           }
           &__text{
             height: 100px;
-            width: 590px;
+            width: 300px;
             height:50px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             color: black;
             font-size: 16px;
+            margin-bottom: 30px;
           }
         }
         &__gains{
           color: black;
+          display: flex;
+          justify-content: space-between;
           &__title{
             height: 50px;
             line-height: 50px;
@@ -311,7 +336,7 @@
           }
           &__text{
             height: 100px;
-            width: 600px;
+            width: 300px;
             height:50px;
             border: 1px solid #ccc;
             border-radius: 4px;

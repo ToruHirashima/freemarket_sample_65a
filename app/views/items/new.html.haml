@@ -1,7 +1,4 @@
 .exhibition
-  .exhibition__top
-    = image_tag "logo.png", width: "150", height: "50", alt: "logo"
-    .exhibition__top__logo
   .exhibition__main
     .exhibition__main_form
       .exhibition__main__form__image
@@ -10,6 +7,7 @@
           %span.must
             必須
           %P<>
+          <br>
           %span.limit
             最大１０枚までアップロードできます
         .exhibition__main__form__image__upload
@@ -79,7 +77,7 @@
             商品の状態
             %span.must
               必須
-          .exhibition__main__form__detail__comdition__text
+          .exhibition__main__form__detail__condition__text
             %input.exhibition__main__form__detail__category__text{placeholder: "  選択して下さい", type: "text"}
       .exhibition__main__form__delivery
         配送について
@@ -154,15 +152,3 @@
             加盟店規約
           %span.black<>
             に同意したことになります。
-  .exhibition__bottom
-    .exhibition__bottom__policy
-      .exhibition__bottom__policy__praivacy
-        プライバシーポリシー
-      .exhibition__bottom__policy__rules
-        フリマ利用規約
-      .exhibition__bottom__policy__notation
-        特定商取引に関する表記
-    .exhibition__bottom__logo
-      = image_tag "logo-white.png", width: "150", height: "50", alt: "logo-white"
-    .exhibition__bottom__company-name
-      ©FURIMA,inc
