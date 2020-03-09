@@ -1,0 +1,47 @@
+.mypage-side-bar {
+  width: 300px;
+  padding-right: 40px;
+  %__list {
+    position:relative;
+    height: 48px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    line-height:48px;
+    &:hover{
+      background-color: #f5f5f5;
+      color: black;
+    }
+    a {
+      display:block;
+    }
+    .fa-chevron-right {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color:#ccc;
+    }
+  }
+  &__list {
+    @extend %__list;
+    background: #ffffff;
+     &--upper--title {
+      @extend %__list;
+      background-color: #f5f5f5;
+      }
+  }
+  &__lower {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &--title {
+    font-weight:  bold;
+    }
+  }
+}
+.mypage-side-nav-ul--list {
+  text-decoration: none;
+  color: #333;
+}
+
