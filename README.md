@@ -14,11 +14,11 @@
 
 ### Association		
 - has_many  :items		
-- has_one  :address		
+- has_one  :address,  dependent::destroy		
 - has_many  :orders		
-- has_many  :comments		
-- has_many  :likes		
-- has_one  :sns_credential		
+- has_many  :comments, dependent::destroy	
+- has_many  :likes, dependent::destroy		
+- has_one  :sns_credential, dependent::destroy		
 		
 ## items_table		
 |Column|Type|Options|
@@ -30,26 +30,24 @@
 |brand_id|references|null: false, FK: true|
 |condition|integer|null: false|
 |price|integer|null: false|
+|delivery_id|references|null: false, FK:true|
 |seller_id|references|null: false, FK:  true|
 |status|integer|null: false|
 
 ### Association		
 - belongs_to  :user		
-- has_many  :images		
-- has_one :delivery		
+- has_many  :images, dependent::destroy		
+- has_one :delivery, dependent::destroy		
 - has_one  :order		
-- has_many  :comments		
-- has_many  :likes		
+- has_many  :comments, dependent::destroy		
+- has_many  :likes, dependent::destroy		
 - belongs_to  :category		
-- has_one  :size through:  :category_size 		
-- belongs_to  :category_size		
-- has_one  :brand  through:  :category_brand		
-- belongs_to  :brand		
+- belongs_to  :size 		
+- belongs_to  :brand				
 		
 ## addresses_table		
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, FK: true|
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
@@ -59,7 +57,8 @@
 |city|string|null: false|
 |adress1|string|null: false|
 |adress2|string|null: false|
-|telephone|integer||	
+|telephone|integer||
+|user_id|references|null: false, FK: true|	
 
 ### Association		
 - belongs_to  :user		
@@ -120,21 +119,23 @@ belongs_to  :item
 |Column|Type|Options|
 |------|----|-------|
 |category|string|null: false|
-|path_id|string|null: false|
+|ancestry|string||
 
 ### Association		
 - has_many :items		
 - has_many  :sizes, through:  :categories_sizes		
 - belongs_to  :categories_sizes		
-- has_many  :brand  through:  :categories_brands	
+- has_many  :brands  through:  :categories_brands	
 - belongs_to  :categories_brands
 		
 ## sizes_table
 |Column|Type|Options|
 |------|----|-------|
-|size|string|null: false|
+|kind-size|string|null: false|
+|ancestry|string||
 
-### Association		
+### Association
+- has_many  :items		
 - has_many  :categories  through:  :categories_sizes
 - belongs_to  :categories_sizes
 		
@@ -145,10 +146,10 @@ belongs_to  :item
 |size_id|integer|null: false|
 
 ### Association		
-- has_many  :categories  through:  :categories_sizes		
-- belongs_to  :categories_sizes		
+- belongs_to  :category		
+- belongs_to  :size		
 		
-## brand_table
+## brands_table
 |Column|Type|Options|
 |------|----|-------|
 |brand|string|null: false|
