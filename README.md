@@ -123,10 +123,10 @@ belongs_to  :item
 
 ### Association		
 - has_many :items		
-- has_many  :sizes, through:  :categories_sizes		
-- belongs_to  :categories_sizes		
-- has_many  :brands  through:  :categories_brands	
-- belongs_to  :categories_brands
+- has_many :sizes, through:  :categories_sizes		
+- has_many :categories_sizes		
+- has_many :brands  through:  :categories_brands	
+- has_many :categories_brands
 		
 ## sizes_table
 |Column|Type|Options|
@@ -135,9 +135,9 @@ belongs_to  :item
 |ancestry|string||
 
 ### Association
-- has_many  :items		
-- has_many  :categories  through:  :categories_sizes
-- belongs_to  :categories_sizes
+- has_many :items		
+- has_many :categories  through:  :categories_sizes
+- has_many :categories_sizes
 		
 ## categories_sizes_table
 |Column|Type|Options|
@@ -146,8 +146,8 @@ belongs_to  :item
 |size_id|integer|null: false|
 
 ### Association		
-- belongs_to  :category		
-- belongs_to  :size		
+- belongs_to :category		
+- belongs_to :size		
 		
 ## brands_table
 |Column|Type|Options|
@@ -155,8 +155,8 @@ belongs_to  :item
 |brand|string|null: false|
 
 ### Association		
-- has_many  :categories  through:  :categories_brands		
-- belongs_to  :categories_brands		
+- has_many :categories  through:  :categories_brands		
+- has_many :categories_brands		
 		
 ## categories_brands_table
 |Column|Type|Options|
@@ -165,10 +165,10 @@ belongs_to  :item
 |brand_id|integer|null: false|
 
 ### Association		
-- has_many  :categories  through:  :categories_brands		
-- belongs_to  :categories_brands		
+- belongs_to  :category		
+- belongs_to  :brand		
 		
-## sns_credential_tableテーブル
+## sns_credential_table
 |Column|Type|Options|
 |------|----|-------|
 |user_id|ユーザーID|integer|	
