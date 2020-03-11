@@ -17,7 +17,8 @@
 - has_one  :address,  dependent::destroy		
 - has_many  :orders		
 - has_many  :comments, dependent::destroy	
-- has_many  :likes, dependent::destroy		
+- has_many  :likes, dependent::destroy
+- has_one  :card, dependent::destroy		
 - has_one  :sns_credential, dependent::destroy		
 		
 ## items_table		
@@ -109,7 +110,7 @@
 ## image_table
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null|false, FK: true|
+|item_id|references|null false, FK: true|
 |url|string|null: false|
 
 ### Association		
@@ -167,12 +168,22 @@ belongs_to  :item
 
 ### Association		
 - belongs_to  :category		
-- belongs_to  :brand		
+- belongs_to  :brand
+
+## cards_table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null false, FK: true|
+|customer_id|string|null false|
+|credit_id|string|null false|
+
+### Association		
+- belongs_to  :user
 		
 ## sns_credential_table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|ユーザーID|integer|	
+|user_id|references|null false, FK: true|	
 |Provider|integer|null: false|
 |uid|string|null: false|
 
