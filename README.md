@@ -154,7 +154,8 @@ belongs_to  :item
 |------|----|-------|
 |brand|string|null: false|
 
-### Association		
+### Association	
+- has_many :items	
 - has_many :categories  through:  :categories_brands		
 - has_many :categories_brands		
 		
