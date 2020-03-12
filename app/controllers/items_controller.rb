@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   # トップページ（商品一覧表示）
   def index
   end
