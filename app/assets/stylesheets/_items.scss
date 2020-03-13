@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+.exhibition{
+  min-height: 100vh;
+  &__top {
+    color: rgb(51, 51, 51);
+    background-color: rgb(245, 245, 245);
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    font-size: 30px;
+    height: 130px;
+    line-height: 100px;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__main {
+    background-color: red;
+    padding: 0 100px 0 100px;
+    height: calc(100vh - 330px);
+  }
+  &__bottom{
+    background-color: blue;
+    height: 200px;
+  }
+}

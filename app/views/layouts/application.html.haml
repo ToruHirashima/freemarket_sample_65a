@@ -13,11 +13,11 @@
       .main-header
         .main-header__icon
           = link_to root_path do
-            = image_tag("logo.png", class: "main-header__icon__img")
+            = image_tag "logo.png", class: "main-header__icon__img", alt: ""
         .main-header__search
           = form_with method: :get, local: true do |f|
             = f.text_field :key, class: "main-header__search__input"
-            = link_to image_tag("icon-search 1.png", class: "main-header__search__btn")
+            = link_to image_tag "icon-search 1.png", class: "main-header__search__btn"
       .sub-header
         %ul.sub-header__left-list
           %li.sub-header__left-list__first

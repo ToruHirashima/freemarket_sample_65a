@@ -1,0 +1,146 @@
+.mypage {
+  padding-top: 24px;
+  background-color: #f6f8f8;
+  &__area {
+  }
+  &__content {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__right {
+    &--innr {
+      background-color: #FFFFFF;
+      width:700px;
+      margin-bottom:50px;
+    }
+    &--upper {
+      height:160px;
+      background-image: url(asset_path("pict/mypage_user_bg.jpeg"));
+      position: relative;
+      text-align: center;
+      background-size: cover;
+    }
+  }
+  &__user-icon {
+    position: relative;
+    top: 20px
+  }
+  &__user-name {
+    position: relative;
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  &__user-status {
+    margin: 8px 0 0;
+  }
+  &__user-status span {
+    font-weight: bold;
+  }
+  &__container--tab {
+    display:flex;
+    height:74px;
+    color:black;
+    font-weight: bold;
+    &--left{
+      width:50%;
+      background: #FFFFFF;
+      text-align: center;
+      line-height:72px;
+      border-top:solid #3CCACE 2px;
+    }
+    &--right{
+      width:50%;
+      background: #EEEEEE;
+      text-align: center;
+      line-height:74px;
+    }
+  }
+  &__container--lower {
+    padding:16px;
+    text-align: center;
+  }
+  &__purchased-item {
+    margin: 40px 0 0;
+    background: #fff;
+    &--title{
+      padding: 0 16px;
+      box-sizing: border-box;
+      background: #FAFAFA;
+      line-height:72px;
+      font-weight: bold;
+    }
+  }
+}
+
+.mypage-user-image {
+  height: 60px;
+  width: 60px;
+}
+
+.info__content {
+  display:flex;
+  min-height: 80px;
+  padding: 16px;
+  color: black;
+  border-bottom: solid #F5F5F5 1px;
+  &-right{
+    margin-left: 20px;
+  }
+}
+
+.info-message {
+  overflow: hidden;
+  display: block;
+  max-height: 4.4em;
+  line-height: 1.5;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+}
+
+.info-data {
+  font-size: 13px;
+  color: #888;
+}
+
+.info-index-btn {
+  display: block;
+  height: 56px;
+  margin: 0 auto;
+  background: #eee;
+  color: #333;
+  line-height: 56px;
+  text-align: center;
+}
+
+.mypage-logo-icon {
+  height: 48px;
+  width: 48px;
+}
+
+.mypage-nav-bar {
+  height: 48px;
+  position: relative;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+  z-index: 1;
+  &--link {
+    text-decoration: none;
+    color: #333;
+  }
+}
+
+.mypage-nav-bar ul{
+  padding-inline-start: 40px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.mypage-nav-bar li{
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.2;
+}
