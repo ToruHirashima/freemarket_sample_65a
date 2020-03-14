@@ -5,16 +5,17 @@
     .buy-confirm__buy-item__inner
       .buy-confirm__buy-item__inner__item-box
         .buy-confirm__buy-item__inner__item-box__image
-          = image_tag '/sample.png', alt: " ",size:'80x74'
+
         .buy-confirm__buy-item__inner__item-box__detail
           .buy-confirm__buy-item__inner__item-box__detail__name
-            【再入荷】XXXXXXXX3点セット
+            = @item.name
           .buy-confirm__buy-item__inner__item-box__detail__price
             %span
-              ¥550
+              ¥
+              = @item.price.to_s(:delimited, delimiter: ',')
             %span.buy-confirm__buy-item__inner__item-box__detail__price__fee
               （税込）送料込み
-
+              -
   %section.buy-confirm__buy-item2
     .buy-confirm__buy-item2__inner
       %form.buy-confirm__buy-item2__inner__form
