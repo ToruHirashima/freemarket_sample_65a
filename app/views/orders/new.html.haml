@@ -14,7 +14,7 @@
               ¥
               = @item.price.to_s(:delimited, delimiter: ',')
             %span.buy-confirm__buy-item__inner__item-box__detail__price__fee
-              （税込）送料込み
+              （税込）
               -
   %section.buy-confirm__buy-item2
     .buy-confirm__buy-item2__inner
@@ -25,12 +25,8 @@
               支払い金額
             .buy-confirm__buy-item2__inner__form__price-table__row__cell2
               %span
-                ¥550
-          %ul.buy-confirm__buy-item2__inner__form__accordion
-            %li.accordion-parent
-              .checkbox-default.buy-use-point
-                %input{type: :checkbox, name:"hoge", value: "1"}
-                  ポイントを使用 (所持ポイント: P＊)
+                ¥
+                = (@item.price + @item.price).to_s(:delimited, delimiter: ',')
 
           %section.buy-confirm__buy-item2__inner__form__content
             .buy-confirm__buy-item2__inner__form__content__inner
