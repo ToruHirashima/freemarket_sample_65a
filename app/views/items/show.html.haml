@@ -10,8 +10,13 @@
     .detail-box-price
       .detail-box-price__main ¥250000
       .detail-box-price__sub (税込) 送料込み
-    .detail-box-buy
-      = link_to '購入画面に進む', edit_item_path(1), class: :"detail-box-buy__link"
+    .detail-box-action
+      = link_to new_item_order_path(1), class: :"detail-box-action__link" do
+        .detail-box-action__button 購入画面に進む
+      = link_to edit_item_path(1), class: :"detail-box-action__link" do
+        .detail-box-action__button 商品の編集
+      = link_to "#", class: :"detail-box-action__link" do
+        .detail-box-action__button.detail-box-action__button--gray この商品を削除する
     .detail-box-description
       .detail-box-description__header Personal Computer
       %table.detail-box-table
@@ -71,24 +76,24 @@
       = icon 'fa', 'angle-right'
   .detail-category-items
     .detail-category-items__head
-      = link_to '家電・スマホ・カメラをもっと見る', "#", class: :"detail-category-items__link"
+      = link_to '家電・スマホ・カメラをもっと見る', '#', class: :"detail-category-items__link"
     .detail-category-items__container
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
