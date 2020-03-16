@@ -124,7 +124,7 @@ belongs_to  :item
 
 ### Association		
 - has_many :items		
-- has_many :sizes, through:  :categories_sizes		
+- has_many :sizes, through:  :category_sizes		
 - has_many :categories_sizes		
 - has_many :brands  through:  :categories_brands	
 - has_many :categories_brands
@@ -132,7 +132,7 @@ belongs_to  :item
 ## sizes_table
 |Column|Type|Options|
 |------|----|-------|
-|kind-size|string|null: false|
+|kind_size|string|null: false|
 |ancestry|string||
 
 ### Association
@@ -163,8 +163,8 @@ belongs_to  :item
 ## categories_brands_table
 |Column|Type|Options|
 |------|----|-------|
-|category_id|integer|null: false|
-|brand_id|integer|null: false|
+|category_id|references|null: false, FK: true|
+|brand_id|integer|null: false, FK: true|
 
 ### Association		
 - belongs_to  :category		
