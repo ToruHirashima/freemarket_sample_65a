@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def show
   end
 
-  # 商品購入確認ページ
+  # 商品情報編集ページ
   def edit
   end
 
