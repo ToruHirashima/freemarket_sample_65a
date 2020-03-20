@@ -5,7 +5,7 @@
     .buy-confirm__buy-item__inner
       .buy-confirm__buy-item__inner__item-box
         .buy-confirm__buy-item__inner__item-box__image
-
+          = image_tag "#{@item.images.first.url}", size: '80×80'
         .buy-confirm__buy-item__inner__item-box__detail
           .buy-confirm__buy-item__inner__item-box__detail__name
             = @item.name
@@ -26,7 +26,7 @@
             .buy-confirm__buy-item2__inner__form__price-table__row__cell2
               %span
                 ¥
-                = (@item.price + @item.price).to_s(:delimited, delimiter: ',')
+                = (@item.price + @item.delivery_id).to_s(:delimited, delimiter: ',')
 
           %section.buy-confirm__buy-item2__inner__form__content
             .buy-confirm__buy-item2__inner__form__content__inner
