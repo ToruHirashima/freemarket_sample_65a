@@ -31,30 +31,30 @@
         .item-edit-box__title.item-edit-box__title--continue
           %span ブランド
           %span.item-edit-box__title--free 任意
-        %input.item-edit-box__text{placeholder: 'ブランド名を入力して下さい', type: "text"}
-        -# = f.text_field :brand_name, class: :'item-edit-box__text', placeholder: 'ブランド名を入力して下さい'
+        = f.text_field :brand_name, class: :'item-edit-box__text', placeholder: 'ブランド名を入力して下さい'
         .item-edit-box__title.item-edit-box__title--continue
           %span 商品の状態
           %span.item-edit-box__title--must 必須
         = f.text_field :condition, class: :'item-edit-box__text', placeholder: '選択して下さい'
-      .item-edit-box
-        .item-edit-box__section 配送について
-        .item-edit-box__title.item-edit-box__title--continue
-          %span 配送料の負担
-          %span.item-edit-box__title--must 必須
-        %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
-        .item-edit-box__title.item-edit-box__title--continue
-          %span 配送の方法
-          %span.item-edit-box__title--must 必須
-        %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
-        .item-edit-box__title.item-edit-box__title--continue
-          %span 発送元の地域
-          %span.item-edit-box__title--must 必須
-        %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
-        .item-edit-box__title.item-edit-box__title--continue
-          %span 発送までの日数
-          %span.item-edit-box__title--must 必須
-        %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      = f.fields_for :delivery do |delivery|
+        .item-edit-box
+          .item-edit-box__section 配送について
+          .item-edit-box__title.item-edit-box__title--continue
+            %span 配送料の負担
+            %span.item-edit-box__title--must 必須
+          = delivery.text_field :fee_burden, class: :'item-edit-box__text', placeholder: '選択して下さい'
+          .item-edit-box__title.item-edit-box__title--continue
+            %span 配送の方法
+            %span.item-edit-box__title--must 必須
+          = delivery.text_field :service, class: :'item-edit-box__text', placeholder: '選択して下さい'
+          .item-edit-box__title.item-edit-box__title--continue
+            %span 発送元の地域
+            %span.item-edit-box__title--must 必須
+          = delivery.text_field :area, class: :'item-edit-box__text', placeholder: '選択して下さい'
+          .item-edit-box__title.item-edit-box__title--continue
+            %span 発送までの日数
+            %span.item-edit-box__title--must 必須
+          = delivery.text_field :handling_time, class: :'item-edit-box__text', placeholder: '選択して下さい'
       .item-edit-box
         .item-edit-box__section 価格（¥300〜9,999,999)
         .item-edit-box__horizontal

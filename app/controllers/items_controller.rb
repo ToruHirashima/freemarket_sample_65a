@@ -30,4 +30,9 @@ class ItemsController < ApplicationController
   # 商品削除
   def destroy
   end
+
+  private
+  def item_params
+    params.require(:item).permit(:name, :text, :condition, :price, :user_id, :category_id, :size_id, :brand_name, delivery_attributes: [:fee_burden, :service, :area, :handing_time])
+  end
 end

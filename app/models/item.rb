@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :images, dependent: :destroy
   has_one :delivery, dependent: :destroy
+  accepts_nested_attributes_for :delivery
   has_one :order
   belongs_to :category
   belongs_to :size
