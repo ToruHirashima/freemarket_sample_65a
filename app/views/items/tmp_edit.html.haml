@@ -1,0 +1,79 @@
+.item-edit
+  .item-edit-main
+    .item-edit-box
+      .item-edit-box__title
+        %span 商品画像
+        %span.must 必須
+      .item-edit-box__title--limit 最大１０枚までアップロードできます
+      .item-edit-box__upload
+        .item-edit-box__upload__image
+          = image_tag "icon_camera.png", class: "item-edit-box__upload__image--camera", alt: "camera"
+    .item-edit-box
+      .item-edit-box__title
+        %span 商品名
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  40文字まで", type: "name"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 商品の説明
+        %span.must 必須
+      %textarea.item-edit-box__text.item-edit-box__text--description{name: "info-text", cols:"27", rows:"6", placeholder: "  商品の説明（必須1,000文字以内)&#13;&#10; (色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10; 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe} 
+    .item-edit-box
+      .item-edit-box__section 商品の詳細
+      .item-edit-box__title.item-edit-box__title--continue
+        %span カテゴリー
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span サイズ
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span ブランド
+        %span.free 任意
+      %input.item-edit-box__text{placeholder: "  例）シャネル", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 商品の状態
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+    .item-edit-box
+      .item-edit-box__section 配送について
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 配送料の負担
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 配送の方法
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 発送元の地域
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+      .item-edit-box__title.item-edit-box__title--continue
+        %span 発送までの日数
+        %span.must 必須
+      %input.item-edit-box__text{placeholder: "  選択して下さい", type: "text"}
+    
+    .item-edit-box
+      .item-edit-box__section 価格（¥300〜9,999,999)
+      .item-edit-box__horizontal
+        .item-edit-box__title.item-edit-box__title--left
+          %span 販売金額
+          %span.must 必須
+        %input.item-edit-box__text.item-edit-box__text--right{type: "text"}
+      .item-edit-box__horizontal
+        .item-edit-box__title.item-edit-box__title--left
+          %span 販売手数料（10％）
+        %input.item-edit-box__text.item-edit-box__text--right{type: "text"}
+      .item-edit-box__horizontal
+        .item-edit-box__title.item-edit-box__title--left
+          %span 販売利益
+        %input.item-edit-box__text.item-edit-box__text--right{type: "text"}
+    .item-edit-box
+      .item-edit-box__button
+        %input.item-edit-box__button--submit{type:"submit", value:"変更する"}
+      = link_to "もどる", "#", class: "item-edit-box__button item-edit-box__button--link"
+      .item-edit-box__attention
+        禁止されている<font color="#3CCACE">行為</font>および<font color="#3CCACE">出品物</font>を必ずご確認ください。
+        <font color="#3CCACE">偽ブランド品</font>や<font color="#3CCACE">盗品物</font>などの販売は犯罪であり、<span color="red">法律</span>により処罰される可能性があります。 
+        また、出品をもちまして<font color="#3CCACE">加盟店規約</font>に同意したことになります。

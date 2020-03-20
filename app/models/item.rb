@@ -5,5 +5,4 @@ class Item < ApplicationRecord
   has_one :order
   belongs_to :category
   belongs_to :size
-
 end

@@ -15,10 +15,12 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ（ユーザーマイページはuserコントローラーに設定）
   def show
+    @item = Item.find(params[:id])
   end
 
   # 商品情報編集ページ
   def edit
+    @item = Item.find(params[:id])
   end
 
   # 商品購入確定（購入がなされると商品情報の状態が切り替わる）

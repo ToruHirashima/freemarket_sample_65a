@@ -1,0 +1,119 @@
+$white: #ffffff;
+$light_green: #3ccace;
+
+@mixin mark {
+  background: #ff1a00;
+  color: $white;
+  border-radius: 2px;
+  font-size: 12px;
+  margin: 0 8px;
+  padding: 1px 4px;
+  letter-spacing: 0.1em;
+}
+
+.item-edit {
+  background-color: #eeeeee;
+  padding: 40px 0;
+}
+
+.item-edit-main {
+  max-width: 700px;
+  min-width: 200px;
+  margin: 0 auto;
+  background-color: $white;
+}
+
+.item-edit-box{
+  padding: 40px;
+  border-bottom: 1px solid #eeeeee;
+  &__section {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+  }
+  &__horizontal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    &--limit{
+      margin-top: 16px;
+      font-size: 12px;
+      font-weight: normal;
+    }
+    &--continue {
+      margin-top: 30px;
+    }
+    &--left {
+      line-height: 50px;
+      width: 130px;
+    }
+    &--must {
+      @include mark();
+    }
+    &--free {
+      @include mark();
+      background: #bfbfbf;
+    }
+  }
+  &__upload {
+    margin-top: 16px;
+    &__image{
+      width: 100%;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      background-color: lightgrey;
+      &--camera {
+        width: 24px;
+      }
+    }
+  }
+  &__text {
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    margin-top: 16px;
+    padding: 0 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    &--description {
+      height: 200px;
+    }
+    &--right {
+      margin-top: 0;
+      max-width: 285px;
+      text-align: right;
+    }
+  } 
+  &__button {
+    max-width: 400px;
+    margin: 0 auto 25px;
+    font-weight: bold; 
+    font-size: 18px;
+    &--submit {
+      border-radius: 4px;
+      width: 100%;
+      height: 50px;
+      color: $white;
+      background-color: $light_green;
+    }
+    &--link {
+      display: block;
+      line-height: 50px;
+      color: #222222;
+      text-decoration: none;
+      text-align: center;
+      background-color: #cccccc;
+      border-radius: 4px;
+    }
+  }
+  &__attention{
+    font-size: 7px;
+    margin-top: 40px;
+  }
+}
