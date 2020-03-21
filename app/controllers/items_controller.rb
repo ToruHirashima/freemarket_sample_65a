@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ（ユーザーマイページはuserコントローラーに設定）
   def show
+    # binding.pry
     @item = Item.find(params[:id])
   end
 

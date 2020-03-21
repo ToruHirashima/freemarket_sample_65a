@@ -2,18 +2,17 @@
   .detail-box
     .detail-box-heading Personal Computer
     .detail-box-photo
-      = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-box-photo__main"
+      = image_tag @item.images.first.url, alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
-        = image_tag '/temp/a001.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a003.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a007.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+        - @item.images.each do |image|
+          = image_tag image.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
     .detail-box-price
       .detail-box-price__main
         = "¥#{@item.price}"
       .detail-box-price__sub (税込) 送料込み
     .detail-box-action
       - if user_signed_in? && current_user.id == @item.user_id
-        = link_to edit_item_path(1), class: :"detail-box-action__link" do
+        = link_to edit_item_path(@item), class: :"detail-box-action__link" do
           .detail-box-action__button 商品の編集
         = link_to "#", class: :"detail-box-action__link" do
           .detail-box-action__button.detail-box-action__button--gray この商品を削除する
