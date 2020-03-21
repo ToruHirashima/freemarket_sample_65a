@@ -74,13 +74,18 @@
           .item-edit-box__title.item-edit-box__title--left
             %span 販売手数料（10％）
           .item-edit-box__text.item-edit-box__text--calc
-            - charge = (@item.price * 0.1).floor
+            - if @item.blank?
+              - input = @item.price
+              - charge = (input * 0.1).floor
+            - else
+              - input = 0
+              - charge = 0
             = "¥#{charge}"
         .item-edit-box__horizontal
           .item-edit-box__title.item-edit-box__title--left
             %span 販売利益
           .item-edit-box__text.item-edit-box__text--calc
-            = "¥#{@item.price - charge}"
+            = "¥#{input - charge}"
       .item-edit-box
         .item-edit-box__button
           %input.item-edit-box__button--submit{type:"submit", value:"変更する"}

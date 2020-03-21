@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   # 商品出品ページ（ユーザー新規登録/ログインページはview/deviseにあるファイルに設定）
   def new
+    @item = Item.new
   end
 
   # 商品出品完了
