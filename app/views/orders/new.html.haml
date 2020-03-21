@@ -41,5 +41,6 @@
                     登録してください
 
           .buy-confirm__buy-item2__inner__form__user-info
-            %button{type: :button, name: :buy3, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-default"}
-              購入する
+            = form_tag action: :pay, method: :post do
+              :plain
+                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_cd1c7e8dc721deb4e7542918"></script>
