@@ -3,12 +3,11 @@
     .detail-box-heading
       = @item.name
     .detail-box-photo
-      -# = image_tag "#{@item.images.first.url}", alt: 'main_photo', class: :"detail-box-photo__main"
       = image_tag @item.images.first.url, alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
-        = image_tag '/temp/a001.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a003.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a007.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+        - @item.images.each do |image|
+          = image_tag image.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
+
     .detail-box-price
       .detail-box-price__main
         = "¥#{@item.price}"
