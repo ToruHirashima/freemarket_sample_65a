@@ -61,15 +61,27 @@ $light_green: #3ccace;
   }
   &__upload {
     margin-top: 16px;
-    &__image{
-      width: 100%;
-      height: 150px;
-      line-height: 150px;
+  }
+  &__image{
+    width: 100%;
+    min-height: 124px;
+    padding: 0px;
+    line-height: 150px;
+    background-color: lightgrey;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    &--photo {
+      margin: 2px;
+      width: 120px;
+      height: 120px;
+    }
+    &--camera {
+      width: 24px;
       text-align: center;
-      background-color: lightgrey;
-      &--camera {
-        width: 24px;
-      }
+      position: absolute;
+      top: 50px;
+      left: 298px;
     }
   }
   &__text {
@@ -88,6 +100,14 @@ $light_green: #3ccace;
       margin-top: 0;
       max-width: 285px;
       text-align: right;
+    }
+    &--calc {
+      margin-top: 0;
+      max-width: 285px;
+      text-align: right;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid #cccccc;
     }
   } 
   &__button {

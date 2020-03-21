@@ -5,10 +5,18 @@
         .item-edit-box__title
           %span 商品画像
           %span.item-edit-box__title--must 必須
-        .item-edit-box__title--limit 最大１０枚までアップロードできます
+        .item-edit-box__title--limit 最大10枚までアップロードできます
         .item-edit-box__upload
-          .item-edit-box__upload__image
-            = image_tag "icon_camera.png", class: "item-edit-box__upload__image--camera", alt: "camera"
+          .item-edit-box__image#previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.url, data: {index: i}, class: :"item-edit-box__image--photo"
+              - if @item.images.length == 0
+                = image_tag "icon_camera.png", class: :"item-edit-box__image--camera", alt: "camera"
+            - else
+              = image_tag "icon_camera.png", class: :"item-edit-box__image--camera", alt: "camera"
+          = f.fields_for :images do |image|
+            = image.file_field :url, class: :'test'
       .item-edit-box
         .item-edit-box__title
           %span 商品名
@@ -65,13 +73,14 @@
         .item-edit-box__horizontal
           .item-edit-box__title.item-edit-box__title--left
             %span 販売手数料（10％）
-          .item-edit-box__text.item-edit-box__text--right
-            = @item.price * 0.1
+          .item-edit-box__text.item-edit-box__text--calc
+            - charge = (@item.price * 0.1).floor
+            = "¥#{charge}"
         .item-edit-box__horizontal
           .item-edit-box__title.item-edit-box__title--left
             %span 販売利益
-          .item-edit-box__text.item-edit-box__text--right
-            = @item.price * 0.9
+          .item-edit-box__text.item-edit-box__text--calc
+            = "¥#{@item.price - charge}"
       .item-edit-box
         .item-edit-box__button
           %input.item-edit-box__button--submit{type:"submit", value:"変更する"}
