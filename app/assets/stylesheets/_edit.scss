@@ -11,19 +11,19 @@ $light_green: #3ccace;
   letter-spacing: 0.1em;
 }
 
-.item-edit {
+.exhibition {
   background-color: #eeeeee;
   padding: 40px 0;
 }
 
-.item-edit-main {
+.exhibition-main {
   max-width: 700px;
   min-width: 200px;
   margin: 0 auto;
   background-color: $white;
 }
 
-.item-edit-box{
+.exhibition-box{
   padding: 40px;
   border-bottom: 1px solid #eeeeee;
   &__section {
