@@ -5,7 +5,7 @@
     .buy-confirm__buy-item__inner
       .buy-confirm__buy-item__inner__item-box
         .buy-confirm__buy-item__inner__item-box__image
-          = image_tag "#{@item.images.first.url}", size: '80×80'
+          = image_tag "#{@item.images.first.url}", size: '5×5', class: 'image'
         .buy-confirm__buy-item__inner__item-box__detail
           .buy-confirm__buy-item__inner__item-box__detail__name
             = @item.name
@@ -13,9 +13,7 @@
             %span
               ¥
               = @item.price.to_s(:delimited, delimiter: ',')
-            %span.buy-confirm__buy-item__inner__item-box__detail__price__fee
-              （税込）
-              -
+              (税込)
   %section.buy-confirm__buy-item2
     .buy-confirm__buy-item2__inner
       %form.buy-confirm__buy-item2__inner__form
@@ -25,22 +23,18 @@
               支払い金額
             .buy-confirm__buy-item2__inner__form__price-table__row__cell2
               %span
-                ¥
-                = (@item.price + @item.delivery_id).to_s(:delimited, delimiter: ',')
+              ¥
+              = @item.price.to_s(:delimited, delimiter: ',')
+              (税込)
+              - if @item.delivery.fee_burden == 1 then
+                送料込み
+              - else
+                + 送料
 
           %section.buy-confirm__buy-item2__inner__form__content
             .buy-confirm__buy-item2__inner__form__content__inner
               %h3.head{}
                 支払い方法
-                .buy-confirm__buy-item2__inner__form__content__inner__info
-                  %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
-                  %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
-
-          %section.buy-confirm__buy-item2__inner__form__content
-            .buy-confirm__buy-item2__inner__form__content__inner
-              %h3.head{}
-                配送先
                 .buy-confirm__buy-item2__inner__form__content__inner__info
                   %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
                   %span.buy-confirm__buy-item2__inner__form__content__inner__info__register

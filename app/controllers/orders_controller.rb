@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
   def create
   end
 
+  def show
+  end
+
   private
   def set_item
     @item = Item.find(params[:item_id])
