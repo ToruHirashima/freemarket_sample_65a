@@ -18,12 +18,13 @@ class OrdersController < ApplicationController
     @image = Image.find(params[:item_id])
   end
 
-  def pay
-    Payjp.api_key = 'sk_test_b2c67dbefa1c1223a6878f7c'
+  require 'payjp'
+
+  def purchase
+    Payjp.api_key = "sk_test_b2c67dbefa1c1223a6878f7c"
     Payjp::Charge.create(
-      #amountは値段を記載
-      amount: 3500, 
-      card: params['payjp-token'],
+      amount: 809, # 決済する値段
+      card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
     )
   end
