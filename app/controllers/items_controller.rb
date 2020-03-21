@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_item, :set_image
   # トップページ（商品一覧表示）
   def index
     @items = Item.all.includes(:images)
@@ -27,14 +26,5 @@ class ItemsController < ApplicationController
 
   # 商品削除
   def destroy
-  end
-
-  private
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
-  def set_image
-    @image = Image.find(params[:item_id])
   end
 end
