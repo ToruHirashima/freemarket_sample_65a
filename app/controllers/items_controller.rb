@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   # トップページ（商品一覧表示）
   def index
     @items = Item.all.includes(:images)
-    # @items = Item.all.includes(:comments)
   end
 
   # 商品出品ページ（ユーザー新規登録/ログインページはview/deviseにあるファイルに設定）
