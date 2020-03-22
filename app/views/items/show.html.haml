@@ -33,11 +33,12 @@
           %th.detail-box-table__th カテゴリー
           %td.detail-box-table__td
             = link_to '#', class: :"detail-box-table__link" do
-              %div 家電・スマホ・カメラ
-            = link_to '#', class: :"detail-box-table__link" do
-              %div PC/タブレット
-            = link_to '#', class: :"detail-box-table__link" do
-              %div ノートPC
+              %div
+                = @item.category.category
+            -# = link_to '#', class: :"detail-box-table__link" do
+            -#   %div PC/タブレット
+            -# = link_to '#', class: :"detail-box-table__link" do
+            -#   %div ノートPC
         %tr
           %th.detail-box-table__th ブランド
           %td.detail-box-table__td
