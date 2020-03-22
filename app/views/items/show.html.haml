@@ -53,15 +53,17 @@
             = @item.condition
         %tr
           %th.detail-box-table__th 配送料の負担
-          %td.detail-box-table__td 送料込み(出品者負担)
+          %td.detail-box-table__td
+            = @item.delivery.fee_burden
         %tr
           %th.detail-box-table__th 発送元の地域
           %td.detail-box-table__td
             = link_to '#', class: :"detail-box-table__link" do
-              %div 北海道
+              = @item.delivery.area
         %tr
           %th.detail-box-table__th 発送日の目安
-          %td.detail-box-table__td 2~3日で発送
+          %td.detail-box-table__td
+            = @item.delivery.handling_time
     .detail-box-button-container
       %button{type: :button, name: :bookmark, class: :"detail-box-button-container__bookmark"}
         = icon 'fa', 'star'
