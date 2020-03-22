@@ -26,7 +26,7 @@
               ¥
               = @item.price.to_s(:delimited, delimiter: ',')
               (税込)
-              - if @item.delivery.fee_burden == 1 then
+              - if @item.delivery.fee_burden == 0 then
                 送料込み
               - else
                 + 送料
