@@ -22,7 +22,8 @@
         = link_to new_item_order_path(1), class: :"detail-box-action__link" do
           .detail-box-action__button 購入画面に進む
     .detail-box-description
-      .detail-box-description__header Personal Computer
+      .detail-box-description__header
+        = @item.text
       %table.detail-box-table
         %tr
           %th.detail-box-table__th 出品者
@@ -45,7 +46,8 @@
           %td.detail-box-table__td
         %tr
           %th.detail-box-table__th 商品の状態
-          %td.detail-box-table__td 新品、未使用
+          %td.detail-box-table__td
+            = @item.condition
         %tr
           %th.detail-box-table__th 配送料の負担
           %td.detail-box-table__td 送料込み(出品者負担)
