@@ -74,12 +74,12 @@
           .exhibition-box__title.exhibition-box__title--left
             %span 販売手数料（10％）
           .exhibition-box__text.exhibition-box__text--calc
-            - if @item.blank?
-              - input = @item.price
-              - charge = (input * 0.1).floor
-            - else
+            - if @item.price.blank?
               - input = 0
               - charge = 0
+            - else
+              - input = @item.price
+              - charge = (input * 0.1).floor
             = "¥#{charge}"
         .exhibition-box__horizontal
           .exhibition-box__title.exhibition-box__title--left
