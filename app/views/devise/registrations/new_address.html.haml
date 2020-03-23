@@ -45,18 +45,18 @@
             = f.text_field :city, placeholder: '例)港区', class: 'User-field__input--inner'
         .User-field
           .User-field__label
-            = f.label :adress1, "番地"
+            = f.label :address1, "番地"
           %span.User-field__require
             必須
           .User-field__input
-            = f.text_field :adress1, placeholder: '例)青山1-1-1', class: 'User-field__input--inner'
+            = f.text_field :address1, placeholder: '例)青山1-1-1', class: 'User-field__input--inner'
         .User-field
           .User-field__label
-            = f.label :adress2, "建物名"
+            = f.label :address2, "建物名"
           %span.User-field__require
             任意
           .User-field__input
-            = f.text_field :adress2, placeholder: '例)アジアビル901', class: 'User-field__input--inner'
+            = f.text_field :address2, placeholder: '例)アジアビル901', class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :telephone, "電話番号"

@@ -8,6 +8,6 @@ class Address < ApplicationRecord
   validates :zip_code, presence: true
   validates :prefecture, presence: true
   validates :city, presence: true
-  validates :adress1, presence: true
+  validates :address1, presence: true
   # validates :adress2, presence: true
 end

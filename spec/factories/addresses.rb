@@ -8,7 +8,7 @@ FactoryBot.define do
     zip_code              {"123-4567"}
     prefecture            {"東京都"}
     city                  {"港区"}
-    adress1               {"青山"}
+    address1               {"青山"}
     telephone             {"09000000000"}
   end
 end

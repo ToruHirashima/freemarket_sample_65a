@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_15_064450) do
     t.integer "zip_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
-    t.string "adress1", null: false
-    t.string "adress2"
+    t.string "address1", null: false
+    t.string "address2"
     t.string "telephone"
     t.bigint "user_id"
     t.datetime "created_at", null: false
