@@ -24,9 +24,7 @@ class ApplicationController < ActionController::Base
       :first_name,
       :family_name_kana,
       :first_name_kana,
-      :birthday_year,
-      :birthday_month,
-      :birthday_day,
+      :birthday,
     ]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
   end

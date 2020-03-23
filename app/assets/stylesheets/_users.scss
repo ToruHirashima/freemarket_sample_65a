@@ -138,18 +138,73 @@
       border-radius: 2px;
     }
   }
-  .User-pw__missing {
-    display: block;
-    margin: 40px 0 0;
-    a {
-      text-decoration: none;
-      color: #0099e8;
+}
+  #new_address {
+    padding: 25px 165px 35px;
+    .User-field {
+      margin-bottom: 10px;
+      &__label {
+        padding: 10px 0;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: bold;
+        display: contents;
+      }
+      &__require {
+        background-color: #ea352d;
+        color: #f8f8f8;
+        margin: 0 0 0 4px;
+        padding: 2px 4px;
+        font-size: 15px;
+      }
+      &__input {
+        display: flex;
+        justify-content: space-between;
+        &--inner {
+          width: 100%;
+          margin: 25px 0;
+          padding: 10px;
+          letter-spacing: 1px;
+          margin-top: 8px;
+        }
+        &--sminner {
+          width: 50%;
+          margin: 25px 2px;
+          padding: 10px;
+          letter-spacing: 1px;
+          margin-top: 8px;
+        }
+      }
     }
-    a:hover {
-      text-decoration: underline;
+    .User-actions {
+      margin: 24px 0;
+      display: grid;
+      &__btn {
+        display: inline-block;
+        background-color: #3ccace;
+        color: #fff;
+        height: 50px;
+        widows: 300px;
+        padding: 0 30px;
+        line-height: 50px;
+        letter-spacing: 1px;
+        text-align: center;
+        border-radius: 2px;
+      }
     }
   }
-}
+  // .User-pw__missing {
+  //   display: block;
+  //   margin: 40px 0 0;
+  //   a {
+  //     text-decoration: none;
+  //     color: #0099e8;
+  //   }
+  //   a:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
+
 
 .User-identification__title {
   font-size: 16px;

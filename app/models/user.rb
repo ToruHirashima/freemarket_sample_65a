@@ -14,12 +14,12 @@ class User < ApplicationRecord
   has_one :sns_credential, dependent: :destroy
 
   # validation
-  validates :nickname,           presence: true
-  validates :family_name,        presence: true
-  validates :first_name,          presence: true
-  validates :family_name_kana,      presence: true
-  validates :first_name_kana,        presence: true
-  validates :birthday_year,             presence: true
-  validates :birthday_month,            presence: true
-  validates :birthday_day,             presence: true
+  validates :nickname, presence: true
+  validates :email, format: { with: /\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+/i}, presence: true, uniqueness: true
+  validates :password, length: { minimum: 7 }, presence: true
+  validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }, presence: true
+  validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }, presence: true
+  validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}, presence: true
+  validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}, presence: true
+  validates :birthday, presence: true
 end
