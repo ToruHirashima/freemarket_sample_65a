@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   resources :items, except: [:index] do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
   end
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    collection do
+      get 'logout'
+    end
+  end
 end

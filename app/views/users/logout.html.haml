@@ -1,0 +1,15 @@
+.mypage-nav-bar
+  %ul
+    %li 
+      = link_to 'FURIMA', 'item_path', class:"mypage-nav-bar--link"
+    %li ＞
+    %li マイページ
+
+.mypage
+  .mypage__content
+    .mypage__left
+      = render 'users/side-bar'
+    .mypage__log-out
+      = link_to destroy_user_session_path, method: :delete, class:"mypage__log-out--link" do
+        .mypage__log-out--button
+          ログアウト

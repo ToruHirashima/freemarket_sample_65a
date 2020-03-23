@@ -1,35 +1,35 @@
 .mypage-nav-bar
   %ul
     %li 
-      = link_to 'FURIMA', root_path, class:"mypage-nav-bar--link"
+      = link_to 'FURIMA', 'item_path', class:"mypage-nav-bar--link"
     %li ＞
     %li マイページ
 
 .mypage
-  .mypage__area
-    .mypage__content
-      .mypage--left
-        = render 'users/side-bar'
-      .mypage__right
-        .mypage__right--innr
-          .mypage__right--upper
-            .mypage__user-icon
-              = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-image'
-              .mypage__user-name
-                ニックネーム
-              .mypage__user-status
-                評価
-                %span 0
-                出品数
-                %span 0
-          .mypage__container
-            .mypage__container--tab
-              .mypage__container--tab--left
-                お知らせ
-              .mypage__container--tab--right
-                やることリスト
-            .mypage__container--info
-              .info__content
+  .mypage__content
+    .mypage__left
+      = render 'users/side-bar'
+    .mypage__right
+      .mypage__right--innr
+        .mypage__right--upper
+          .mypage__user-icon
+            = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-image'
+            .mypage__user-name
+              = @user.nickname
+            .mypage__user-status
+              評価
+              %span 0
+              出品数
+              %span= @user.items.length
+        .mypage__container
+          .mypage__container-tab
+            .mypage__container-tab--default.mypage__container-tab--notice.mypage__container-tab--notice-active
+              お知らせ
+            .mypage__container-tab--default.mypage__container-tab--notice
+              やることリスト
+          .mypage__container--info
+            .info__block.info__block--notice.info__block--active
+              = link_to item_path(1), class: :info__content do
                 .info__content-left
                   = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
                 .info__content-right
@@ -37,25 +37,73 @@
                     事務局から個別メッセージ「ログイン通知」
                   .info-data
                     24時間前
-              .info__content
+            .info__block.info__block--notice
+              = link_to item_path(1), class: :info__content do
                 .info__content-left
-                  = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
+                  = image_tag 'temp/a001.png', class: 'mypage-logo-icon'
                 .info__content-right
                   .info-message
-                    事務局から個別メッセージ「ログイン通知」
+                    TECHさんから「カレーライス」が発送されました。届いたら内容を確認して、受取評価してください
+                  .info-data
+                    6時間前
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/m001.jpg', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    諸田議員さんから「転売マスク」が発送されました。届いたら内容を確認して、受取評価してください
                   .info-data
                     24時間前
-            .mypage__container--lower
-              .info-index-btn 一覧を見る
-          .mypage__purchased-item
-            .mypage__purchased-item--title
-              購入した商品
-            .mypage__container--tab
-              .mypage__container--tab--left
-                取引中
-              .mypage__container--tab--right
-                過去の取引
-            .mypage__purchased-item--info
-              .mypage__purchased-item--info--text
-            .mypage__container--lower
-              .info-index-btn 一覧を見る
+          .mypage__container--lower
+            .info-index-btn 一覧を見る
+        .mypage__container.mypage__container--item
+          .mypage__container--title 購入した商品
+          .mypage__container-tab
+            .mypage__container-tab--default.mypage__container-tab--order.mypage__container-tab--order-active 取引中
+            .mypage__container-tab--default.mypage__container-tab--order 過去の取引
+          .mypage__container--info
+            .info__block.info__block--order.info__block--active
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/a001.png', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    「カレーライス」を購入しました。発送までしばらくお待ちください。
+                  .info-data
+                    4時間前
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/m001.jpg', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    「転売マスク」を購入しました。発送までしばらくお待ちください。
+                  .info-data
+                    1日前
+            .info__block.info__block--order
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/a006.png', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    「明太パスタ」 を購入しました。 取引が完了しました。
+                  .info-data
+                    取引完了
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/a004.png', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    「餃子」 を購入しました。 取引が完了しました。
+                  .info-data
+                    取引完了
+              = link_to item_path(1), class: :info__content do
+                .info__content-left
+                  = image_tag 'temp/m002.jpg', class: 'mypage-logo-icon'
+                .info__content-right
+                  .info-message
+                    「使い捨てマスク」を購入しました。取引が完了しました。
+                  .info-data
+                    取引完了
+            .mypage__purchased-item--info--text
+          .mypage__container--lower
+            .info-index-btn 一覧を見る
