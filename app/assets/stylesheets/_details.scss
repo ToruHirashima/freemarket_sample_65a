@@ -67,15 +67,21 @@ $light_gray: #f8f8f8;
   }
 }
 
-.detail-box-buy {
+.detail-box-action {
   width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: $light_green;
-  text-align: center;
   &__link {
     @include fo_nodec_col($white);
     font-size: 24px;
+  }
+  &__button {
+    height: 60px;
+    line-height: 60px;
+    margin: 15px auto;
+    background-color: $light_green;
+    text-align: center;
+    &--gray {
+      background-color: #999999;
+    }
   }
 }
 
@@ -198,6 +204,7 @@ $light_gray: #f8f8f8;
     margin-right: 20px;
     margin-bottom: 20px;
     background-color: $white;
+    @include fo_nodec_col(#000000);
   }
   &__photo {
     width: 100%;

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # トップページ（商品一覧表示）
   def index
+    @items = Item.all.includes(:images)
   end
 
   # 商品出品ページ（ユーザー新規登録/ログインページはview/deviseにあるファイルに設定）
@@ -13,9 +14,10 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ（ユーザーマイページはuserコントローラーに設定）
   def show
+    @item = Item.find(params[:id])
   end
 
-  # 商品購入確認ページ
+  # 商品情報編集ページ
   def edit
   end
 

@@ -1,0 +1,35 @@
+-# 商品一覧表示
+- @items.each do |item|
+  .product-list
+    = link_to item_path(item.id), class: "product-list__img" do
+      - item.images.each do |image|
+        = image_tag image.url, alt: "商品画像"
+        - if item.status == 1  # 売買状態が、売却済みの場合
+          .product-list__img--sold
+          .product-list__body
+            .product-list__body__name
+              = item.name
+            .product-list__body__detail
+              %ul
+                %li
+                  = item.price
+                  円
+                %li
+                  = icon('fa', 'star')
+                  0
+              %p
+                (税込)
+        - else
+          .product-list__body
+            .product-list__body__name
+              = item.name
+            .product-list__body__detail
+              %ul
+                %li
+                  = item.price
+                  円
+                %li
+                  = icon('fa', 'star')
+                  0
+              %p
+                (税込)

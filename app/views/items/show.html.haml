@@ -1,52 +1,69 @@
 .details
   .detail-box
-    .detail-box-heading Personal Computer
+    .detail-box-heading
+      = @item.name
     .detail-box-photo
-      = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-box-photo__main"
+      = image_tag @item.images.first.url, alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
-        = image_tag '/temp/a001.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a003.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
-        = image_tag '/temp/a007.png', alt: 'sub_photo', class: :"detail-box-photo__tmb"
+        - @item.images.each do |image|
+          = image_tag image.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
+
     .detail-box-price
-      .detail-box-price__main ¥250000
+      .detail-box-price__main
+        = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
       .detail-box-price__sub (税込) 送料込み
-    .detail-box-buy
-      = link_to '購入画面に進む', edit_item_path(1), class: :"detail-box-buy__link"
+    .detail-box-action
+      - if user_signed_in? && current_user.id == @item.user_id
+        = link_to edit_item_path(1), class: :"detail-box-action__link" do
+          .detail-box-action__button 商品の編集
+        = link_to "#", class: :"detail-box-action__link" do
+          .detail-box-action__button.detail-box-action__button--gray この商品を削除する
+      - else
+        = link_to new_item_order_path(1), class: :"detail-box-action__link" do
+          .detail-box-action__button 購入画面に進む
     .detail-box-description
-      .detail-box-description__header Personal Computer
+      .detail-box-description__header
+        = @item.text
       %table.detail-box-table
         %tr
           %th.detail-box-table__th 出品者
-          %td.detail-box-table__td hoge
+          %td.detail-box-table__td
+            = @item.user.nickname
         %tr
           %th.detail-box-table__th カテゴリー
           %td.detail-box-table__td
             = link_to '#', class: :"detail-box-table__link" do
-              %div 家電・スマホ・カメラ
+              %div
+                = @item.category.category
             = link_to '#', class: :"detail-box-table__link" do
-              %div PC/タブレット
+              %div (要カテゴリ階層表示)
             = link_to '#', class: :"detail-box-table__link" do
-              %div ノートPC
+              %div (要カテゴリ階層表示)
         %tr
           %th.detail-box-table__th ブランド
           %td.detail-box-table__td
+            = @item.brand_name
         %tr
           %th.detail-box-table__th 商品のサイズ
           %td.detail-box-table__td
+            = @item.size.kind_size
         %tr
           %th.detail-box-table__th 商品の状態
-          %td.detail-box-table__td 新品、未使用
+          %td.detail-box-table__td
+            = @item.condition
         %tr
           %th.detail-box-table__th 配送料の負担
-          %td.detail-box-table__td 送料込み(出品者負担)
+          %td.detail-box-table__td
+            = @item.delivery.fee_burden
         %tr
           %th.detail-box-table__th 発送元の地域
           %td.detail-box-table__td
             = link_to '#', class: :"detail-box-table__link" do
-              %div 北海道
+              = @item.delivery.area
         %tr
           %th.detail-box-table__th 発送日の目安
-          %td.detail-box-table__td 2~3日で発送
+          %td.detail-box-table__td
+            = @item.delivery.handling_time
     .detail-box-button-container
       %button{type: :button, name: :bookmark, class: :"detail-box-button-container__bookmark"}
         = icon 'fa', 'star'
@@ -71,24 +88,24 @@
       = icon 'fa', 'angle-right'
   .detail-category-items
     .detail-category-items__head
-      = link_to '家電・スマホ・カメラをもっと見る', "#", class: :"detail-category-items__link"
+      = link_to '家電・スマホ・カメラをもっと見る', '#', class: :"detail-category-items__link"
     .detail-category-items__container
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice
           .detail-category-items__content--price ¥880
-      .detail-category-items__box
+      = link_to item_path(1), class: :"detail-category-items__box" do
         = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
         .detail-category-items__content
           .detail-category-items__content--name Curry Rice

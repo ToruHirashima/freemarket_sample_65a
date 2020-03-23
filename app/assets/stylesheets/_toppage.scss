@@ -2,6 +2,30 @@
   box-sizing: border-box;
 }
 
+// 左上に出現する三角形「SOLD」のSCSS
+@mixin product-sold {
+  border-color: #C52F24 transparent transparent transparent;
+  border-style: solid;
+  border-width: 60px 60px 0 0;
+  content: "";
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  z-index: 2;
+}
+@mixin product-sold__after {
+  color: #fff;
+  content: "SOLD";
+  font-size: 15px;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  transform: rotate(-45deg);
+  z-index: 3;
+}
+
 body {
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }
@@ -297,22 +321,31 @@ body {
         font-weight: bold;
       }
       .product-lists {
-        width: 780px;
+        width: 1080px;
         margin: 26px auto;
         display: flex;
-        justify-content: space-around;    
+        justify-content: start;    
+        overflow-x: auto;
         .product-list {
           width: 220px;
+          margin: 0 20px;
           display: inline-block;
           float: left;
           &__img {
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
+            position: relative;
             img {
               height: 150px;
               width: 220px;
               object-fit: cover;
+            }
+            &--sold {
+              @include product-sold
+            }
+            &--sold:after {
+              @include product-sold__after
             }
             .product-list__body {
               background-color: white;
@@ -361,22 +394,31 @@ body {
         font-weight: bold;
       }
       .product-lists {
-        width: 780px;
+        width: 1080px;
         margin: 26px auto;
         display: flex;
-        justify-content: space-around;    
+        justify-content: start;    
+        overflow-x: auto; 
         .product-list {
           width: 220px;
+          margin: 0 20px;
           display: inline-block;
           float: left;
           &__img {
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
+            position: relative;
             img {
               height: 150px;
               width: 220px;
               object-fit: cover;
+            }
+            &--sold {
+              @include product-sold
+            }
+            &--sold:after {
+              @include product-sold__after
             }
             .product-list__body {
               background-color: white;
@@ -440,7 +482,6 @@ body {
       &__google {
         img {
           width: 230px;
-
         }
       }  
     }
