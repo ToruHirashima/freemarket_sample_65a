@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_100905) do
+ActiveRecord::Schema.define(version: 2020_03_16_123121) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "zip_code", null: false
+    t.string "zip_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "address1", null: false
@@ -44,17 +44,16 @@ ActiveRecord::Schema.define(version: 2020_03_22_100905) do
     t.index ["category_id"], name: "index_category_sizes_on_category_id"
     t.index ["size_id"], name: "index_category_sizes_on_size_id"
   end
-  end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.integer "fee_burden", null: false
     t.integer "service", null: false
-    t.integer "area", null: false
+    t.string "area", null: false
     t.integer "handling_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id"
-    t.index ["item_id"], name: "index_deliveries_on_item_id"
+    t.index ["user_id"], name: "index_deliveries_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,11 +73,6 @@ ActiveRecord::Schema.define(version: 2020_03_22_100905) do
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "size_id"
-    t.string "brand_name"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -117,13 +111,10 @@ ActiveRecord::Schema.define(version: 2020_03_22_100905) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "deliveries", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
-  add_foreign_key "deliveries", "items"
+  add_foreign_key "deliveries", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
