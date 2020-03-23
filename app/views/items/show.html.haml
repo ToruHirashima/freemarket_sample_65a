@@ -10,7 +10,7 @@
 
     .detail-box-price
       .detail-box-price__main
-        = "¥#{@item.price}"
+        = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
       .detail-box-price__sub (税込) 送料込み
     .detail-box-action
       - if user_signed_in? && current_user.id == @item.user_id
