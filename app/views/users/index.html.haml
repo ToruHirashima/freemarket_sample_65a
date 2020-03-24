@@ -63,22 +63,15 @@
             .mypage__container-tab--default.mypage__container-tab--order 過去の取引
           .mypage__container--info
             .info__block.info__block--order.info__block--active
-              = link_to item_path(1), class: :info__content do
-                .info__content-left
-                  = image_tag 'temp/a001.png', class: 'mypage-logo-icon'
-                .info__content-right
-                  .info-message
-                    「カレーライス」を購入しました。発送までしばらくお待ちください。
-                  .info-data
-                    4時間前
-              = link_to item_path(1), class: :info__content do
-                .info__content-left
-                  = image_tag 'temp/m001.jpg', class: 'mypage-logo-icon'
-                .info__content-right
-                  .info-message
-                    「転売マスク」を購入しました。発送までしばらくお待ちください。
-                  .info-data
-                    1日前
+              - @orders.each do |order|
+                = link_to item_path(order.item_id), class: :info__content do
+                  .info__content-left
+                    = image_tag order.item.images.first.url, class: 'mypage-logo-icon'
+                  .info__content-right
+                    .info-message
+                      = "「#{order.item.name}」を購入しました。発送までしばらくお待ちください。"
+                    .info-data
+                      = ((Time.new - order.created_at) / 3600).floor.to_s + "時間前"
             .info__block.info__block--order
               = link_to item_path(1), class: :info__content do
                 .info__content-left

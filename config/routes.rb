@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
     end
+    resources :purchases, only: [:index, :show]
   end
 end
