@@ -3,15 +3,16 @@
   .User-Account-page__content
     .User-contents
       %h2.User-contents__head
-        会員情報の入力
-      = form_for(resource, as: resource_name,  url:registration_path(resource_name)) do |f|
+        会員情報入力
+      = form_for(@user, url: user_registration_path) do |f|
+        = render 'devise/shared/error_messages', { resource: @user }
         .User-field
           .User-field__label
-            = f.label :name, "ニックネーム"
+            = f.label :nickname, "ニックネーム"
           %span.User-field__require
             必須
           .User-field__input
-            -# = f.text_field :name, placeholder: '例)フリマ太郎', autofocus: true, class: 'User-field__input--inner'
+            = f.text_field :nickname, placeholder: '例)フリマ太郎', autofocus: true, class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :email, "メールアドレス"
@@ -21,17 +22,48 @@
             = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'User-field__input--inner'
         .User-field
           .User-field__label
-            = f.label :password
+            = f.label :password, "パスワード"
           %span.User-field__require
             必須
           .User-field__input
-            = f.password_field :password, placeholder: '英数字8文字以上', autocomplete: "off", class: 'User-field__input--inner'
+            = f.password_field :password, placeholder: '英数字7文字以上', autocomplete: "off", class: 'User-field__input--inner'
         .User-field
           .User-field__label
-            = f.label :password_confirmation
+            = f.label :password_confirmation, "パスワード（確認）"
           %span.User-field__require
             必須
           .User-field__input
             = f.password_field :password_confirmation, autocomplete: "off", class: 'User-field__input--inner'
+        .User-field
+          %span.User-identification__title
+            本人確認
+          %p.User-identification__text
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .User-field
+          .User-field__label
+            = f.label :name, "お名前(全角)"
+          %span.User-field__require
+            必須
+          .User-field__input
+            = f.text_field :family_name, placeholder: '例)山田', autofocus: true, class: 'User-field__input--sminner'
+            = f.text_field :first_name, placeholder: '例)太郎', autofocus: true, class: 'User-field__input--sminner'
+        .User-field
+          .User-field__label
+            = f.label :name, "お名前カナ(全角)"
+          %span.User-field__require
+            必須
+          .User-field__input
+            = f.text_field :family_name_kana, placeholder: '例)ヤマダ', autofocus: true, class: 'User-field__input--sminner'
+            = f.text_field :first_name_kana, placeholder: '例)タロウ', autofocus: true, class: 'User-field__input--sminner'
+        .User-field
+          .User-field__label
+            = f.label :birthday, "生年月日"
+          %span.User-field__require
+            必須
+          .User-field__input
+            != sprintf(f.date_select(:birthday, start_year: (Time.now.year), end_year: (Time.now.year - 119), default: Date.new((Time.now.year)), prompt: "--", use_month_numbers: true, date_separator:'%s'),'年 ','月 ')+'日'
+        .User-field
+          %p.User-identification__text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .User-actions
           = f.submit "次へ進む", class: 'User-actions__btn'
