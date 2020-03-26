@@ -1,0 +1,17 @@
+- if item.status == 0
+  - path_name = edit_item_path(item.id)
+  - time_display = elapsed_time(item.created_at)
+- else
+  - path_name = item_path(item.id)
+  - time_display = elapsed_time(item.order.created_at)
+
+= link_to path_name, class: :info__content do
+  .info__content-left
+    = image_tag item.images.first.url, class: 'mypage-logo-icon'
+  .info__content-right
+    .info-message
+      = body
+      - if price != ""
+        %br= price
+    .info-data
+      = time_display

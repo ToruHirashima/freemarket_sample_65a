@@ -7,7 +7,7 @@
 }
 
 .mypage {
-  padding-top: 24px;
+  padding-top: 40px;
   background-color: #f8f8f8;
   &__content {
     max-width: 1020px;
@@ -20,9 +20,7 @@
   }
   &__right {
     width: 700px;
-    &--innr {
-      margin-bottom:50px;
-    }
+    margin-bottom:50px;
     &--upper {
       height:160px;
       background-image: url(asset_path("pict/mypage_user_bg.jpeg"));
@@ -77,8 +75,18 @@
     &--default{
       width:50%;
       text-align: center;
+      &:hover {
+        color: #666666;
+      }
     }
-    &--notice-active, &--order-active {
+    &--exhibitor{
+      width: 33.3%;
+      text-align: center;
+      &:hover {
+        color: #666666;
+      }
+    }
+    &--notice-active, &--order-active, &--exhibitor-active {
       background: #FFFFFF;
       line-height:70px;
       border-top:solid #3CCACE 2px;
@@ -125,6 +133,16 @@
     &-right{
       margin-left: 20px;
     }
+    &:hover {
+      background-color: #f8f8f8;
+    }
+  }
+  &__message {
+    width: 100%;
+    line-height: 80px;
+    font-size: 16px;
+    text-align: center;
+    color: #999999;
   }
 }
 
@@ -150,6 +168,10 @@
   color: #333;
   line-height: 56px;
   text-align: center;
+}
+
+.info-index-link {
+  text-decoration: none;
 }
 
 .mypage-logo-icon {

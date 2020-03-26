@@ -1,0 +1,8 @@
+= link_to item_path(order.item_id), class: :info__content do
+  .info__content-left
+    = image_tag order.item.images.first.url, class: 'mypage-logo-icon'
+  .info__content-right
+    .info-message
+      = body
+    .info-data
+      = elapsed_time(order.created_at)

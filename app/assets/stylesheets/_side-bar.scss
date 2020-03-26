@@ -1,8 +1,5 @@
 .mypage-side-bar {
-  // flex-shrink: 0;
   width: 100%;
-  min-width: 120px;
-  // max-width: 300px;
   padding-right: 20px;
   %__list {
     position:relative;
@@ -30,10 +27,12 @@
   &__list {
     @extend %__list;
     background: #ffffff;
-     &--upper--title {
-      @extend %__list;
+    &--upper--title {
       background-color: #f5f5f5;
-      }
+    }
+    &--no-action {
+      background-color: #999999;
+    }
   }
   &__lower {
     padding-top: 30px;

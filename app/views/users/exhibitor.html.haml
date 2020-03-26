@@ -1,0 +1,31 @@
+= render 'shared/nav_bar'
+.mypage
+  .mypage__content
+    .mypage__left
+      = render 'users/side-bar'
+    .mypage__right
+      .mypage__container
+        .mypage__container--title 出品した商品
+        .mypage__container-tab
+          .mypage__container-tab--default.mypage__container-tab--exhibitor.mypage__container-tab--exhibitor-active 出品中
+          .mypage__container-tab--default.mypage__container-tab--exhibitor 取引中
+          .mypage__container-tab--default.mypage__container-tab--exhibitor 売却済み
+        .mypage__container--info
+          .info__block.info__block--exhibitor.info__block--active
+            - items = @items.where('status = 0')
+            - items.each do |item|
+              = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.name}", price: "¥#{item.price}"}
+            - if items.length == 0
+              .info__message 出品中の商品はありません
+          .info__block.info__block--exhibitor
+            - items = @items.where('status = 1')
+            - items.each do |item|
+              = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.order.user.nickname}さんに「#{item.name}」が購入されました。 受取評価待ちです。", price: ""}
+            - if items.length == 0
+              .info__message 現在、取引中の商品はありません
+          .info__block.info__block--exhibitor
+            - items = @items.where('status = 2')
+            - items.each do |item|
+              = render partial: 'exhibitor_box', locals: {item: item, body: "「#{item.name}」を売却しました。 取引が完了しました。", price: ""}
+            - if items.length == 0
+              .info__message 売却済みの商品はありません

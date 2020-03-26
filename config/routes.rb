@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     collection do
       get 'logout'
+      get 'info'
+      get 'purchase'
+      get 'exhibitor'
     end
-    resources :purchases, only: [:index, :show]
   end
 end
