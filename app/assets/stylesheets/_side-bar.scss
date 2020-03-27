@@ -8,10 +8,10 @@
     box-sizing: border-box;
     border-bottom: 1px solid #eee;
     line-height:48px;
-    &:hover{
-      background-color: #f5f5f5;
-      color: black;
-    }
+    // &:hover{
+    //   background-color: #f5f5f5;
+    //   color: black;
+    // }
     a {
       display:block;
     }
@@ -27,21 +27,27 @@
   &__list {
     @extend %__list;
     background: #ffffff;
-    &--upper--title {
-      background-color: #f5f5f5;
-    }
+    // &--upper--title {
+    //   background-color: #f5f5f5;
+    // }
     &--no-action {
       background-color: #999999;
     }
-  }
-  &__lower {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    &--title {
-    font-weight:  bold;
+    &--focus {
+      background-color: #eeeeee;
+      font-weight: bold;
     }
   }
+  &__lower {
+    // padding-top: 30px;
+    // padding-bottom: 30px;
+    padding: 40px 0;
+    // &--title {
+    //   font-weight:  bold;
+    // }
+  }
 }
+
 .mypage-side-nav-ul--list {
   text-decoration: none;
   color: #333;

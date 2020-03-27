@@ -160,19 +160,21 @@
   color: #888;
 }
 
-.info-index-btn {
-  display: block;
-  height: 56px;
-  margin: 0 auto;
-  background: #eee;
-  color: #333;
-  line-height: 56px;
-  text-align: center;
+.info-index {
+  &__btn {
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+  }
+  &__link {
+    text-decoration: none;
+  }
 }
 
-.info-index-link {
-  text-decoration: none;
-}
 
 .mypage-logo-icon {
   height: 48px;

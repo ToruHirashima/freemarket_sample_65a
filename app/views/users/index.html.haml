@@ -2,7 +2,7 @@
 .mypage
   .mypage__content
     .mypage__left
-      = render 'users/side-bar'
+      = render partial: 'side-bar', locals: {tab_focus: 0}
     .mypage__right
       .mypage__right--upper
         .mypage__user-icon
@@ -40,8 +40,8 @@
             - if orders.length == 0
               .info__message 現在、やることリストはありません
         .mypage__container--lower
-          = link_to info_users_path, class: :"info-index-link" do
-            .info-index-btn 一覧を見る
+          = link_to info_notice_users_path, class: :"info-index__link", id: :"info-index-id" do
+            .info-index__btn 一覧を見る
           
       .mypage__container.mypage__container--item
         .mypage__container--title 購入した商品
@@ -63,5 +63,5 @@
               .info__message 過去の取引はありません
           .mypage__purchased-item--info--text
         .mypage__container--lower
-          = link_to purchase_users_path, class: :"info-index-link" do
-            .info-index-btn 一覧を見る
+          = link_to purchase_progress_users_path, class: :"info-index__link", id: :"purchase-index-id" do
+            .info-index__btn 一覧を見る

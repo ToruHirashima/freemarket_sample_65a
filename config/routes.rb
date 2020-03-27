@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   resources :items, except: [:index] do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
   end
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index] do
     collection do
+      get 'info_notice'
+      get 'info_todo'
+      get 'purchase_progress'
+      get 'purchase_complete'
+      get 'exhibitor_sale'
+      get 'exhibitor_progress'
+      get 'exhibitor_complete'
       get 'logout'
-      get 'info'
-      get 'purchase'
-      get 'exhibitor'
     end
   end
 end

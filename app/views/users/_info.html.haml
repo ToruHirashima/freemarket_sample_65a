@@ -1,17 +1,24 @@
+- heading1 = heading2 = "mypage__container-tab--notice"
+- class1 = class2 = "info__block--notice"
+- if tab_index == 1
+  - heading1 = "mypage__container-tab--notice mypage__container-tab--notice-active"
+  - class1 = "info__block--notice info__block--active"
+- elsif tab_index == 2
+  - heading2 = "mypage__container-tab--notice mypage__container-tab--notice-active"
+  - class2 = "info__block--notice info__block--active"
+
 = render 'shared/nav_bar'
 .mypage
   .mypage__content
     .mypage__left
-      = render 'users/side-bar'
+      = render partial: 'side-bar', locals: {tab_focus: tab_index}
     .mypage__right
       .mypage__container
         .mypage__container-tab
-          .mypage__container-tab--default.mypage__container-tab--notice.mypage__container-tab--notice-active#info-action
-            お知らせ
-          .mypage__container-tab--default.mypage__container-tab--notice#todo-action
-            やることリスト
+          .mypage__container-tab--default{class: heading1} お知らせ
+          .mypage__container-tab--default{class: heading2} やることリスト
         .mypage__container--info
-          .info__block.info__block--notice.info__block--active
+          .info__block{class: class1}
             - orders = @orders.where('items.status = 1')
             - orders.each do |order|
               - if order.item.user_id == current_user.id
@@ -20,7 +27,7 @@
                 = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届くまでしばらくお待ちください。"}
             - if orders.length == 0
               .info__message 現在、お知らせはありません
-          .info__block.info__block--notice
+          .info__block{class: class2}
             - orders = @orders.where('items.status = 1')
             - orders.each do |order|
               - if order.item.user_id == current_user.id

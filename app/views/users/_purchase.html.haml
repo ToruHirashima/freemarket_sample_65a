@@ -1,22 +1,31 @@
+- heading1 = heading2 = "mypage__container-tab--order"
+- class1 = class2 = "info__block--order"
+- if tab_index == 1
+  - heading1 = "mypage__container-tab--order mypage__container-tab--order-active"
+  - class1 = "info__block--order info__block--active"
+- elsif tab_index == 2
+  - heading2 = "mypage__container-tab--order mypage__container-tab--order-active"
+  - class2 = "info__block--order info__block--active"
+
 = render 'shared/nav_bar'
 .mypage
   .mypage__content
     .mypage__left
-      = render 'users/side-bar'
+      = render partial: 'side-bar', locals: {tab_focus: tab_index + 20}
     .mypage__right
       .mypage__container
         .mypage__container--title 購入した商品
         .mypage__container-tab
-          .mypage__container-tab--default.mypage__container-tab--order.mypage__container-tab--order-active 取引中
-          .mypage__container-tab--default.mypage__container-tab--order 過去の取引
+          .mypage__container-tab--default{class: heading1} 取引中
+          .mypage__container-tab--default{class: heading2} 過去の取引
         .mypage__container--info
-          .info__block.info__block--order.info__block--active
+          .info__block{class: class1}
             - orders = @orders.where('items.status = 1').where('orders.user_id = ?', current_user.id)
             - orders.each do |order|
               = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届いたら受取評価してください。"}
             - if orders.length == 0
               .info__message 現在、取引中の商品はありません
-          .info__block.info__block--order
+          .info__block{class: class2}
             - orders = @orders.where('items.status = 2').where('orders.user_id = ?', current_user.id)
             - orders.each do |order|
               = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。 取引が完了しました。"}

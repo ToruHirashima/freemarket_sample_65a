@@ -1,14 +1,8 @@
-.mypage-nav-bar
-  %ul
-    %li 
-      = link_to 'FURIMA', 'item_path', class:"mypage-nav-bar--link"
-    %li ＞
-    %li マイページ
-
+= render 'shared/nav_bar'
 .mypage
   .mypage__content
     .mypage__left
-      = render 'users/side-bar'
+      = render partial: 'side-bar', locals: {tab_focus: 99}
     .mypage__log-out
       = link_to destroy_user_session_path, method: :delete, class:"mypage__log-out--link" do
         .mypage__log-out--button
