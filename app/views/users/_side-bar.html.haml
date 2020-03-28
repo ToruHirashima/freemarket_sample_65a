@@ -1,38 +1,37 @@
-- action_tab = "mypage-side-bar__list--focus"
+- active_tab = "mypage-side-bar__list--focus"
 - case tab_focus
 - when 0
-  - focus_0 = action_tab
+  - focus_0 = active_tab
 - when 1
-  - focus_1 = action_tab
+  - focus_1 = active_tab
 - when 2
-  - focus_2 = action_tab
+  - focus_2 = active_tab
 - when 11
-  - focus_11 = action_tab
+  - focus_11 = active_tab
 - when 12
-  - focus_12 = action_tab
+  - focus_12 = active_tab
 - when 13
-  - focus_13 = action_tab
+  - focus_13 = active_tab
 - when 21
-  - focus_21 = action_tab
+  - focus_21 = active_tab
 - when 22
-  - focus_22 = action_tab
+  - focus_22 = active_tab
 - when 31
-  - focus_31 = action_tab
+  - focus_31 = active_tab
 - when 32
-  - focus_32 = action_tab
+  - focus_32 = active_tab
 - when 33
-  - focus_33 = action_tab
+  - focus_33 = active_tab
 - when 34
-  - focus_34 = action_tab
+  - focus_34 = active_tab
 - when 35
-  - focus_35 = action_tab
+  - focus_35 = active_tab
 - when 99
-  - focus_99 = action_tab
+  - focus_99 = active_tab
 
 .mypage-side-bar
   .mypage-side-bar__innr
     %ul.mypage-side-bar__default
-      -# %li.mypage-side-bar__list.mypage-side-bar__list--upper--title
       %li.mypage-side-bar__list{class: focus_0}
         = link_to users_path, class: "mypage-side-nav-ul--list" do
           マイページ
@@ -74,19 +73,19 @@
           購入した商品-過去の取引
           %i.fa.fa-chevron-right
       -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
-      -#   = link_to "#", class: "mypage-side-nav-ul--list" do
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
       -#     ニュース一覧
       -#     %i.fa.fa-chevron-right
       -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
-      -#   = link_to "#", class: "mypage-side-nav-ul--list" do
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
       -#     評価一覧
       -#     %i.fa.fa-chevron-right
       -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
-      -#   = link_to "#", class: "mypage-side-nav-ul--list" do
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
       -#     ガイド
       -#     %i.fa.fa-chevron-right
       -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
-      -#   = link_to "#", class: "mypage-side-nav-ul--list" do
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
       -#     お問い合わせ
       -#     %i.fa.fa-chevron-right
     -# %ul.mypage-side-bar__lower
@@ -94,27 +93,27 @@
       %li.mypage-side-bar__lower--title
         設定
       %li.mypage-side-bar__list{class: focus_31}
-        = link_to "#", class: "mypage-side-nav-ul--list" do
+        = link_to "", class: "mypage-side-nav-ul--list" do
           プロフィール
           %i.fa.fa-chevron-right
       %li.mypage-side-bar__list{class: focus_32}
-        = link_to "#", class: "mypage-side-nav-ul--list" do
+        = link_to "", class: "mypage-side-nav-ul--list" do
           発送元・お届け先住所変更
           %i.fa.fa-chevron-right
       %li.mypage-side-bar__list{class: focus_33}
-        = link_to "#", class: "mypage-side-nav-ul--list" do
+        = link_to "", class: "mypage-side-nav-ul--list" do
           支払い先
           %i.fa.fa-chevron-right
       %li.mypage-side-bar__list{class: focus_34}
-        = link_to "#", class: "mypage-side-nav-ul--list" do
+        = link_to "", class: "mypage-side-nav-ul--list" do
           メール/パスワード
           %i.fa.fa-chevron-right
       %li.mypage-side-bar__list{class: focus_35}
-        = link_to "#", class: "mypage-side-nav-ul--list" do
+        = link_to "", class: "mypage-side-nav-ul--list" do
           本人情報
           %i.fa.fa-chevron-right
       -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
-      -#   = link_to "#", class: "mypage-side-nav-ul--list" do
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
       -#     電話番号の確認
       -#     %i.fa.fa-chevron-right
       %li.mypage-side-bar__list{class: focus_99}

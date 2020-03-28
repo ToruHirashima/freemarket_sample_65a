@@ -1,43 +1,43 @@
-- heading1 = heading2 = heading3 = "mypage__container-tab--exhibitor"
-- class1 = class2 = class3 = "info__block--exhibitor"
+- heading_active = "mypage__container-tab--exhibitor-active"
+- content_active = "info__block--active"
 - if tab_index == 1
-  - heading1 = "mypage__container-tab--exhibitor mypage__container-tab--exhibitor-active"
-  - class1 = "info__block--exhibitor info__block--active"
+  - heading1 = heading_active
+  - class1 = content_active
 - elsif tab_index == 2
-  - heading2 = "mypage__container-tab--exhibitor mypage__container-tab--exhibitor-active"
-  - class2 = "info__block--exhibitor info__block--active"
+  - heading2 = heading_active
+  - class2 = content_active
 - elsif tab_index == 3
-  - heading3 = "mypage__container-tab--exhibitor mypage__container-tab--exhibitor-active"
-  - class3 = "info__block--exhibitor info__block--active"
+  - heading3 = heading_active
+  - class3 = content_active
 
 = render 'shared/nav_bar'
 .mypage
   .mypage__content
-    .mypage__left
-      = render partial: 'side-bar', locals: {tab_focus: tab_index + 10}
     .mypage__right
       .mypage__container
         .mypage__container--title 出品した商品
         .mypage__container-tab
-          .mypage__container-tab--default{class: heading1} 出品中
-          .mypage__container-tab--default{class: heading2} 取引中
-          .mypage__container-tab--default{class: heading3} 売却済み
+          .mypage__container-tab--default.mypage__container-tab--exhibitor{class: heading1} 出品中
+          .mypage__container-tab--default.mypage__container-tab--exhibitor{class: heading2} 取引中
+          .mypage__container-tab--default.mypage__container-tab--exhibitor{class: heading3} 売却済み
         .mypage__container--info
-          .info__block{class: class1}
+          .info__block.info__block--exhibitor{class: class1}
             - items = @items.where('status = 0')
             - items.each do |item|
               = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.name}", price: "¥#{item.price}"}
             - if items.length == 0
               .info__message 出品中の商品はありません
-          .info__block{class: class2}
+          .info__block.info__block--exhibitor{class: class2}
             - items = @items.where('status = 1')
             - items.each do |item|
               = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.order.user.nickname}さんに「#{item.name}」が購入されました。 受取評価待ちです。", price: ""}
             - if items.length == 0
               .info__message 現在、取引中の商品はありません
-          .info__block{class: class3}
+          .info__block.info__block--exhibitor{class: class3}
             - items = @items.where('status = 2')
             - items.each do |item|
               = render partial: 'exhibitor_box', locals: {item: item, body: "「#{item.name}」を売却しました。 取引が完了しました。", price: ""}
             - if items.length == 0
               .info__message 売却済みの商品はありません
+    .mypage__left
+      = render partial: 'side-bar', locals: {tab_focus: tab_index + 10}

@@ -1,8 +1,6 @@
 = render 'shared/nav_bar'
 .mypage
   .mypage__content
-    .mypage__left
-      = render partial: 'side-bar', locals: {tab_focus: 0}
     .mypage__right
       .mypage__right--upper
         .mypage__user-icon
@@ -65,3 +63,5 @@
         .mypage__container--lower
           = link_to purchase_progress_users_path, class: :"info-index__link", id: :"purchase-index-id" do
             .info-index__btn 一覧を見る
+    .mypage__left
+      = render partial: 'side-bar', locals: {tab_focus: 0}
