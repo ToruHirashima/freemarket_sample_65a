@@ -7,7 +7,7 @@
 
 = link_to path_name, class: :info__content do
   .info__content-left
-    = image_tag item.images.first.url, class: 'mypage-logo-icon'
+    = image_tag item.images.first.url.url, class: 'mypage-logo-icon'
   .info__content-right
     .info-message
       = body

@@ -48,11 +48,11 @@ $(document).on('turbolinks:load', ()=> {
     }
   })
 
-  $(".mypage-side-bar__list").on("click", function() {
-    $(document).on('turbolinks:load', ()=> {
-      $(this).css({"background-color": "#EEEEEE"});
-    });
-  })
+  // $(".mypage-side-bar__list").on("click", function() {
+  //   $(document).on('turbolinks:load', ()=> {
+  //     $(this).css({"background-color": "#EEEEEE"});
+  //   });
+  // })
   
   // クリックイベントが発生した場所を探して関数を呼び出す
   noticeTabs.click(noticeTabSwitch);

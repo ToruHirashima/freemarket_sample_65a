@@ -8,12 +8,14 @@ class ItemsController < ApplicationController
   # 商品出品ページ（ユーザー新規登録/ログインページはview/deviseにあるファイルに設定）
   def new
     @item = Item.new
+    @item.images.new
     @item.build_delivery
   end
 
   # 商品出品完了
   def create
     @item = Item.new(item_params)
+    # binding.pry
     if @item.save
       redirect_to root_path
     else

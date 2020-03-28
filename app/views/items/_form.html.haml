@@ -7,16 +7,26 @@
           %span.exhibition-box__title--must 必須
         .exhibition-box__title--limit 最大10枚までアップロードできます
         .exhibition-box__upload
-          .exhibition-box__image#previews
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                = image_tag image.url, data: {index: i}, class: :"exhibition-box__image--photo"
-              - if @item.images.length == 0
+          #image-box
+            .exhibition-box__image#previews
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
+                  = image_tag image.url.url, data: {index: i}, class: :"exhibition-box__image--photo"
+                - if @item.images.length == 0
+                  = image_tag "icon_camera.png", class: :"exhibition-box__image--camera", alt: "camera"
+              - else
                 = image_tag "icon_camera.png", class: :"exhibition-box__image--camera", alt: "camera"
-            - else
-              = image_tag "icon_camera.png", class: :"exhibition-box__image--camera", alt: "camera"
-          = f.fields_for :images do |image|
-            = image.file_field :url, class: :'test'
+            = f.fields_for :images do |image|
+              .js-file_group{data: {index: "#{image.index}"}}
+                = image.file_field :url, class: :'js-file'
+                %span.js-remove 削除
+              - if @item.persisted?
+                = image.check_box :_destroy, data: {index: image.index}, class: :'hidden-destroy'
+            - if @item.persisted?
+              .js-file_group{data: {index: "#{@item.images.count}"}}
+                = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]" ,class: :'js-file'
+                %span.js-remove 削除
+
       .exhibition-box
         .exhibition-box__title
           %span 商品名
