@@ -62,8 +62,12 @@ $light_green: #3ccace;
   &__upload {
     margin-top: 16px;
   }
+  &__wrap {
+    display: inline-block;
+  }
   &__image{
-    width: 100%;
+    // width: 100%;
+    min-width: 100%;
     min-height: 124px;
     padding: 0px;
     line-height: 150px;
@@ -71,7 +75,7 @@ $light_green: #3ccace;
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    &--photo {
+    &--preview-box {
       margin: 2px;
       width: 120px;
       height: 120px;
@@ -151,3 +155,19 @@ $light_green: #3ccace;
 //   left: 0px;
 //   top: -60px;
 // }
+
+.label-box {
+  width: 620px;
+}
+
+.exhibition-box__previews {
+  
+}
+
+.exhibition-box__image {
+  // width: auto;
+}
+
+.preview-box {
+  width: 120px;
+}
