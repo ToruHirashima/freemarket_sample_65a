@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_102930) do
+ActiveRecord::Schema.define(version: 2020_03_21_102504) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category", null: false
@@ -33,15 +33,15 @@ ActiveRecord::Schema.define(version: 2020_03_21_102930) do
     t.integer "service", null: false
     t.string "area", null: false
     t.integer "handling_time", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id"
     t.index ["item_id"], name: "index_deliveries_on_item_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
-    t.bigint "item_id"
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_images_on_item_id"
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_102930) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "text", null: false
+    t.bigint "category_id", null: false
+    t.bigint "size_id", null: false
     t.integer "condition", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "size_id"
     t.string "brand_name"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["size_id"], name: "index_items_on_size_id"
