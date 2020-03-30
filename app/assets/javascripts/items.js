@@ -54,14 +54,14 @@ $(document).on('turbolinks:load', function(){
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
         //プレビューが10個あったらラベルを隠す 
-        if (count == 10) { 
+        if (count == 5) { 
           $('.exhibition-box__previews').hide();
         }
 
         //ラベルのwidth操作
         setLabel();
         //ラベルのidとforの値を変更
-        if(count < 10){
+        if(count < 5){
           //プレビューの数でラベルのオプションを更新する
           $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_url`});
         }
@@ -83,12 +83,12 @@ $(document).on('turbolinks:load', function(){
       //削除時のラベル操作
       var count = $('.preview-box').length;
       //10個めが消されたらラベルを表示
-      if (count == 9) {
+      if (count == 4) {
         $('.exhibition-box__previews').show();
       }
       setLabel(count);
 
-      if(id < 10){
+      if(id < 5){
         //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
         $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
       }
