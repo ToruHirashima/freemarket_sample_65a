@@ -3,7 +3,7 @@
   .product-list
     = link_to item_path(item.id), class: "product-list__img" do
       - item.images.each do |image|
-        = image_tag image.url, alt: "商品画像"
+        = image_tag image.url.url, alt: "商品画像"
         - if item.status == 1  # 売買状態が、売却済みの場合
           .product-list__img--sold
           .product-list__body
