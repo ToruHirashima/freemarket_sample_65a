@@ -14,12 +14,15 @@
                   = image_tag image.url.url, class: :"upper-box", data: {index: i}
                   .delete-box 削除
             .exhibition-box__previews
-              %label{for: "item_images_attributes_0_url", class: "label-box", id: "label-box--0"}
+              %label{for: "item_images_attributes_#{@item.images.count}_url", class: "label-box", id: "label-box--#{@item.images.count}"}
                 .label-box__text-visible クリックしてファイルをダウンロード
           .hidden-content#image-box
             = f.fields_for :images do |i|
               .js-file_group{data: {box: "#{i.index}"}}
-                = i.file_field :url, class: "hidden-field"
+                = i.file_field :url, class: :"hidden-field"
+            - if @item.persisted?
+              .js-file_group{data: {box: @item.images.count}}
+                = file_field_tag :url, name: :"item[images_attributes][#{@item.images.count}][url]", class: :"hidden-field", id: :"item_images_attributes_#{@item.images.count}_url"
       .exhibition-box
         .exhibition-box__title
           %span 商品名
