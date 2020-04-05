@@ -61,14 +61,15 @@ $light_green: #3ccace;
   }
   &__upload {
     margin-top: 16px;
-    display: flex;
   }
   &__image{
     display: flex;
+    flex-wrap: wrap;
     .preview-box {
       height: 160px;
-      width: 110px;
-      margin: 0 15px 10px 0;
+      width: 20%;
+      margin-bottom: 8px;
+      padding: 0 4px;
       .upper-box {
         height: 110px;
         width: 100%;
@@ -103,7 +104,8 @@ $light_green: #3ccace;
   }
   &__previews {
     margin-bottom: 10px;
-    width: 600px;
+    // width: 600px;
+    flex-grow: 1;
     .label-box {
       display: block;
       border: 1px dashed #ccc;
