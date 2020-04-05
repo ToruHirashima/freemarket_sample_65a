@@ -73,10 +73,7 @@ $light_green: #3ccace;
       .upper-box {
         height: 110px;
         width: 100%;
-        img {
-          height: 110px;
-          width: 110px;
-        }
+        object-fit: cover;
       }
       .lower-box {
         display: flex;
@@ -104,7 +101,6 @@ $light_green: #3ccace;
   }
   &__previews {
     margin-bottom: 10px;
-    // width: 600px;
     flex-grow: 1;
     .label-box {
       display: block;
@@ -136,7 +132,7 @@ $light_green: #3ccace;
       // display: none;
     }
     .hidden-checkbox {
-      display: none;
+      // display: none;
     }
   }
   
@@ -191,7 +187,5 @@ $light_green: #3ccace;
   &__attention {
     font-size: 7px;
     margin-top: 40px;
-  }
-  .js-file_group {
   }
 }

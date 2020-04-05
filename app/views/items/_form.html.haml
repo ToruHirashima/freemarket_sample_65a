@@ -12,7 +12,9 @@
               - @item.images.each_with_index do |image, i|
                 .preview-box{data: {index: i}}
                   = image_tag image.url.url, class: :"upper-box", data: {index: i}
-                  .delete-box 削除
+                  .lower-box
+                    %label{for: "item_images_attributes_#{i}_url", class: "update-box"} 変更
+                    .delete-box 削除
             .exhibition-box__previews
               %label{for: "item_images_attributes_#{@item.images.count}_url", class: "label-box", id: "label-box--#{@item.images.count}"}
                 .label-box__text-visible クリックしてファイルをダウンロード

@@ -3,7 +3,10 @@ $(document).on('turbolinks:load', ()=> {
   function buildHTML(count, image) {
     let html = `<div class="preview-box" data-index="${count}">
                   <img class="upper-box" data-index="${count}" src="${image}">
-                  <div class="delete-box">削除</div>
+                  <div class="lower-box">
+                    <label class="update-box" for="item_images_attributes_${count}_url">変更</label>
+                    <div class="delete-box">削除</div>
+                  </div>
                 </div>`
     return html;
   }
@@ -48,8 +51,8 @@ $(document).on('turbolinks:load', ()=> {
   // 画像の削除
   $('#previews').on('click', '.delete-box', function() {
     //取得したidに該当するプレビューを削除
-    let id = $(this).parent().data('index');
-    $(this).parent().remove();
+    let id = $(this).parent().parent().data('index');
+    $(this).parent().parent().remove();
     $(`div[data-box="${id}"]`).remove();
     //10個めが消されたらラベルを表示
     if ($('.preview-box').length < 10) {
