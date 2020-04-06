@@ -76,26 +76,22 @@
       .exhibition-box
         .exhibition-box__section 価格（¥300〜9,999,999)
         .exhibition-box__horizontal
-          .exhibition-box__title.exhibition-box__title--left
-            %span 販売金額
-            %span.exhibition-box__title--must 必須
-          = f.number_field :price, class: :'exhibition-box__text exhibition-box__text--right'
+          .exhibition-box__title.exhibition-box__title--left-wide
+            .exhibition-box__title--left
+              %span 販売金額
+              %span.exhibition-box__title--must 必須
+            .exhibition-box__title--right ¥
+          = f.number_field :price, class: :'exhibition-box__text exhibition-box__text--right', id: :price
         .exhibition-box__horizontal
           .exhibition-box__title.exhibition-box__title--left
             %span 販売手数料（10％）
-          .exhibition-box__text.exhibition-box__text--calc
-            - if @item.blank?
-              - input = @item.price
-              - charge = (input * 0.1).floor
-            - else
-              - input = 0
-              - charge = 0
-            = "¥#{charge}"
+          .exhibition-box__text.exhibition-box__text--calc#charge
+            = @item.persisted? ? "¥" + (@item.price * 0.1).floor.to_s(:delimited) : "¥0"
         .exhibition-box__horizontal
           .exhibition-box__title.exhibition-box__title--left
             %span 販売利益
-          .exhibition-box__text.exhibition-box__text--calc
-            = "¥#{input - charge}"
+          .exhibition-box__text.exhibition-box__text--calc#gain
+            = @item.persisted? ? "¥" + (@item.price * 0.9).ceil.to_s(:delimited) : "¥0"
       .exhibition-box
         .exhibition-box__button
           = f.submit submit_value, class: :"exhibition-box__button--submit"

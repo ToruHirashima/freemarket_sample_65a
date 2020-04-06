@@ -21,11 +21,10 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   lastIndex = $('.js-file_group:last').data('box');
   fileIndex.splice(0, lastIndex);  // 0を起点としてインデックスの数(lastIndex)だけ要素を削除する
-  // $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする
+  $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする
   
   // プレビューの追加
   $('#image-box').on('change', '.hidden-field', function() {
-    //hidden-fieldのidの数値のみ取得
     let id = $(this).parent().data('box');
     let file = this.files[0];  //選択したfileのオブジェクトを取得
     let reader = new FileReader();
@@ -52,16 +51,24 @@ $(document).on('turbolinks:load', ()=> {
   $('#previews').on('click', '.delete-box', function() {
     //取得したidに該当するプレビューを削除
     let id = $(this).parent().parent().data('index');
-
     const hiddenCheck = $(`input[data-index="${id}"].hidden-destroy`);
-    // もしチェックボックスが存在すればチェックを入れる
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-    
+    if (hiddenCheck) hiddenCheck.prop('checked', true);  // もしチェックボックスが存在すればチェックを入れる
     $(this).parent().parent().remove();
     $(`div[data-box="${id}"]`).remove();
     //10個めが消されたらラベルを表示
     if ($('.preview-box').length < 10) {
       $('.exhibition-box__previews').show();
+    }
+  });
+
+  $('#price').on('input', function() {
+    let price = $('#price').val();
+    if (price >= 300 && price <= 9999999) {
+      $('#charge').text('¥' + String(Math.floor(price * 0.1)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      $('#gain').text('¥' + String(Math.ceil(price * 0.9)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+    } else {
+      $('#charge').text('—');
+      $('#gain').text('—');
     }
   });
 });

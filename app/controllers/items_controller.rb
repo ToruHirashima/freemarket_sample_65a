@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   # 商品出品完了
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
