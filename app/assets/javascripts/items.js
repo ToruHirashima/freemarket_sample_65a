@@ -52,6 +52,11 @@ $(document).on('turbolinks:load', ()=> {
   $('#previews').on('click', '.delete-box', function() {
     //取得したidに該当するプレビューを削除
     let id = $(this).parent().parent().data('index');
+
+    const hiddenCheck = $(`input[data-index="${id}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    
     $(this).parent().parent().remove();
     $(`div[data-box="${id}"]`).remove();
     //10個めが消されたらラベルを表示

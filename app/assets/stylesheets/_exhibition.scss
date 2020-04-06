@@ -127,13 +127,12 @@ $light_green: #3ccace;
       }
     }
   }
+
+  .hidden-field {
+    display: none;
+  }
   .hidden-content {
-    .hidden-field {
-      // display: none;
-    }
-    .hidden-checkbox {
-      // display: none;
-    }
+    display: none;
   }
   
   &__text {
