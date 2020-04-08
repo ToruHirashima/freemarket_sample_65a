@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   has_one :delivery, dependent: :destroy
   accepts_nested_attributes_for :delivery
-  has_one :order
+  has_one :order, dependent: :destroy
   belongs_to :category
   belongs_to :size
 

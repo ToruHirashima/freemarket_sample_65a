@@ -50,5 +50,6 @@
                     登録してください
 
           .buy-confirm__buy-item2__inner__form__user-info
-            %button{type: :button, name: :buy3, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-default"}
-              購入する
+            -# %button{type: :button, name: :buy3, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-default"}
+            = link_to item_orders_path(@item), method: :post, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
+              .buy-confirm__buy-item2__inner__form__user-info__btn-default 購入する
