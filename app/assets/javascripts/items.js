@@ -21,7 +21,20 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   lastIndex = $('.js-file_group:last').data('box');
   fileIndex.splice(0, lastIndex);  // 0を起点としてインデックスの数(lastIndex)だけ要素を削除する
-  $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする
+  // $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする
+  
+  // createエラーの場合の事前処理(一度入力した写真を残す方法が分かれば変更)
+  if ($('.preview-box').length == 0) {
+    $(".hidden-field").remove();
+  }
+  if ($('.hidden-field').length == 0) {
+    $('#image-box').append(buildFileField(0));
+  }
+
+  // updateエラーの場合の事前処理
+  $('.hidden-destroy').each(function(i, e) {
+    $(e).prop('checked', false)
+  });
   
   // プレビューの追加
   $('#image-box').on('change', '.hidden-field', function() {
@@ -61,14 +74,19 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
-  $('#price').on('input', function() {
-    let price = $('#price').val();
+  $('#exh-text').on('input', function() {
+    console.log('up');
+    $('#exh-count').text(String($('#exh-text').val().length) + '/1000');
+  });
+
+  $('#exh-price').on('input', function() {
+    let price = $('#exh-price').val();
     if (price >= 300 && price <= 9999999) {
-      $('#charge').text('¥' + String(Math.floor(price * 0.1)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
-      $('#gain').text('¥' + String(Math.ceil(price * 0.9)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      $('#exh-charge').text('¥' + String(Math.floor(price * 0.1)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      $('#exh-gain').text('¥' + String(Math.ceil(price * 0.9)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
     } else {
-      $('#charge').text('—');
-      $('#gain').text('—');
+      $('#exh-charge').text('—');
+      $('#exh-gain').text('—');
     }
   });
 });

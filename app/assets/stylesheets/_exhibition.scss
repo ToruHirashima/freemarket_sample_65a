@@ -16,6 +16,24 @@ $light_green: #3ccace;
   padding: 40px 0;
 }
 
+.exhibition-message {
+  max-width: 700px;
+  min-width: 200px;
+  margin: 0 auto 40px;
+  background-color: $white;
+  border: solid 1px red;
+  padding: 20px;
+  &__title {
+    line-height: 1.8em;
+    font-size: 16px;
+    color: red;
+  }
+  &__text {
+    line-height: 1.4em;
+    font-size: 14px;
+  }
+}
+
 .exhibition-main {
   max-width: 700px;
   min-width: 200px;
@@ -66,6 +84,12 @@ $light_green: #3ccace;
     &--free {
       @include mark();
       background: #bfbfbf;
+    }
+    &--count {
+      margin-top: 16px;
+      text-align: right;
+      font-size: 12px;
+      color: #666666;
     }
   }
   &__upload {
@@ -129,7 +153,7 @@ $light_green: #3ccace;
     }
   }
   .hidden-field {
-    display: none;
+    // display: none;
   }
   &__text {
     width: 100%;

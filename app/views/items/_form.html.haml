@@ -1,4 +1,9 @@
 .exhibition
+  - if @item.errors.any?
+    .exhibition-message
+      .exhibition-message__title= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+      - @item.errors.full_messages.each do |message|
+        .exhibition-message__text= message
   .exhibition-main
     = form_for @item do |f|
       .exhibition-box
@@ -35,7 +40,9 @@
         .exhibition-box__title.exhibition-box__title--continue
           %span 商品の説明
           %span.exhibition-box__title--must 必須
-        = f.text_area :text, class: :'exhibition-box__text exhibition-box__text--description', placeholder: '商品の説明（必須1,000文字以内)&#13;&#10; (色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10; 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'.html_safe
+        = f.text_area :text, class: :'exhibition-box__text exhibition-box__text--description', id: :'exh-text', placeholder: '商品の説明（必須1,000文字以内)&#13;&#10; (色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10; 例）2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'.html_safe
+        .exhibition-box__title--count#exh-count
+          = @item.persisted? ? "#{@item.text.length}/1000" : "0/1000"
       .exhibition-box
         .exhibition-box__section 商品の詳細
         .exhibition-box__title.exhibition-box__title--continue
@@ -81,17 +88,17 @@
               %span 販売金額
               %span.exhibition-box__title--must 必須
             .exhibition-box__title--right ¥
-          = f.number_field :price, class: :'exhibition-box__text exhibition-box__text--right', id: :price
+          = f.number_field :price, class: :'exhibition-box__text exhibition-box__text--right', id: :'exh-price'
         .exhibition-box__horizontal
           .exhibition-box__title.exhibition-box__title--left
             %span 販売手数料（10％）
-          .exhibition-box__text.exhibition-box__text--calc#charge
-            = @item.persisted? ? "¥" + (@item.price * 0.1).floor.to_s(:delimited) : "¥0"
+          .exhibition-box__text.exhibition-box__text--calc#exh-charge
+            = @item.persisted? && @item.price.present? ? "¥#{(@item.price * 0.1).floor.to_s(:delimited)}" : "—"
         .exhibition-box__horizontal
           .exhibition-box__title.exhibition-box__title--left
             %span 販売利益
-          .exhibition-box__text.exhibition-box__text--calc#gain
-            = @item.persisted? ? "¥" + (@item.price * 0.9).ceil.to_s(:delimited) : "¥0"
+          .exhibition-box__text.exhibition-box__text--calc#exh-gain
+            = @item.persisted? && @item.price.present? ? "¥#{(@item.price * 0.9).ceil.to_s(:delimited)}" : "—"
       .exhibition-box
         .exhibition-box__button
           = f.submit submit_value, class: :"exhibition-box__button--submit"
