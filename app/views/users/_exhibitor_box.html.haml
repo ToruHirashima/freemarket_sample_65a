@@ -1,5 +1,5 @@
 - if item.status == 0
-  - path_name = edit_item_path(item.id)
+  - path_name = item_path(item.id)
   - time_display = elapsed_time(item.created_at)
 - else
   - path_name = item_path(item.id)
