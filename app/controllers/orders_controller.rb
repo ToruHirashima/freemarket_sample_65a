@@ -13,7 +13,18 @@ class OrdersController < ApplicationController
       @item.update(status: 1)
       redirect_to root_path
     else
-      render :new
+      render :new  # 不要（一応残しておく）
+    end
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:item_id])
+    if @item.update(status: 2)
+      redirect_to item_order_path
     end
   end
 

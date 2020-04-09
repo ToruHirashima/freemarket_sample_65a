@@ -13,6 +13,7 @@
     display: flex;
     flex-flow: row-reverse;
     justify-content: space-between;
+    align-items: baseline;
     .trans-info {
       width: 300px;
     }
@@ -33,11 +34,15 @@
         font-weight: bold;
         margin-bottom: 8px;
         &--seller {
-          margin-top: 40px;
+          margin-top: 36px;
         }
       }
       &__contents {
         display: flex;
+        background-color: #ffffff;
+        &--lightgray {
+          background-color: #eeeeee;
+        }
         &--seller {
           padding: 16px;
         }
@@ -46,26 +51,87 @@
         width: 35%;
         padding: 16px;
         font-size: 14px;
-        background-color: #666666;
       }
       &__content {
         width: 65%;
         padding: 16px;
         font-size: 14px;
-        background-color: #cccccc;
+      }
+      &__link {
+        text-decoration: none;
+        color: #3ccace;
+        font-size: 16px;
+        font-weight: bold;
+        &:hover {
+          cursor:pointer;
+          filter: alpha(opacity=80);
+          -moz-opacity:0.8;
+          -khtml-opacity: 0.8;
+          opacity:0.8;
+          color: #6edbdf;
+        }
+      }
+      &__image {
+        width: 140px;
+        margin-bottom: 10px;
+        object-fit: cover;
+        background-color: #eeeeee;
+      }
+      &__item {
+        padding-top: 4px;
       }
       &__icon {
         height: 40px;
         width: 40px;
+        object-fit: cover;
       }
       &__name {
+        line-height: 40px;
+        flex-grow: 1;
         font-size: 16px;
-        padding: 16px;
+        padding: 0 16px;
+        text-decoration: none;
       }
     }
     .trans-main {
-      background-color: cadetblue;
-      height: 200px;
+      background-color: #ffffff;
+      &__title {
+        text-align: center;
+        line-height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      &__contents {
+        padding: 16px 0;
+        background-color: #fff6de;
+        background-color: #F3FFD8;
+        background-color: #edf4ff;
+      }
+      &__heading {
+        padding: 4px 8px;
+        text-align: center;
+        font-weight: bold;
+        color: #ee3535;
+      }
+      &__text {
+        padding: 8px;
+        text-align: center;
+        font-size: 14px;
+        color: #222222;
+      }
+      &__confirm-btn {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        max-width: 360px;
+        margin: 20px auto;
+        background-color: #3ccace;
+        font-weight: bold;
+      }
+      &__confirm-link {
+        text-decoration: none;
+        color: #ffffff;
+      }
     }
   }
 }

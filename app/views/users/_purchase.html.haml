@@ -20,7 +20,7 @@
           .info__block.info__block--order{class: class1}
             - orders = @orders.where('items.status = 1').where('orders.user_id = ?', current_user.id)
             - orders.each do |order|
-              = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届いたら受取評価してください。"}
+              = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届いたら受取確認をしてください。"}
             - if orders.length == 0
               .info__message 現在、取引中の商品はありません
           .info__block.info__block--order{class: class2}

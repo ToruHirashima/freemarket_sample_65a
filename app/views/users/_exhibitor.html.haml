@@ -30,7 +30,7 @@
           .info__block.info__block--exhibitor{class: class2}
             - items = @items.where('status = 1')
             - items.each do |item|
-              = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.order.user.nickname}さんに「#{item.name}」が購入されました。 受取評価待ちです。", price: ""}
+              = render partial: 'exhibitor_box', locals: {item: item, body: "#{item.order.user.nickname}さんに「#{item.name}」が購入されました。 受取確認待ちです。", price: ""}
             - if items.length == 0
               .info__message 現在、取引中の商品はありません
           .info__block.info__block--exhibitor{class: class3}

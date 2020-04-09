@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   # 商品出品完了
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -37,17 +36,9 @@ class ItemsController < ApplicationController
   # 商品購入確定（購入がなされると商品情報の状態が切り替わる）
   def update
     @item = Item.find(params[:id])
-    # params[:item][:images_attributes].keys.each do |key|
-    #   params[:item][:images_attributes][key][:_destroy] = 0
-    # end
-    # item_params[:images_attributes].keys.each do |key|
-    #   item_params[:images_attributes][key][:_destroy] = 0
-    # end
     if @item.update(item_params)
-      # binding.pry
       redirect_to root_path
     else
-      # binding.pry
       render :edit
     end
   end

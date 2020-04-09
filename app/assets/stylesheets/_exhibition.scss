@@ -153,7 +153,10 @@ $light_green: #3ccace;
     }
   }
   .hidden-field {
-    // display: none;
+    display: none;
+  }
+  .hidden-destroy {
+    display: none;
   }
   &__text {
     width: 100%;

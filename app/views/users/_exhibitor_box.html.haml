@@ -2,7 +2,7 @@
   - path_name = item_path(item.id)
   - time_display = elapsed_time(item.created_at)
 - else
-  - path_name = item_path(item.id)
+  - path_name = item_order_path(item.id, item.order.id)
   - time_display = elapsed_time(item.order.created_at)
 
 = link_to path_name, class: :info__content do
