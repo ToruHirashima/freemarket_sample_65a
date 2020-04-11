@@ -100,8 +100,11 @@
           .exhibition-box__text.exhibition-box__text--calc#exh-gain
             = @item.persisted? && @item.price.present? ? "¥#{(@item.price * 0.9).ceil.to_s(:delimited)}" : "—"
       .exhibition-box
-        .exhibition-box__button
-          = f.submit submit_value, class: :"exhibition-box__button--submit"
+        - if user_signed_in?
+          .exhibition-box__button
+            = f.submit submit_value, class: :"exhibition-box__button--submit"
+        -# .exhibition-box__button
+        -#   = f.submit submit_value, class: :"exhibition-box__button--submit"
         = link_to "もどる", root_path, class: :"exhibition-box__button exhibition-box__button--link"
         .exhibition-box__attention
           禁止されている<font color="#3CCACE">行為</font>および<font color="#3CCACE">出品物</font>を必ずご確認ください。
