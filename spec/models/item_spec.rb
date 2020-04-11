@@ -3,29 +3,6 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   describe '#create' do
     context 'can save' do
-      # (記述バリエーション：最後に削除)商品名がなければ出品できないこと
-      it 'no name' do
-        item = Item.new(name: "",
-          text: "bbb",
-          condition: 1,
-          price: 900,
-          user_id: 1,
-          status: 0,
-          category_id: 1,
-          size_id: 1,
-          brand_name: nil)
-        item.valid?
-        # binding.pry
-        expect(item.errors[:name]).to include("can't be blank")
-      end
-
-      # (記述バリエーション：最後に削除)商品名がなければ出品できないこと
-      it 'is invalid without a name' do
-        item = FactoryBot.build(:item, name: nil)
-        item.valid?
-        expect(item.errors[:name]).to include("can't be blank")
-      end
-      
       # 商品名がなければ出品できないこと
       it 'is invalid without a name' do
         item = build(:item, name: nil)
@@ -35,17 +12,39 @@ RSpec.describe Item, type: :model do
 
       # 商品名が255文字以内の場合は登録できること
       it 'is valid with a name that has less than 255 characters' do
-        item = build(:item, name: 'あ' * 255)
+        image_params = build_list(:image, 3)
+        item = build(:item, name: 'あ' * 255, images: image_params)
         expect(item).to be_valid
       end
       
-      # 説明がなければ出品できないこと
+      # 商品名が256文字以上の場合は登録できないこと
+      it 'is invalid with a name that has more than 256 characters' do
+        item = build(:item, name: 'a' * 256)
+        item.valid?
+        expect(item.errors[:name]).to include('is too long (maximum is 255 characters)')
+      end
+        
+      # 商品説明がなければ出品できないこと
       it 'is invalid without a text' do
         item = build(:item, text: nil)
         item.valid?
         expect(item.errors[:text]).to include("can't be blank")
       end
-
+      
+      # 商品説明が1000文字以内の場合は登録できること
+      it 'is valid with a text that has less than 1000 characters' do
+        image_params = build_list(:image, 3)
+        item = build(:item, text: 'あ' * 1000, images: image_params)
+        expect(item).to be_valid
+      end
+      
+      # 商品説明が1001文字以上の場合は登録できないこと
+      it 'is invalid with a text that has more than 1001 characters' do
+        item = build(:item, text: 'a' * 1001)
+        item.valid?
+        expect(item.errors[:text]).to include('is too long (maximum is 1000 characters)')
+      end
+        
       # 商品状態がなければ出品できないこと
       it 'is invalid without a condition' do
         item = build(:item, condition: nil)
@@ -58,6 +57,34 @@ RSpec.describe Item, type: :model do
         item = build(:item, price: nil)
         item.valid?
         expect(item.errors[:price]).to include("can't be blank")
+      end
+
+      # 価格が9,999,999円以内の場合は登録できること
+      it 'is valid with a price that has less than 9,999,999 yen' do
+        image_params = build_list(:image, 3)
+        item = build(:item, price: 9999999, images: image_params)
+        expect(item).to be_valid
+      end
+      
+      # 価格が10,000,000円以上の場合は登録できないこと
+      it 'is invalid with a price that has more than 10,000,000 yen' do
+        item = build(:item, price: 10000000)
+        item.valid?
+        expect(item.errors[:price]).to include('must be less than or equal to 9999999')
+      end
+      
+      # 価格が300円以上の場合は登録できること
+      it 'is valid with a price that has more than 300 yen' do
+        image_params = build_list(:image, 3)
+        item = build(:item, price: 300, images: image_params)
+        expect(item).to be_valid
+      end
+      
+      # 価格が299円以下の場合は登録できないこと
+      it 'is invalid with a price that has less than 299 yen' do
+        item = build(:item, price: 299)
+        item.valid?
+        expect(item.errors[:price]).to include('must be greater than or equal to 300')
       end
 
       # ユーザーIDがなければ出品できないこと
@@ -74,14 +101,73 @@ RSpec.describe Item, type: :model do
         expect(item.errors[:status]).to include("can't be blank")
       end
 
-      # # 商品カテゴリがなければ出品できないこと
-      # it 'is invalid without a category_id' do
-      #   item = build(:item, category_id: nil)
-      #   item.valid?
-      #   expect(item.errors[:category_id]).to include("can't be blank")
-      # end
+      # 商品カテゴリがなければ出品できないこと
+      it 'is invalid without a category_id' do
+        item = build(:item, category_id: nil)
+        item.valid?
+        expect(item.errors[:category_id]).to include("can't be blank")
+      end
 
-      # # 商品サイズがなければ出品できないこと
+      # 写真があれば出品できること
+      it 'is valid with a images' do
+        image_params = build_list(:image, 3)
+        item = build(:item, images: image_params)
+        expect(item).to be_valid
+      end
+      
+      # 写真がなければ出品できないこと
+      it 'is invalid without a images' do
+        image_params = build_list(:image, 0)
+        item = build(:item, images: image_params)
+        item.valid?
+        expect(item.errors[:images]).to include("can't be blank")
+      end
+
+      # 配送情報があれば出品できること
+      it 'is valid with a delivery' do
+        image_params = build_list(:image, 3)
+        delivery_params = build(:delivery, fee_burden: 0, service: 0, area: 0, handling_time: 0)
+        item = build(:item, delivery: delivery_params, images: image_params)
+        expect(item).to be_valid
+      end
+
+      # 配送料の負担がなければ出品できないこと
+      it 'is invalid without a charge information' do
+        image_params = build_list(:image, 3)
+        delivery_params = build(:delivery, fee_burden: nil, service: 0, area: 0, handling_time: 0)
+        item = build(:item, delivery: delivery_params, images: image_params)
+        item.valid?
+        expect(item.errors[:"delivery.fee_burden"]).to include("can't be blank")
+      end
+
+      # 配送の方法がなければ出品できないこと
+      it 'is invalid without a shipping method' do
+        image_params = build_list(:image, 3)
+        delivery_params = build(:delivery, fee_burden: 0, service: nil, area: 0, handling_time: 0)
+        item = build(:item, delivery: delivery_params, images: image_params)
+        item.valid?
+        expect(item.errors[:"delivery.service"]).to include("can't be blank")
+      end
+
+      # 配送元の地域がなければ出品できないこと
+      it 'is invalid without a area information' do
+        image_params = build_list(:image, 3)
+        delivery_params = build(:delivery, fee_burden: 0, service: 0, area: nil, handling_time: 0)
+        item = build(:item, delivery: delivery_params, images: image_params)
+        item.valid?
+        expect(item.errors[:"delivery.area"]).to include("can't be blank")
+      end
+
+      # 発送までの日数がなければ出品できないこと
+      it 'is invalid without days to ship' do
+        image_params = build_list(:image, 3)
+        delivery_params = build(:delivery, fee_burden: 0, service: 0, area: 0, handling_time: nil)
+        item = build(:item, delivery: delivery_params, images: image_params)
+        item.valid?
+        expect(item.errors[:"delivery.handling_time"]).to include("can't be blank")
+      end
+
+      # # 商品サイズがなければ出品できないこと（商品サイズがなくても出品できるようにする必要あり！）
       # it 'is invalid without a size_id' do
       #   item = build(:item, size_id: nil)
       #   item.valid?
