@@ -1,9 +1,9 @@
 require 'rails_helper'
-Rspec.describe Item, type: :model do
+RSpec.describe Item, type: :model do
   describe '#create' do
     context "保存できる場合" do
       it "image,name,text,category,condition,price,statusが存在すれば登録できること" do
-        expect(build(item)).to be_valid
+        expect(build(:item)).to be_valid
       end
     end
 
@@ -26,7 +26,7 @@ Rspec.describe Item, type: :model do
         expect(item.errors[:category]).to include("can't be blank")
       end
 
-      it "sizeがない場合は登録できないこと" do
+      it "size_idがない場合は登録できないこと" do
         item = build(:item, size_id: nil)
         item.valid?
         expect(item.errors[:size]).to include("can't be blank")
