@@ -1,97 +1,95 @@
-$(document).on('turbolinks:load', function(){
-  $(function(){
+$(document).on('turbolinks:load', ()=> {
+  //プレビューのhtmlを定義
+  function buildHTML(count, image) {
+    let html = `<div class="preview-box" data-index="${count}">
+                  <img class="upper-box" data-index="${count}" src="${image}">
+                  <div class="lower-box">
+                    <label class="update-box" for="item_images_attributes_${count}_url">変更</label>
+                    <div class="delete-box">削除</div>
+                  </div>
+                </div>`
+    return html;
+  }
 
-    //プレビューのhtmlを定義
-    function buildHTML(count) {
-      var html = `<div class="preview-box" id="preview-box__${count}">
-                    <div class="upper-box">
-                      <img src="" alt="preview">
-                    </div>
-                    <div class="lower-box">
-                      <div class="update-box">
-                        <label class="edit_btn">編集</label>
-                      </div>
-                      <div class="delete-box" id="delete_btn_${count}">
-                        <span>削除</span>
-                      </div>
-                    </div>
-                  </div>`
-      return html;
-    }
+  function buildFileField(index) {
+    let html = `<div class="js-file_group" data-box="${index}">
+                  <input class="hidden-field" type="file" name="item[images_attributes][${index}][url]" id="item_images_attributes_${index}_url">
+                </div>`;
+    return html;
+  }
 
-    // ラベルのwidth操作
-    function setLabel() {
-      //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
-      var prevContent = $('.exhibition-box__previews').prev();
-      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-      $('.exhibition-box__previews').css('width', labelWidth);
-    }
+  let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  lastIndex = $('.js-file_group:last').data('box');
+  fileIndex.splice(0, lastIndex);  // 0を起点としてインデックスの数(lastIndex)だけ要素を削除する
+  // $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする
+  // $('.hidden-field').hide();  // hidden-destroyクラスの要素を非表示にする
+  
+  // createエラーの場合の事前処理(一度入力した写真を残す方法が分かれば変更)
+  if ($('.preview-box').length == 0) {
+    $(".hidden-field").remove();
+  }
+  if ($('.hidden-field').length == 0) {
+    $('#image-box').append(buildFileField(0));
+  }
 
-    // プレビューの追加
-    $(document).on('change', '.hidden-field', function() {
-      setLabel();
-      //hidden-fieldのidの数値のみ取得
-      var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      //labelボックスのidとforを更新
-      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
-      //選択したfileのオブジェクトを取得
-      var file = this.files[0];
-      var reader = new FileReader();
-      //readAsDataURLで指定したFileオブジェクトを読み込む
-      reader.readAsDataURL(file);
-      //読み込み時に発火するイベント
-      reader.onload = function() {
-        var image = this.result;
-        //プレビューが元々なかった場合はhtmlを追加
-        if ($(`#preview-box__${id}`).length == 0) {
-          var count = $('.preview-box').length;
-          var html = buildHTML(id);
-          //ラベルの直前のプレビュー群にプレビューを追加
-          var prevContent = $('.exhibition-box__previews').prev();
-          $(prevContent).append(html);
-        }
-        //イメージを追加
-        $(`#preview-box__${id} img`).attr('src', `${image}`);
-        var count = $('.preview-box').length;
-        //プレビューが10個あったらラベルを隠す 
-        if (count == 5) { 
-          $('.exhibition-box__previews').hide();
-        }
-
-        //ラベルのwidth操作
-        setLabel();
-        //ラベルのidとforの値を変更
-        if(count < 5){
-          //プレビューの数でラベルのオプションを更新する
-          $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_url`});
-        }
-      }
-    });
-
-    // 画像の削除
-    $(document).on('click', '.delete-box', function() {
-      var count = $('.preview-box').length;
-      setLabel(count);
-      //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
-      var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      //取得したidに該当するプレビューを削除
-      $(`#preview-box__${id}`).remove();
-      console.log("new")
-      //フォームの中身を削除 
-      $(`#item_images_attributes_${id}_url`).val("");
-
-      //削除時のラベル操作
-      var count = $('.preview-box').length;
-      //10個めが消されたらラベルを表示
-      if (count == 4) {
-        $('.exhibition-box__previews').show();
-      }
-      setLabel(count);
-
-      if(id < 5){
-        //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
-        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_url`});
-      }
-    });
+  // updateエラーの場合の事前処理
+  $('.hidden-destroy').each(function(i, e) {
+    $(e).prop('checked', false)
   });
-})
+  
+  // プレビューの追加
+  $('#image-box').on('change', '.hidden-field', function() {
+    let id = $(this).parent().data('box');
+    let file = this.files[0];  //選択したfileのオブジェクトを取得
+    let reader = new FileReader();
+    reader.readAsDataURL(file);  //readAsDataURLで指定したFileオブジェクトを読み込む
+    reader.onload = function() {  //読み込み時に発火するイベント
+      let image = this.result;
+      if (img = $(`img[data-index="${id}"]`)[0]) {
+        img.setAttribute('src', image);
+      } else {  //プレビューが元々なかった場合はhtmlを追加
+        $('.exhibition-box__previews').before(buildHTML(id, image));
+        $('#image-box').append(buildFileField(fileIndex[0]));
+        let label_num = fileIndex.shift();  // shift()メソッドは、配列から最初の要素を取り除く（戻り値＝取り除いた値）
+        fileIndex.push(fileIndex[fileIndex.length - 1] + 1);  // fileIndexの末尾の値(fileIndex[fileIndex.length - 1])に1を足した値を末尾に付加(push)する
+        $('.label-box').attr({id: `label-box--${label_num}`, for: `item_images_attributes_${label_num}_url`});  //labelボックスのidとforを更新
+      }
+      //プレビューが10個あったらラベルを隠す 
+      if ($('.preview-box').length >= 10) { 
+        $('.exhibition-box__previews').hide();
+      }
+    }
+  });
+
+  // 画像の削除
+  $('#previews').on('click', '.delete-box', function() {
+    //取得したidに該当するプレビューを削除
+    let id = $(this).parent().parent().data('index');
+    const hiddenCheck = $(`input[data-index="${id}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);  // もしチェックボックスが存在すればチェックを入れる
+    $(this).parent().parent().remove();
+    $(`div[data-box="${id}"]`).remove();
+    //10個めが消されたらラベルを表示
+    if ($('.preview-box').length < 10) {
+      $('.exhibition-box__previews').show();
+    }
+  });
+
+  //商品説明の字数カウントを行う
+  $('#exh-text').on('input', function() {
+    console.log('up');
+    $('#exh-count').text(String($('#exh-text').val().length) + '/1000');
+  });
+
+  //商品価格の手数料・利益の自動表示を行う
+  $('#exh-price').on('input', function() {
+    let price = $('#exh-price').val();
+    if (price >= 300 && price <= 9999999) {
+      $('#exh-charge').text('¥' + String(Math.floor(price * 0.1)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      $('#exh-gain').text('¥' + String(Math.ceil(price * 0.9)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+    } else {
+      $('#exh-charge').text('—');
+      $('#exh-gain').text('—');
+    }
+  });
+});
