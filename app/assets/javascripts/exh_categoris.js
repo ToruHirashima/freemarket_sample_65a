@@ -1,11 +1,11 @@
 $(document).on('turbolinks:load', ()=> {
-  let cate_id = $('#exh-category').val();
-  if (cate_id == "") { cate_id = 0 }
+  let categoryId = $('#exh-category').val();
+  if (categoryId == "") { categoryId = 0 }
 
-  function buildHtml(data, idName, select_id) {
+  function buildHtml(data, idName, selectId) {
     let childHtml;
     data.forEach(function(child){
-      let selectAttr = child.id == select_id ? `selected="selected" ` : '';
+      let selectAttr = child.id == selectId ? `selected="selected" ` : '';
       childHtml += `<option ${selectAttr}value="${child.id}">${child.name}</option>`;
     });
     let html = `<select class="exhibition-box__text" id="item_category_${idName}id"><option value="">選択して下さい</option>
@@ -15,39 +15,39 @@ $(document).on('turbolinks:load', ()=> {
   }
 
   function selectData(data, depth) {
-    let select_data = [];
+    let selectData = [];
     data.forEach(function(select){
       if (select.depth == depth) {
-        select_data.push(select);
+        selectData.push(select);
       }
     });
-    return select_data;
+    return selectData;
   }
 
   $.ajax({
     url: '/items/category_parent',  // リクエストを送信するURLを指定
     type: "GET",  // HTTPメソッドを指定（デフォルトはGET）
     data: {  // 送信するデータをハッシュ形式で指定
-      init_id: cate_id
+      init_id: categoryId
     },
     dataType: "json"  // レスポンスデータをjson形式と指定する
   })
   .done(function(data) {
-    let parent_id = 0, children_id = 0, grandchildren_id = 0
+    let parentId = 0, childrenId = 0, grandchildrenId = 0
     data.forEach(function(json){
-      if (json.id == cate_id) {
+      if (json.id == categoryId) {
         let id_len = json.path_ids.length;
-        parent_id = json.path_ids[0];
-        if (id_len > 1) { children_id = json.path_ids[1]; }
-        if (id_len > 2) { grandchildren_id = json.path_ids[2]; }
+        parentId = json.path_ids[0];
+        if (id_len > 1) { childrenId = json.path_ids[1]; }
+        if (id_len > 2) { grandchildrenId = json.path_ids[2]; }
       }
     });
-    $('#select_parent').append(buildHtml(selectData(data, 0), '', parent_id));
-    if (parent_id != 0) {
-      $('#select_children').append(buildHtml(selectData(data, 1), 'children_', children_id));
+    $('#select_parent').append(buildHtml(selectData(data, 0), '', parentId));
+    if (parentId != 0) {
+      $('#select_children').append(buildHtml(selectData(data, 1), 'children_', childrenId));
     }
-    if (children_id != 0) {
-      $('#select_grandchildren').append(buildHtml(selectData(data, 2), 'grandchildren_', grandchildren_id));
+    if (childrenId != 0) {
+      $('#select_grandchildren').append(buildHtml(selectData(data, 2), 'grandchildren_', grandchildrenId));
     }
   })
 
