@@ -73,10 +73,12 @@ body {
         display: flex;
         &__first {
           padding-right: 40px;
-
+          &__category {
+            text-decoration: none;
+            color: black;
+          }
         }
         &__second {
-          
         }
       }
       &__right-list {
@@ -324,6 +326,7 @@ body {
         width: 1080px;
         margin: 26px auto;
         display: flex;
+        background-color: #f8f8f8;
         justify-content: start;    
         overflow-x: auto;
         .product-list {
@@ -368,7 +371,6 @@ body {
                   font-size: 10px;
                 }
               }
-          
             }
           }
         }
