@@ -23,13 +23,13 @@ RSpec.describe Item, type: :model do
       it "category_idがない場合は登録できないこと" do
         item = build(:item, category_id: nil)
         item.valid?
-        expect(item.errors[:category]).to include("can't be blank")
+        expect(item.errors[:category_id]).to include("can't be blank")
       end
 
       it "size_idがない場合は登録できないこと" do
         item = build(:item, size_id: nil)
         item.valid?
-        expect(item.errors[:size]).to include("can't be blank")
+        expect(item.errors[:size_id]).to include("can't be blank")
       end
 
       it "conditionがない場合は登録できないこと" do
