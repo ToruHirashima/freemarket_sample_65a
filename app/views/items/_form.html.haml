@@ -48,7 +48,11 @@
         .exhibition-box__title.exhibition-box__title--continue
           %span カテゴリー
           %span.exhibition-box__title--must 必須
-        = f.collection_select :category_id, Category.all, :id, :category, { prompt: '選択して下さい' }, { class: 'exhibition-box__text' }
+        -# = f.collection_select :category_id, Category.all, :id, :category, { prompt: '選択して下さい' }, { class: 'exhibition-box__text' }
+        = f.number_field :category_id, id: :'exh-category'
+        #select_parent
+        #select_children
+        #select_grandchildren
         .exhibition-box__title.exhibition-box__title--continue
           %span サイズ
           %span.exhibition-box__title--must 必須

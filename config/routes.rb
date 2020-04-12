@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items, except: [:index] do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
+    collection do
+      get 'category_parent'
+      get 'category_children'
+      get 'category_grandchildren'
+    end
   end
   resources :users, only: [:index] do
     collection do
