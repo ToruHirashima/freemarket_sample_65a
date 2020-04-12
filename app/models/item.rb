@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :delivery, allow_destroy: true
   has_one :order
   belongs_to :category
-  belongs_to :size
+  belongs_to :size, optional: true
 
   validates :name, :text, :category_id, :size_id, :condition, :user_id, :status, presence: true
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
