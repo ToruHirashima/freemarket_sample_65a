@@ -37,19 +37,19 @@ $(document).on('turbolinks:load', ()=> {
   .done(function(data) {
     let parentId = 0, childrenId = 0, grandchildrenId = 0  // ３階層のそれぞれのIDを取得する変数
     data.forEach(function(json){
-      if (json.id == categoryId) {  // レスポンスデータ（配列）から選択中のID情報を取得する
+      if (json.id == categoryId) {  // レスポンスデータから選択中のIDと一致するレコードを抽出して３階層分のID番号を取得する
         let id_len = json.path_ids.length;
         parentId = json.path_ids[0];
         if (id_len > 1) { childrenId = json.path_ids[1]; }
         if (id_len > 2) { grandchildrenId = json.path_ids[2]; }
       }
     });
-    $('#select_parent').append(buildHtml(selectData(data, 0), '', parentId));
+    $('#select_parent').append(buildHtml(selectData(data, 0), '', parentId));  // 親カテゴリを表示
     if (parentId != 0) {
-      $('#select_children').append(buildHtml(selectData(data, 1), 'children_', childrenId));
+      $('#select_children').append(buildHtml(selectData(data, 1), 'children_', childrenId));  // 子カテゴリを表示
     }
     if (childrenId != 0) {
-      $('#select_grandchildren').append(buildHtml(selectData(data, 2), 'grandchildren_', grandchildrenId));
+      $('#select_grandchildren').append(buildHtml(selectData(data, 2), 'grandchildren_', grandchildrenId));  // 孫カテゴリを表示
     }
   })
 
