@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', ()=> {
       .done(function(data) {
         $("#select_grandchildren").empty();
         $("#select_children").empty();
-        $('#select_children').append(buildHtml(data, 'children_', 0));  // レスポンスデータからselectタブを生成
+        $('#select_children').append(buildHtml(data, 'children_', 0));  // レスポンスデータから子カテゴリを生成
       })
     }
   }).change();
