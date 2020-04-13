@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
+    @item = Item.find(params[:id])
   end
 
   # 商品情報編集ページ

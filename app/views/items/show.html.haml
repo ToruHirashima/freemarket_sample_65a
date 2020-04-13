@@ -7,26 +7,20 @@
       .detail-box-photo__sub
         - @item.images.each do |image|
           = image_tag image.url.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
+
     .detail-box-price
       .detail-box-price__main
-        = "¥#{@item.price}"
-      .detail-box-price__sub
-        - if @item.delivery.fee_burden_before_type_cast == 0
-          (税込) 送料込み
-        - else
-          (税込) 着払い
+        = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
+      .detail-box-price__sub (税込) 送料込み
     .detail-box-action
-      - if @item.status != 0
-        .detail-box-action__button.detail-box-action__button--sold 売り切れました
-      - elsif user_signed_in?
-        - if current_user.id == @item.user_id
-          = link_to edit_item_path(@item), class: :"detail-box-action__link" do
-            .detail-box-action__button 商品の編集
-          = link_to item_path(@item), method: :delete, class: :"detail-box-action__link", data: {confirm: "削除しますか？"} do
-            .detail-box-action__button.detail-box-action__button--gray この商品を削除する
-        - else
-          = link_to new_item_order_path(@item), class: :"detail-box-action__link" do
-            .detail-box-action__button 購入画面に進む
+      - if user_signed_in? && current_user.id == @item.user_id
+        = link_to edit_item_path(1), class: :"detail-box-action__link" do
+          .detail-box-action__button 商品の編集
+        = link_to "#", class: :"detail-box-action__link" do
+          .detail-box-action__button.detail-box-action__button--gray この商品を削除する
+      - else
+        = link_to new_item_order_path(1), class: :"detail-box-action__link" do
+          .detail-box-action__button 購入画面に進む
     .detail-box-description
       .detail-box-description__header
         = @item.text
@@ -41,6 +35,10 @@
             = link_to '#', class: :"detail-box-table__link" do
               %div
                 = @item.category.category
+            = link_to '#', class: :"detail-box-table__link" do
+              %div (要カテゴリ階層表示)
+            = link_to '#', class: :"detail-box-table__link" do
+              %div (要カテゴリ階層表示)
         %tr
           %th.detail-box-table__th ブランド
           %td.detail-box-table__td
@@ -61,8 +59,7 @@
           %th.detail-box-table__th 発送元の地域
           %td.detail-box-table__td
             = link_to '#', class: :"detail-box-table__link" do
-              %div
-                = @item.delivery.area
+              = @item.delivery.area
         %tr
           %th.detail-box-table__th 発送日の目安
           %td.detail-box-table__td
