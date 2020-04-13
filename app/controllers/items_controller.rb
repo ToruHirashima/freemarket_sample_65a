@@ -50,17 +50,16 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def category_parent
+  def category_initial
     if params[:init_id].to_i != 0
       @category = Category.find(params[:init_id])
       @categories = []
       if @category.has_parent?
-        if @category.parent.has_parent?
-          @categories += @category.parent.parent.siblings
-        end
+        @categories += @category.parent.parent.siblings if @category.parent.has_parent?
         @categories += @category.parent.siblings
       end
       @categories += @category.siblings
+      @categories += @category.children if @category.has_children?
     else
       @categories = Category.where(ancestry: nil)
     end
@@ -68,10 +67,6 @@ class ItemsController < ApplicationController
 
   def category_children
     @category_children = Category.find(params[:parent_id]).children
-  end
-
-  def category_grandchildren
-    @category_grandchildren = Category.find(params[:children_id]).children
   end
 
   private
