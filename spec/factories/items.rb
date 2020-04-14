@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :item do
-    name        { "MacBook" }
-    text        { "PC" }
-    category
-    size
-    brand_name  { "apple" }
+    name        {Faker::Beer.brand}
+    text        {Faker::Beer.name}
+    category    
+    size        
     condition   { 1 }
     delivery
-    price       { 900 }
+    price       { 3000 }
     user
     status      { 0 }
+    brand_name  {Faker::Beer.style}
   end
 end
