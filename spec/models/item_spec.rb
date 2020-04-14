@@ -172,6 +172,9 @@ RSpec.describe Item, type: :model do
       #   item.valid?
       #   expect(item.errors[:size_id]).to include('を入力してください')
       # end
+    end
+
+    # 下記テストデータ（既にmasterにあるもの）は、重複しますが残しました（日本語化に対応を要す）。
 
     context "保存できる場合" do
       it "image,name,text,category,condition,price,statusが存在すれば登録できること" do
