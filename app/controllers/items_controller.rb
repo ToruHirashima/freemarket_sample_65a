@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ（ユーザーマイページはuserコントローラーに設定）
   def show
-    @categories = Category.find(params[:id])
+    @item = Item.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   # 商品情報編集ページ

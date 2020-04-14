@@ -20,4 +20,4 @@
                 = link_to "すべて", category_path(child) , id: "categories_links", class: "categories__children--grand__content"
                 - child.children.each do |grandchild|
                   = link_to category_path(grandchild) , id: "categories_links", class: "categories__children--grand__content" do
-                    = grandchild.category
+                    = grandchild.category 

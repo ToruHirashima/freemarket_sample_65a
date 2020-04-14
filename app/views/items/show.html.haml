@@ -1,6 +1,7 @@
 .details
   .detail-box
-    .detail-box-heading Personal Computer
+    .detail-box-heading
+      Personal Computer
     .detail-box-photo
       = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
@@ -26,12 +27,17 @@
         %tr
           %th.detail-box-table__th カテゴリー
           %td.detail-box-table__td
-            = link_to category_path, class: :"detail-box-table__link" do
-              = @categories.category
-            = link_to category_path, class: :"detail-box-table__link" do
-              %div PC/タブレット
-            = link_to category_path, class: :"detail-box-table__link" do
-              %div ノートPC
+            - if @item.category.is_childless?
+              = link_to category_path(@item.category.root), class: :"detail-box-table__link" do
+                %div
+                  = @item.category.root.category
+            - if @item.category.has_parent?
+              = link_to category_path(@item.category.parent), class: :"detail-box-table__link" do
+                %div
+                  = @item.category.parent.category
+            = link_to category_path(@item.category_id), class: :"detail-box-table__link" do
+              %div
+                = @item.category.category
         %tr
           %th.detail-box-table__th ブランド
           %td.detail-box-table__td
