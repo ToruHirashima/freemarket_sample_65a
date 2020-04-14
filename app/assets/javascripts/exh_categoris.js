@@ -58,22 +58,17 @@ $(document).on('turbolinks:load', ()=> {
     let inputNum = $(this).val();
     $('#exh-category').val(inputNum);  // 選択したカテゴリを送信データ[category_id]として格納する
     $('#select_default').remove();  // "選択して下さい"のデフォルトタブを削除
-    if (inputNum == "") {  // 初期項目[選択してください]をクリックした場合（整序後にこの条件は不要とする）
-      $("#select_children").empty();
+    $.ajax({
+      url: '/items/category_children',
+      type: "GET",
+      data: { parent_id: inputNum },
+      dataType: "json"
+    })
+    .done(function(data) {
       $("#select_grandchildren").empty();
-    } else {
-      $.ajax({
-        url: '/items/category_children',
-        type: "GET",
-        data: { parent_id: inputNum },
-        dataType: "json"
-      })
-      .done(function(data) {
-        $("#select_grandchildren").empty();
-        $("#select_children").empty();
-        $('#select_children').append(buildHtml(data, 'children_', 0));  // レスポンスデータから子カテゴリを生成
-      })
-    }
+      $("#select_children").empty();
+      $('#select_children').append(buildHtml(data, 'children_', 0));  // レスポンスデータから子カテゴリを生成
+    })
   }).change();
 
   // 子カテゴリの選択を行った場合の処理
@@ -81,20 +76,16 @@ $(document).on('turbolinks:load', ()=> {
     let inputNum = $(this).val();
     $('#exh-category').val(inputNum);
     $('#children_select_default').remove();
-    if (inputNum == "") {
+    $.ajax({
+      url: '/items/category_children',
+      type: "GET",
+      data: { parent_id: inputNum },
+      dataType: "json"
+    })
+    .done(function(data) {
       $("#select_grandchildren").empty();
-    } else {
-      $.ajax({
-        url: '/items/category_children',
-        type: "GET",
-        data: { parent_id: inputNum },
-        dataType: "json"
-      })
-      .done(function(data) {
-        $("#select_grandchildren").empty();
-        $('#select_grandchildren').append(buildHtml(data, 'grandchildren_', 0));
-      })
-    }
+      $('#select_grandchildren').append(buildHtml(data, 'grandchildren_', 0));
+    })
   }).change();
 
   // 孫カテゴリの選択を行った場合の処理
