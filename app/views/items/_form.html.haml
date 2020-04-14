@@ -54,7 +54,7 @@
         #select_grandchildren
         .exhibition-box__title.exhibition-box__title--continue
           %span サイズ
-          %span.exhibition-box__title--must 必須
+          %span.exhibition-box__title--free 任意
         = f.collection_select :size_id, Size.all, :id, :kind_size, { prompt: '選択して下さい' }, { class: 'exhibition-box__text' }
         .exhibition-box__title.exhibition-box__title--continue
           %span ブランド

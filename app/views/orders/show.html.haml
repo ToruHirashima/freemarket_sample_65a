@@ -45,8 +45,12 @@
         .trans-info__heading 商品ID
         .trans-info__content= @order.item.id
       .trans-info__contents
-        .trans-info__heading お届け先（ダミー）
-        .trans-info__content 〒100-2222<br>東京都千代田区永田町1-1-1<br>Nagataマンション100号<br>フリマ太郎 様
+        .trans-info__heading お届け先
+        .trans-info__content
+          %p= "〒#{@order.user.address.zip_code}"
+          %p= "#{@order.user.address.prefecture}#{@order.user.address.city}#{@order.user.address.address1}"
+          %p= "#{@order.user.address.address2}"
+          %p= "#{@order.user.address.family_name} #{@order.user.address.first_name} 様"
       .trans-info__title.trans-info__title--seller 出品者情報
       = link_to "", class: :"trans-info__link" do
         .trans-info__contents.trans-info__contents--seller

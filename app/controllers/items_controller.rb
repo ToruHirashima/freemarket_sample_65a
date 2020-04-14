@@ -45,9 +45,8 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      flash.now[:alert] = "商品を削除できませんでした！"
+      flash.now[:alert] = "商品を削除できませんでした。"
       render :show
-      # redirect_to item_path(params[:id]), alert: "商品を削除できませんでした！"
     end
   end
 
