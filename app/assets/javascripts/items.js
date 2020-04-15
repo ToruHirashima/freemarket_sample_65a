@@ -21,8 +21,8 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   lastIndex = $('.js-file_group:last').data('box');
   fileIndex.splice(0, lastIndex);  // 0を起点としてインデックスの数(lastIndex)だけ要素を削除する
-  // $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする（cssで対応中）
-  // $('.hidden-field').hide();  // hidden-destroyクラスの要素を非表示にする（cssで対応中）
+  // $('.hidden-destroy').hide();  // hidden-destroyクラスの要素を非表示にする（css対応で問題なければ後日削除）
+  // $('.hidden-field').hide();  // hidden-destroyクラスの要素を非表示にする（css対応で問題なければ後日削除）
   
   // createエラーの場合の事前処理(一度入力した写真を残す方法が分かれば変更)
   if ($('.preview-box').length == 0) {
