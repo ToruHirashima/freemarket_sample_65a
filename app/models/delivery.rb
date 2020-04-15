@@ -1,11 +1,5 @@
 class Delivery < ApplicationRecord
   belongs_to :item
-  
-  validates :fee_burden, presence: true
-  validates :service, presence: true
-  validates :area, presence: true
-  validates :handling_time, presence: true
-
   validates :fee_burden, :service, :area, :handling_time, presence: true
 
   enum fee_burden: [:"送料込み(出品者負担)", :"着払い(購入者負担)"]
