@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', ()=> {
   //商品説明の字数カウントを行う
   $('#exh-text').on('input', function() {
-    console.log('up');
     $('#exh-count').text(String($('#exh-text').val().length) + '/1000');
   });
 
