@@ -333,3 +333,9 @@ others_6.children.create([{ category: "雑貨" },{ category: "工芸品" },{ cat
 others_7.children.create([{ category: "筆記具" },{ category: "ノート/メモ帳" },{ category: "テープ/マスキングテープ" },{ category: "カレンダー/スケジュール" },{ category: "アルバム/スクラップ" },{ category: "ファイル/バインダー" },{ category: "ハサミ/カッター" },{ category: "カードホルダー/名刺管理" },{ category: "のり/ホッチキス" },{ category: "その他" }])
 others_8.children.create([{ category: "オフィス用品一般" },{ category: "オフィス家具" },{ category: "店舗用品" },{ category: "OA機器" },{ category: "ラッピング/包装" },{ category: "その他" }])
 others_9.children.create([{ category: "すべて" }])
+
+# サイズデータの仮挿入
+Size.create!(kind_size: 'なし')
+Size.create!(kind_size: 'L')
+Size.create!(kind_size: 'M')
+Size.create!(kind_size: 'S')
