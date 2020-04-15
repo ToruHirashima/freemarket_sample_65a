@@ -1,6 +1,5 @@
-// $(function() {
 $(document).on('turbolinks:load', ()=> {
-    // タブを配列として取得
+  // タブを配列として取得
   let noticeTabs = $(".mypage__container-tab--notice");
   let orderTabs = $(".mypage__container-tab--order");
   let exhibitorTabs = $(".mypage__container-tab--exhibitor");
