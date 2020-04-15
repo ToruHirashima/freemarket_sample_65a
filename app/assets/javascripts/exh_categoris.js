@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', ()=> {
-  // select形式のHTMLを作成する関数：引数（レスポンスデータ, id名の区別, 選択項目のid）
+  // select形式のHTMLを作成する関数
+  // 引数：（レスポンスデータ, id名の区別, 選択項目のid）、戻り値：セレクトボックスを表示するHTMLデータ
   function buildHtml(data, idName, selectId) {
     let optionHtml = selectId == 0 ? `<option id="${idName}select_default" value="">選択して下さい</option>` : ''
     data.forEach(function(child){
@@ -12,7 +13,8 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
 
-  // ancestryデータのうち特定階層のデータを抽出する関数：引数（レスポンスデータ, 抽出する階層）
+  // レスポンスデータから特定階層のデータを抽出する関数
+  // 引数：（レスポンスデータ, 抽出する階層）、戻り値：親、子、孫のどれか一つの階層分のデータ
   function selectData(data, depth) {
     let selectData = [];
     data.forEach(function(select){
