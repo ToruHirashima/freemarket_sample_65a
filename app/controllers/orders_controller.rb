@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:show, :update]
+  
   # 商品購入確認ページ
   def new
     @item = Item.find(params[:item_id])
@@ -18,14 +20,20 @@ class OrdersController < ApplicationController
   # end
 
   def show
-    @order = Order.find(params[:id])
   end
-
+  
   def update
     @item = Item.find(params[:item_id])
     if @item.update(status: 2)
       redirect_to item_order_path
+    else
+      flash.now[:alert] = "商品受取通知ができませんでした"
+      render :show
     end
   end
 
+  private
+  def set_order
+    @order = Order.find(params[:id])
+  end
 end
