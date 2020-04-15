@@ -1,4 +1,4 @@
-class CreateCategorySizes < ActiveRecord::Migration[5.2]
+class CreateCategorySize < ActiveRecord::Migration[5.2]
   def change
     create_table :category_sizes do |t|
       t.references :category, null: false, foreign_key: true

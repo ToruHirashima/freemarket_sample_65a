@@ -1,4 +1,4 @@
-class CreateAddresses < ActiveRecord::Migration[5.2]
+class CreateAddress < ActiveRecord::Migration[5.2]
   def change
     create_table :addresses do |t|
       t.string :family_name, null: false
