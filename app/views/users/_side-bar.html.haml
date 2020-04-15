@@ -1,91 +1,125 @@
+- active_tab = "mypage-side-bar__list--focus"
+- case tab_focus
+- when 0
+  - focus_0 = active_tab
+- when 1
+  - focus_1 = active_tab
+- when 2
+  - focus_2 = active_tab
+- when 11
+  - focus_11 = active_tab
+- when 12
+  - focus_12 = active_tab
+- when 13
+  - focus_13 = active_tab
+- when 21
+  - focus_21 = active_tab
+- when 22
+  - focus_22 = active_tab
+- when 31
+  - focus_31 = active_tab
+- when 32
+  - focus_32 = active_tab
+- when 33
+  - focus_33 = active_tab
+- when 34
+  - focus_34 = active_tab
+- when 35
+  - focus_35 = active_tab
+- when 99
+  - focus_99 = active_tab
+
 .mypage-side-bar
   .mypage-side-bar__innr
-    %ul.mypage-side-bar__upper
-      %li.mypage-side-bar__list--upper--title
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+    %ul.mypage-side-bar__default
+      %li.mypage-side-bar__list{class: focus_0}
+        = link_to users_path, class: "mypage-side-nav-ul--list" do
           マイページ
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_1}
+        = link_to info_notice_users_path, class: "mypage-side-nav-ul--list", id: "info-btn" do
           お知らせ
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_2}
+        = link_to info_todo_users_path, class: "mypage-side-nav-ul--list", id: "todo-btn" do
           やることリスト
           %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     いいね！一覧
+      -#     %i.fa.fa-chevron-right
       %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          いいね！一覧
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+        = link_to new_item_path, class: "mypage-side-nav-ul--list" do
           出品する
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_11}
+        = link_to exhibitor_sale_users_path, class: "mypage-side-nav-ul--list", id: "exhibitor_1" do
           出品した商品-出品中
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_12}
+        = link_to exhibitor_progress_users_path, class: "mypage-side-nav-ul--list", id: "exhibitor_2" do
           出品した商品-取引中
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_13}
+        = link_to exhibitor_complete_users_path, class: "mypage-side-nav-ul--list", id: "exhibitor_3" do
           出品した商品-売却済み
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_21}
+        = link_to purchase_progress_users_path, class: "mypage-side-nav-ul--list" do
           購入した商品-取引中
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
+      %li.mypage-side-bar__list{class: focus_22}
+        = link_to purchase_complete_users_path, class: "mypage-side-nav-ul--list" do
           購入した商品-過去の取引
           %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          ニュース一覧
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          評価一覧
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          ガイド
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          お問い合わせ
-          %i.fa.fa-chevron-right
-    %ul.mypage-side-bar__lower
+      -# 以下、実装未完了の項目のためコメントアウトする（実装項目が確定後に整序する）
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     ニュース一覧
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     評価一覧
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     ガイド
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     お問い合わせ
+      -#     %i.fa.fa-chevron-right
+    -# %ul.mypage-side-bar__lower
+    %ul.mypage-side-bar__default.mypage-side-bar__lower
       %li.mypage-side-bar__lower--title
         設定
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          プロフィール
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          発送元・お届け先住所変更
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          支払い先
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          メール/パスワード
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          本人情報
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to root_path, class:"mypage-side-nav-ul--list" do
-          電話番号の確認
-          %i.fa.fa-chevron-right
-      %li.mypage-side-bar__list
-        = link_to destroy_user_session_path, method: :delete, class:"mypage-side-nav-ul--list" do
+      -# 以下、実装未完了の項目のためコメントアウトする（実装項目が確定後に整序する）
+      -# %li.mypage-side-bar__list{class: focus_31}
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     プロフィール
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list{class: focus_32}
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     発送元・お届け先住所変更
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list{class: focus_33}
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     支払い先
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list{class: focus_34}
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     メール/パスワード
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list{class: focus_35}
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     本人情報
+      -#     %i.fa.fa-chevron-right
+      -# %li.mypage-side-bar__list.mypage-side-bar__list--no-action
+      -#   = link_to "", class: "mypage-side-nav-ul--list" do
+      -#     電話番号の確認
+      -#     %i.fa.fa-chevron-right
+      %li.mypage-side-bar__list{class: focus_99}
+        = link_to logout_users_path, class: "mypage-side-nav-ul--list" do
           ログアウト
           %i.fa.fa-chevron-right
 

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :size do
-    kind_size {"L"}
     id        { 0 }
+    kind_size { "big" }
   end
 end

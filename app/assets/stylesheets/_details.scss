@@ -40,13 +40,14 @@ $light_gray: #f8f8f8;
   }
   &__sub {
     margin-top: 10px;
+    padding: 0 30px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
   }
   &__tmb {
-    width: 140px;
+    width: 136px;
     height: 87px;
-    margin: 0 5px;
+    margin: 2px;
     object-fit: cover;
   }
 }
@@ -81,6 +82,11 @@ $light_gray: #f8f8f8;
     text-align: center;
     &--gray {
       background-color: #999999;
+    }
+    &--sold {
+      background-color: #888888;
+      color: $white;
+      font-size: 24px;
     }
   }
 }
