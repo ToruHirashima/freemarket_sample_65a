@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    category  {"メンズ"}
-    id        { 0 }
+    id       { 0 }
+    category { "PC" }
   end
 end

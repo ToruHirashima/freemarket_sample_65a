@@ -1,61 +1,67 @@
-.mypage-nav-bar
-  %ul
-    %li 
-      = link_to 'FURIMA', root_path, class:"mypage-nav-bar--link"
-    %li ＞
-    %li マイページ
-
+= render 'shared/nav_bar'
 .mypage
-  .mypage__area
-    .mypage__content
-      .mypage--left
-        = render 'users/side-bar'
-      .mypage__right
-        .mypage__right--innr
-          .mypage__right--upper
-            .mypage__user-icon
-              = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-image'
-              .mypage__user-name
-                ニックネーム
-              .mypage__user-status
-                評価
-                %span 0
-                出品数
-                %span 0
-          .mypage__container
-            .mypage__container--tab
-              .mypage__container--tab--left
-                お知らせ
-              .mypage__container--tab--right
-                やることリスト
-            .mypage__container--info
-              .info__content
-                .info__content-left
-                  = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
-                .info__content-right
-                  .info-message
-                    事務局から個別メッセージ「ログイン通知」
-                  .info-data
-                    24時間前
-              .info__content
-                .info__content-left
-                  = image_tag 'logo/logo_icon.png', class: 'mypage-logo-icon'
-                .info__content-right
-                  .info-message
-                    事務局から個別メッセージ「ログイン通知」
-                  .info-data
-                    24時間前
-            .mypage__container--lower
-              .info-index-btn 一覧を見る
-          .mypage__purchased-item
-            .mypage__purchased-item--title
-              購入した商品
-            .mypage__container--tab
-              .mypage__container--tab--left
-                取引中
-              .mypage__container--tab--right
-                過去の取引
-            .mypage__purchased-item--info
-              .mypage__purchased-item--info--text
-            .mypage__container--lower
-              .info-index-btn 一覧を見る
+  .mypage__content
+    .mypage__right
+      .mypage__right--upper
+        .mypage__user-icon
+          = image_tag 'icon/member_photo_noimage_thumb.png', class: 'mypage-user-image'
+          .mypage__user-name
+            = current_user.nickname
+          .mypage__user-status
+            評価
+            %span 0
+            出品数
+            %span= current_user.items.length
+      .mypage__container
+        .mypage__container-tab
+          .mypage__container-tab--default.mypage__container-tab--notice.mypage__container-tab--notice-active#info-action
+            お知らせ
+          .mypage__container-tab--default.mypage__container-tab--notice#todo-action
+            やることリスト
+        .mypage__container--info
+          .info__block.info__block--notice.info__block--active
+            - orders = @orders.where('items.status = 1').limit(5)
+            - orders.each do |order|
+              - if order.item.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "出品した「#{order.item.name}」が購入されました。"}
+              - elsif order.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届くまでしばらくお待ちください。"}
+            - if orders.length == 0
+              .info__message 現在、お知らせはありません
+          .info__block.info__block--notice
+            - orders = @orders.where('items.status = 1').limit(5)
+            - orders.each do |order|
+              - if order.item.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "#{order.user.nickname}さんが「#{order.item.name}」を購入しました。内容を確認の上、発送をお願いします。"}
+              - elsif order.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "#{order.item.user.nickname}さんから「#{order.item.name}」が発送されます。届いたら内容を確認して、受取評価してください。"}
+            - if orders.length == 0
+              .info__message 現在、やることリストはありません
+        .mypage__container--lower
+          = link_to info_notice_users_path, class: :"info-index__link", id: :"info-index-id" do
+            .info-index__btn 一覧を見る
+          
+      .mypage__container.mypage__container--item
+        .mypage__container--title 購入した商品
+        .mypage__container-tab
+          .mypage__container-tab--default.mypage__container-tab--order.mypage__container-tab--order-active 取引中
+          .mypage__container-tab--default.mypage__container-tab--order 過去の取引
+        .mypage__container--info
+          .info__block.info__block--order.info__block--active
+            - orders = @orders.where('items.status = 1').where('orders.user_id = ?', current_user.id).limit(5)
+            - orders.each do |order|
+              = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届いたら受取評価してください。"}
+            - if orders.length == 0
+              .info__message 現在、取引中の商品はありません
+          .info__block.info__block--order
+            - orders = @orders.where('items.status = 2').where('orders.user_id = ?', current_user.id).limit(5)
+            - orders.each do |order|
+              = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。 取引が完了しました。"}
+            - if orders.length == 0
+              .info__message 過去の取引はありません
+          .mypage__purchased-item--info--text
+        .mypage__container--lower
+          = link_to purchase_progress_users_path, class: :"info-index__link", id: :"purchase-index-id" do
+            .info-index__btn 一覧を見る
+    .mypage__left
+      = render partial: 'side-bar', locals: {tab_focus: 0}

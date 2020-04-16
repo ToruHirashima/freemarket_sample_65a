@@ -1,0 +1,58 @@
+.trans
+  .trans-wrap
+    .trans-main
+      .trans-main__title 取引画面
+      - if @order.item.status == 1
+        -if @order.user_id == current_user.id
+          .trans-main__contents
+            .trans-main__heading 受取確認をしてください
+            .trans-main__text
+              %p= "#{@order.item.user.nickname}さんから#{@order.item.name}が発送されます。"
+              %p= "届いたら内容を確認して、受取ボタンを押してください。"
+            .trans-main__confirm-btn
+              = link_to item_order_path, method: :patch, class:"trans-main__confirm-link", data: {confirm: "受取通知しますか？"} do
+                商品を受け取りました
+        -elsif @order.item.user_id == current_user.id
+          .trans-main__contents
+            .trans-main__heading 発送してください
+            .trans-main__text
+              %p= "#{@order.user.nickname}さんから商品が購入されました。"
+              %p= "お届け先の住所に、商品を発送を行ってください。"
+              %br
+              %p= "購入者が受取確認をしたら、取引完了となります。"
+      - elsif @order.item.status == 2
+        .trans-main__contents
+          .trans-main__heading 取引が完了しました
+          .trans-main__text
+            %p= "このたびはフリマの利用をありがとうございました。"
+          .trans-main__ship-btn
+    .trans-info
+      .trans-info__title 取引情報
+      .trans-info__contents
+        .trans-info__heading 商品
+        .trans-info__content
+          = link_to item_path(@order.item), class: :'trans-info__link' do
+            = image_tag @order.item.images.first.url.url, alt: 'item_photo', class: :"trans-info__image"
+            .trans-info__item= @order.item.name
+            .trans-info__item= "¥#{@order.item.price.to_s(:delimited)}"
+      .trans-info__contents.trans-info__contents--lightgray
+        .trans-info__heading 送料
+        .trans-info__content= @order.item.delivery.fee_burden
+      .trans-info__contents
+        .trans-info__heading 購入日時
+        .trans-info__content= @order.created_at.strftime("%m月%d日 %H:%M")
+      .trans-info__contents.trans-info__contents--lightgray
+        .trans-info__heading 商品ID
+        .trans-info__content= @order.item.id
+      .trans-info__contents
+        .trans-info__heading お届け先
+        .trans-info__content
+          %p= "〒#{@order.user.address.zip_code}"
+          %p= "#{@order.user.address.prefecture}#{@order.user.address.city}#{@order.user.address.address1}"
+          %p= "#{@order.user.address.address2}"
+          %p= "#{@order.user.address.family_name} #{@order.user.address.first_name} 様"
+      .trans-info__title.trans-info__title--seller 出品者情報
+      = link_to "", class: :"trans-info__link" do
+        .trans-info__contents.trans-info__contents--seller
+          = image_tag 'icon/member_photo_noimage_thumb.png', alt: 'item_photo', class: :'trans-info__icon'
+          .trans-info__name= @order.item.user.nickname

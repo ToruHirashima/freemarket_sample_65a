@@ -1,0 +1,38 @@
+- heading_active = "mypage__container-tab--notice-active"
+- content_active = "info__block--active"
+- if tab_index == 1
+  - heading1 = heading_active
+  - class1 = content_active
+- elsif tab_index == 2
+  - heading2 = heading_active
+  - class2 = content_active
+
+= render 'shared/nav_bar'
+.mypage
+  .mypage__content
+    .mypage__right
+      .mypage__container
+        .mypage__container-tab
+          .mypage__container-tab--default.mypage__container-tab--notice{class: heading1} お知らせ
+          .mypage__container-tab--default.mypage__container-tab--notice{class: heading2} やることリスト
+        .mypage__container--info
+          .info__block.info__block--notice{class: class1}
+            - orders = @orders.where('items.status = 1')
+            - orders.each do |order|
+              - if order.item.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "出品した「#{order.item.name}」が購入されました。"}
+              - elsif order.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "「#{order.item.name}」を購入しました。商品が届くまでしばらくお待ちください。"}
+            - if orders.length == 0
+              .info__message 現在、お知らせはありません
+          .info__block.info__block--notice{class: class2}
+            - orders = @orders.where('items.status = 1')
+            - orders.each do |order|
+              - if order.item.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "#{order.user.nickname}さんが「#{order.item.name}」を購入しました。内容を確認の上、発送をお願いします。"}
+              - elsif order.user_id == current_user.id
+                = render partial: 'item_box', locals: {order: order, body: "#{order.item.user.nickname}さんから「#{order.item.name}」が発送されます。届いたら内容を確認して、受取評価してください。"}
+            - if orders.length == 0
+              .info__message 現在、やることリストはありません
+    .mypage__left
+      = render partial: 'side-bar', locals: {tab_focus: tab_index}

@@ -11,15 +11,20 @@ Rails.application.routes.draw do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
 
     collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'category_initial'
+      get 'category_children'
     end
-    member do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
-    
   end
-  resources :users, only: [:index, :show]
-  resources :categories, only: [:index, :show]
+  resources :users, only: [:index] do
+    collection do
+      get 'info_notice'
+      get 'info_todo'
+      get 'purchase_progress'
+      get 'purchase_complete'
+      get 'exhibitor_sale'
+      get 'exhibitor_progress'
+      get 'exhibitor_complete'
+      get 'logout'
+    end
+  end
 end
