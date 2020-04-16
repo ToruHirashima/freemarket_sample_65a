@@ -24,7 +24,8 @@
       .sub-header
         %ul.sub-header__left-list
           %li.sub-header__left-list__first
-            カテゴリ
+            = link_to categories_path, class: "sub-header__left-list__first__category" do
+              カテゴリ
           %li.sub-header__left-list__second
             ブランド
         %ul.sub-header__right-list
@@ -61,7 +62,7 @@
           FURIMAを見る
         %ul
           %li
-            = link_to "カテゴリー一覧", root_path
+            = link_to "カテゴリー一覧", categories_path
           %li
             = link_to "ブランド一覧", root_path
       %li.footer__content

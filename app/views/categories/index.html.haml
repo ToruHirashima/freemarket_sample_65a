@@ -1,0 +1,23 @@
+.categories
+  .categories__title
+    カテゴリ一覧
+  .categories__parents
+    - @parents.each do |parent|
+      = link_to category_path(parent), class: "categories__parents--list" do
+        = parent.category # 親カテゴリバナー（ページ内リンクを付けたい）
+  .categories__contents
+    - @parents.each do |parent|
+      .categories__contents__box
+        .categories__contents__box--title
+          = parent.category
+        .categories__contents__box--lists
+          = link_to category_path(parent) , id: "categories_links", class: "categories__contents__box--lists--all" do
+            すべて
+          - parent.children.each do |child|
+            .categories__children#parent-anchor
+              = child.category
+              .categories__children--grand
+                = link_to "すべて", category_path(child) , id: "categories_links", class: "categories__children--grand__content"
+                - child.children.each do |grandchild|
+                  = link_to category_path(grandchild) , id: "categories_links", class: "categories__children--grand__content" do
+                    = grandchild.category 
