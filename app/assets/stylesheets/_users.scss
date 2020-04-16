@@ -82,6 +82,31 @@
           border: solid 1px #222222;
         }
       }
+      &__create-address {
+        width: 700px;
+        height: 300px;
+        background-color: #FFFFFF;
+        align-items: center;
+        justify-content: center;
+        .contents_create-address__main {
+          width: 400px;
+          margin: 0 auto;
+          padding: 50px 0;
+          text-align: center;
+        }
+        .create-address__toppage--link {
+          text-decoration: none;
+        }
+        .create-address__toppage--btn {
+          width: 370px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          margin: 0 auto;
+          color: #EEEEEE;
+          background-color: #3CCACE;
+        }
+      }
     }
   }
 }
