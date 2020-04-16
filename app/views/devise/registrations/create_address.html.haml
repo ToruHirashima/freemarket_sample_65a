@@ -1,6 +1,12 @@
 .User-Account-page
   .User-Account-page__content
     .User-contents
-      %h2.User-contents__head
-        ユーザー登録が完了しました！
-        = link_to "トップへ戻る", root_path
+      .User-contents__head
+        %h2 ユーザー登録が完了しました！
+      .User-contents__create-address
+        .contents_create-address__main
+          = "ようこそ！#{current_user.nickname}様"
+          %P 本登録が無事に完了した事をお知らせします。
+        .contents_create-address__menu
+          = link_to root_path, class: 'create-address__toppage--link' do
+            .create-address__toppage--btn トップページに戻る
