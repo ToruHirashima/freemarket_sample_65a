@@ -1,7 +1,7 @@
 .details
   .detail-box
     .detail-box-heading
-      Personal Computer
+      = @item.name
     .detail-box-photo
       = image_tag @item.images.first.url.url, alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
