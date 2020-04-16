@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items, except: [:index] do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
-
     collection do
       get 'category_initial'
       get 'category_children'
@@ -27,4 +26,5 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+  resources :categories, only: [:index, :show]
 end
