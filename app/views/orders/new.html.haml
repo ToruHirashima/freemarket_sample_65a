@@ -33,12 +33,12 @@
 
           %section.buy-confirm__buy-item2__inner__form__content
             .buy-confirm__buy-item2__inner__form__content__inner
-              %h3.head{}
-                支払い方法
+              = form_with url: new_item_order_path do
+                :plain
+                  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_cd1c7e8dc721deb4e7542918" data-text="購入する" data-submit-text="購入する"></script>
                 .buy-confirm__buy-item2__inner__form__content__inner__info
                   %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
                   %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
 
           .buy-confirm__buy-item2__inner__form__user-info
             
