@@ -2,10 +2,11 @@ class CardsController < ApplicationController
   require "payjp"
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to new_card_path(card.first.id) if card.exists?
+    redirect_to card_path(card.first.id) if card.exists?
   end
 
   def create
+    binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]  # PayjpオブジェクトにAPIキー（秘密鍵）を設定
     if params['payjp_token'].blank?  # トークンを取得できなかった場合（通信が成功している以上、このエラーが生じる可能性は低い）
       redirect_to new_card_path  # カード登録ページに戻る（場合によってはアラートを表示）
@@ -13,7 +14,7 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.create(card: params['payjp_token'])  # payjpに顧客情報を登録
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, credit_id: customer.default_card)  # アプリケーションサーバにカード情報を登録
       if @card.save
-        redirect_to :back
+        redirect_to card_path(current_user.id)
       else
         redirect_to new_card_path
       end
@@ -39,7 +40,7 @@ class CardsController < ApplicationController
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
-      @card_info = customer.cards.retrieve(card.card_id)
+      @card_info = customer.cards.retrieve(card.credit_id)
     end
   end
 end
