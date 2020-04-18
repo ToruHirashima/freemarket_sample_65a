@@ -26,14 +26,14 @@
               ¥
               = @item.price.to_s(:delimited, delimiter: ',')
               (税込)
-              - if @delivery.fee_burden_before_type_cast == 0
+              - if @item.delivery.fee_burden_before_type_cast == 0
                 送料込み
               - else
-                ＋(送料)                
+                ＋(送料)
+          - if @card_info.present?
+            %div= "カード情報：" + "**** **** **** " + @card_info.last4
+            %div= "有効期限：" + @card_info.exp_month.to_s + ' / ' + @card_info.exp_year.to_s
+                
           .buy-confirm__buy-item2__inner__form__user-info
-            = form_with url: new_item_order_path do
-              :plain
-                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_cd1c7e8dc721deb4e7542918" data-text="購入する" data-submit-text="購入する"></script>
-            -# 挙動確認のテスト用コードのため、以下、コメントアウト
-            -# = link_to item_orders_path(@item), method: :post, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
-            -#   .buy-confirm__buy-item2__inner__form__user-info__btn-default 購入する
+            = link_to item_orders_path(@item), method: :post, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
+              .buy-confirm__buy-item2__inner__form__user-info__btn-default 購入する
