@@ -5,16 +5,11 @@ class OrdersController < ApplicationController
   # 商品購入確認ページ
   def new
     @delivery = Delivery.find(params[:item_id])
-  end
-
-  def create
-    
     @item.update(status: 1)
     order = Order.new
     order.user_id = current_user.id
     order.item_id = @item.id
     order.save
-    redirect_to root_path
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
@@ -63,7 +58,8 @@ class OrdersController < ApplicationController
     Payjp::Charge.create(
       amount: @item.price,
       card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
-      currency: 'jpy'
+      currency: 'jpy' 
     ) 
+    redirect_to root_path
   end
 end
