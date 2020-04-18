@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     order.user_id = current_user.id
     order.item_id = @item.id
     order.save
-    redirect_to controller: 'orders', action: 'show', id: @item.id 
+    redirect_to controller: 'orders', action: 'index'
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
@@ -65,6 +65,6 @@ class OrdersController < ApplicationController
       amount: @item.price,
       card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
-    )
+    ) 
   end
 end
