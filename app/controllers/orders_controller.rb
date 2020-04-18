@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
   # 商品購入確認ページ
   def new
     @item = Item.find(params[:item_id])
+    @item.update(status: 1)
+    order = Order.new
+    order.user_id = current_user.id
+    order.item_id = @item.id
+    order.save
+    redirect_to controller: 'orders', action: 'show', id: @item.id
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
@@ -35,5 +41,25 @@ class OrdersController < ApplicationController
   private
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def set_image
+    @image = Image.find(params[:item_id])
+  end  
+
+  require 'payjp'
+
+  def purchase
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
+      currency: 'jpy'
+    )
+    redirect_to action: new
   end
 end
