@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update]
-  
+  before_action :set_item, :set_image
   # 商品購入確認ページ
   def new
+  end
+
+  def create
     @item = Item.find(params[:item_id])
     @item.update(status: 1)
     order = Order.new
