@@ -1,19 +1,20 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update]
-  before_action :set_image, :set_item, :set_delivery
+  before_action :set_image, :set_item,
 
   # 商品購入確認ページ
   def new
+    @delivery = Delivery.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    
     @item.update(status: 1)
     order = Order.new
     order.user_id = current_user.id
     order.item_id = @item.id
     order.save
-    redirect_to controller: 'orders', action: 'index'
+    redirect_to root_path
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
@@ -55,9 +56,7 @@ class OrdersController < ApplicationController
     @image = Image.find(params[:item_id])
   end
 
-  def set_delivery
-    @delivery = Delivery.find(params[:item_id])
-  end
+  require 'payjp'
 
   def purchase
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
