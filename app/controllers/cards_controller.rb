@@ -6,7 +6,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]  # PayjpオブジェクトにAPIキー（秘密鍵）を設定
     if params['payjp_token'].blank?  # トークンを取得できなかった場合（通信が成功している以上、このエラーが生じる可能性は低い）
       redirect_to new_card_path  # カード登録ページに戻る（場合によってはアラートを表示）
