@@ -51,8 +51,6 @@ class OrdersController < ApplicationController
     @image = Image.find(params[:item_id])
   end  
 
-  require 'payjp'
-
   def purchase
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
