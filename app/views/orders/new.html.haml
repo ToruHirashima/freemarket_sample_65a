@@ -5,7 +5,7 @@
     .buy-confirm__buy-item__inner
       .buy-confirm__buy-item__inner__item-box
         .buy-confirm__buy-item__inner__item-box__image
-          = image_tag "#{@item.images.first.url}", size: '5×5', class: 'image'
+          = image_tag "#{@item.images.first.url}", size: "200×200", class: 'image'
         .buy-confirm__buy-item__inner__item-box__detail
           .buy-confirm__buy-item__inner__item-box__detail__name
             = @item.name
@@ -26,32 +26,14 @@
               ¥
               = @item.price.to_s(:delimited, delimiter: ',')
               (税込)
-              - if @item.delivery.fee_burden == 0 then
+              - if @delivery.fee_burden_before_type_cast == 0
                 送料込み
               - else
-                + 送料
-
-          %section.buy-confirm__buy-item2__inner__form__content
-            .buy-confirm__buy-item2__inner__form__content__inner
-              %= form_with url: item_order_path do
-                :plain
-                  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_cd1c7e8dc721deb4e7542918" data-text="購入する" data-submit-text="購入する"></script>
-                .buy-confirm__buy-item2__inner__form__content__inner__info
-                  %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
-                  %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
-
-          %section.buy-confirm__buy-item2__inner__form__content
-            .buy-confirm__buy-item2__inner__form__content__inner
-              %h3.head{}
-                配送先
-                .buy-confirm__buy-item2__inner__form__content__inner__info
-                  %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
-                  %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
-
+                ＋(送料)                
           .buy-confirm__buy-item2__inner__form__user-info
-            %button{type: :button, name: :buy3, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-default"}
+            = form_with url: new_item_order_path do
+              :plain
+                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_cd1c7e8dc721deb4e7542918" data-text="購入する" data-submit-text="購入する"></script>
             -# 挙動確認のテスト用コードのため、以下、コメントアウト
             -# = link_to item_orders_path(@item), method: :post, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
             -#   .buy-confirm__buy-item2__inner__form__user-info__btn-default 購入する

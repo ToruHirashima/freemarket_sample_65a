@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update]
-  before_action :set_item, :set_image
+  before_action :set_image, :set_item, :set_delivery
+
   # 商品購入確認ページ
   def new
   end
@@ -12,7 +13,7 @@ class OrdersController < ApplicationController
     order.user_id = current_user.id
     order.item_id = @item.id
     order.save
-    redirect_to controller: 'orders', action: 'show', id: @item.id
+    redirect_to controller: orders, action: show, id: item_id 
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
@@ -52,7 +53,11 @@ class OrdersController < ApplicationController
 
   def set_image
     @image = Image.find(params[:item_id])
-  end  
+  end
+
+  def set_delivery
+    @delivery = Delivery.find(params[:item_id])
+  end
 
   def purchase
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -61,6 +66,5 @@ class OrdersController < ApplicationController
       card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
     )
-    redirect_to action: new
   end
 end
