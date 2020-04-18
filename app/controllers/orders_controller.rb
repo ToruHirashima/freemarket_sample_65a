@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     order.user_id = current_user.id
     order.item_id = @item.id
     order.save
-    redirect_to controller: orders, action: show, id: item_id 
+    redirect_to controller: 'orders', action: 'show', id: @item.id 
   end
 
   # 動作テスト用のため、createアクションはコメントアウト
