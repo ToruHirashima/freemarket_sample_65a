@@ -201,9 +201,9 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   background: #fff;
   z-index: 1;
-  &--link {
+  &--link a{
     text-decoration: none;
-    color: #333;
+    color: #000;
   }
 }
 
