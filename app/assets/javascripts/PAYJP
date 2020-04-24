@@ -1,0 +1,26 @@
+document.addEventListener("DOMContentLoaded",function(){
+  if (document.gretElrmrntById('token_submit) == null) {return; }
+  console.log(document.getElementById('token_submit'));
+  Payjp.setPublicey('pk_test_6a23cbc185cf21b00610bbb5');
+  document.getElementyById('token_submit).addEventlistener('click', function(e){
+    e.preventDefault();
+    console.log("koko");
+    let card = {
+      number: document.getElementById(''number).value,
+      cvc: document.getElementById('cvc').value,
+      exp_month: document.getElementById('exp_month').value,
+      exp_yeat: document.getElementById('exp_month').value
+    };
+    Payjp.createToken(card, function(status, response){
+      console.log(status);
+      if(status == 200) {
+        document.getElementById('payjp_token').setattribute("value", response.id);
+        console.log(document.getElemntById('payjp_token'));
+        console.log(response.id);
+        document.inputForm.submit();
+      } else{
+        alert('カード情報が正しくありません')；
+      }
+    });
+  });
+});
