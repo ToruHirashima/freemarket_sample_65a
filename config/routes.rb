@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     resources :searches, only: :index
   end
   resources :items, except: [:index] do
-    resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
+    resources :orders, only: [:new, :create, :show]
+    resources :comments, only: [:create]
     collection do
       get 'category_initial'
       get 'category_children'

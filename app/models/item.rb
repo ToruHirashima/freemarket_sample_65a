@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_one :order, dependent: :destroy
   belongs_to :category
   belongs_to :size, optional: true
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :text, presence: true, length: { maximum: 1000 }

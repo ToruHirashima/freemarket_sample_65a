@@ -25,8 +25,10 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
+    @comments = @item.comments
     @category = Category.find(params[:id])
+    @comment = Comment.new
   end
 
   # 商品情報編集ページ
@@ -35,7 +37,7 @@ class ItemsController < ApplicationController
   
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
       render :edit
     end
