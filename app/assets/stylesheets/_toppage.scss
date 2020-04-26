@@ -33,7 +33,8 @@ body {
 .header {
   padding: 0 60px;
   .header-inner {
-    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
     min-height: 80px;
     margin-top: 10px;
     .main-header {

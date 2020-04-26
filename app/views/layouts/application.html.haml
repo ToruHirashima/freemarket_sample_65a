@@ -19,9 +19,9 @@
           = link_to root_path do
             = image_tag "logo.png", class: "main-header__icon__img", alt: ""
         .main-header__search
-          = form_with method: :get, local: true do |f|
-            = f.text_field :key, class: "main-header__search__input", placeholder: "キーワードから探す"
-            = link_to image_tag "icon-search 1.png", class: "main-header__search__btn"
+          = form_with url: items_searches_path, method: :get, local: true do |f|
+            = f.text_field :keyword, class: "main-header__search__input", placeholder: "キーワードから探す", id: :search_input
+            = image_submit_tag "icon-search 1.png", class: "main-header__search__btn"
       .sub-header
         %ul.sub-header__left-list
           %li.sub-header__left-list__first

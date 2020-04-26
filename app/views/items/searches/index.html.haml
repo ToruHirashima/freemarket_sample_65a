@@ -1,0 +1,8 @@
+.main
+  .pickup-categories
+    .head
+      - if @keyword.present?
+        = "#{@keyword}の検索結果"
+    .products
+      .product-lists
+        = render "items/products"
