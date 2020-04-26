@@ -4,6 +4,8 @@ class CardsController < ApplicationController
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to card_path(card.first.id) if card.exists?
+    @payjp_public_key = ENV["PAYJP_KEY"]
+    # binding.pry
   end
 
   def create
