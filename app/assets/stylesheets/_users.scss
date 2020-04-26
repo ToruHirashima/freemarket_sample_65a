@@ -30,6 +30,14 @@
   }
 }
 
+@mixin User-field__require {
+  background-color: #ea352d;
+  color: #f8f8f8;
+  margin: 0 0 0 4px;
+  padding: 2px 4px;
+  font-size: 15px;
+}
+
 .User-Account-page {
   background-color: #eee;
   &__header {
@@ -123,11 +131,7 @@
       display: contents;
     }
     &__require {
-      background-color: #ea352d;
-      color: #f8f8f8;
-      margin: 0 0 0 4px;
-      padding: 2px 4px;
-      font-size: 15px;
+      @include User-field__require;
     }
     &__input {
       display: flex;
@@ -176,7 +180,10 @@
         display: contents;
       }
       &__require {
-        background-color: #ea352d;
+        @include User-field__require;
+      }
+      &__free {
+        background-color: #bfbfbf;
         color: #f8f8f8;
         margin: 0 0 0 4px;
         padding: 2px 4px;
@@ -239,4 +246,9 @@
 .User-identification__text {
   font-size: 14px;
   padding-bottom: 15px;
+}
+
+.field_with_errors {
+  display: contents;
+  // もしくは diplay: inline;
 }
