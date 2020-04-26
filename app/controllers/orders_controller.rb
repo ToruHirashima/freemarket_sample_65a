@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  require 'PAYJP'
+  require 'payjp'
   
   before_action :set_order, only: [:show, :update]
   before_action :set_item, only: [:new, :create, :update]
