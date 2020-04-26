@@ -20,6 +20,9 @@
           .detail-box-action__button 商品の編集
         = link_to item_path(@item), method: :delete, class: :"detail-box-action__link", data: {confirm: "削除しますか？"} do
           .detail-box-action__button.detail-box-action__button--gray この商品を削除する
+      - elsif @item.status == 1
+        = link_to root_path, class: :"detail-box-action__link" do
+          .detail-box-action__button.detail-box-action__button--red この商品は完売しました
       - else
         = link_to new_item_order_path(@item), class: :"detail-box-action__link" do
           .detail-box-action__button 購入画面に進む

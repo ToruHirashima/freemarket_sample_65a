@@ -5,16 +5,15 @@
     .buy-confirm__buy-item__inner
       .buy-confirm__buy-item__inner__item-box
         .buy-confirm__buy-item__inner__item-box__image
-          = image_tag '/sample.png', alt: " ",size:'80x74'
+          = image_tag "#{@item.images.first.url}", size: "200×200", class: 'image'
         .buy-confirm__buy-item__inner__item-box__detail
           .buy-confirm__buy-item__inner__item-box__detail__name
-            【再入荷】XXXXXXXX3点セット
+            = @item.name
           .buy-confirm__buy-item__inner__item-box__detail__price
             %span
-              ¥550
-            %span.buy-confirm__buy-item__inner__item-box__detail__price__fee
-              （税込）送料込み
-
+              ¥
+              = @item.price.to_s(:delimited, delimiter: ',')
+              (税込)
   %section.buy-confirm__buy-item2
     .buy-confirm__buy-item2__inner
       %form.buy-confirm__buy-item2__inner__form
@@ -24,33 +23,16 @@
               支払い金額
             .buy-confirm__buy-item2__inner__form__price-table__row__cell2
               %span
-                ¥550
-          %ul.buy-confirm__buy-item2__inner__form__accordion
-            %li.accordion-parent
-              .checkbox-default.buy-use-point
-                %input{type: :checkbox, name:"hoge", value: "1"}
-                  ポイントを使用 (所持ポイント: P＊)
-
-          %section.buy-confirm__buy-item2__inner__form__content
-            .buy-confirm__buy-item2__inner__form__content__inner
-              %h3.head{}
-                支払い方法
-                .buy-confirm__buy-item2__inner__form__content__inner__info
-                  %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
-                  %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
-
-          %section.buy-confirm__buy-item2__inner__form__content
-            .buy-confirm__buy-item2__inner__form__content__inner
-              %h3.head{}
-                配送先
-                .buy-confirm__buy-item2__inner__form__content__inner__info
-                  %i.buy-confirm__buy-item2__inner__form__content__inner__info__icon
-                  %span.buy-confirm__buy-item2__inner__form__content__inner__info__register
-                    登録してください
-
+              ¥
+              = @item.price.to_s(:delimited, delimiter: ',')
+              (税込)
+              - if @item.delivery.fee_burden_before_type_cast == 0
+                送料込み
+              - else
+                ＋(送料)
+        -if @card_info.present?
+          %div= "カード情報:" + "**** **** **** " + @card_info.last4
+          %div= "有効期限:" + @card_info.exp_month.to_s + ' / ' + @card_info.exp_year.to_s                
           .buy-confirm__buy-item2__inner__form__user-info
-            -# %button{type: :button, name: :buy3, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-default"}
-            -# 挙動確認のテスト用コードのため、以下、コメントアウト（一旦マージ）
-            = link_to item_orders_path(@item), method: :post, class: :"buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
-              .buy-confirm__buy-item2__inner__form__user-info__btn-default 購入する
+            = link_to item_orders_path(@item), method: :post, class: "buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
+              .buy-confirm__buy-item2__inner__form__user-info__btn-link 購入する          

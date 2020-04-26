@@ -84,4 +84,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'ancestry'
-gem "gretel"
+gem 'payjp'
+gem 'gretel'

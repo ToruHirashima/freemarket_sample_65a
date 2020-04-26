@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root to: 'items#index'
+  namespace :items do
+    resources :searches, only: :index
+  end
   resources :items, except: [:index] do
     resources :orders  # only: [:new] としても良さそうですが一旦全アクションを実装
     collection do
@@ -27,4 +30,5 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: [:index, :show]
+  resources :cards
 end
