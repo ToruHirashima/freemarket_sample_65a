@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   if (document.getElementById('token_submit') == null) { return; }
   console.log(document.getElementById('token_submit'));
-  Payjp.setPublicKey('pk_test_cd1c7e8dc721deb4e7542918');
+  Payjp.setPublicKey('pk_test_624210997c776c987509d911');
   document.getElementById('token_submit').addEventListener('click', function(e){
     e.preventDefault();
     console.log("koko");
