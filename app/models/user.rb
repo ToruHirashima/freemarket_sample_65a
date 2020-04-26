@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # has_one :sns_credential, dependent: :destroy
 
   # validation
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 255 }
   validates :email, format: { with: /\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+/i}, presence: true, uniqueness: true
   validates :password, presence: true
   validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }, presence: true
