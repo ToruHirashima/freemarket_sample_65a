@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   if (document.getElementById('token_submit') == null) { return; }
-  console.log(document.getElementById('token_submit'));
-  Payjp.setPublicKey('pk_test_cd1c7e8dc721deb4e7542918');
+  let key = document.getElementById('payjp_public_key').value;
+  Payjp.setPublicKey(key);
   document.getElementById('token_submit').addEventListener('click', function(e){
     e.preventDefault();
     console.log("koko");
@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(status);
       if(status == 200) {
         document.getElementById('payjp_token').setAttribute("value", response.id);
-        console.log(document.getElementById('payjp_token'));
-        console.log(response.id);
         document.inputForm.submit();
       } else{
         alert('カード情報が正しくありません');
