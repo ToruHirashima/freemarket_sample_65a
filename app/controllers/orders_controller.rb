@@ -12,21 +12,21 @@ class OrdersController < ApplicationController
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
-      @card_info = customer.cards.retrieve(card.card_id)
+      @card_info = customer.cards.retrieve(card.credit_id)
     end
   end
 
   def create
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Psyjp::Charge.create(
+    Payjp::Charge.create(
       :amount => @item.price,
       :customer => card.customer_id,
       :currency => 'jpy'
     )
-    @order = Order.new(item_id: paramas[:item_id], user_id: current_user.id)
+    @order = Order.new(item_id: params[:item_id], user_id: current_user.id)
     if @order.save
-      @item = Item.find(params[item_id])
+      @item = Item.find(params[:item_id])
       @item.update(status: 1)
     else
       render :new

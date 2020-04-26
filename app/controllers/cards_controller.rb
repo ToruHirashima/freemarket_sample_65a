@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
   require "payjp"
+
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to cards_path(card.first.id) if card.exists?
+    redirect_to card_path(card.first.id) if card.exists?
   end
 
   def create

@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+describe CardsController, type: :controller do |variable|
+  describre 'GET'      
+  end
 # Specs in this file have access to a helper object that includes
 # the CardsHelper. For example:
 #
