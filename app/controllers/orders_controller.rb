@@ -1,21 +1,35 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update]
+  require 'payjp'
   
+  before_action :set_order, only: [:show, :update]
+  before_action :set_item, only: [:new, :create, :update]
+
   # 商品購入確認ページ
   def new
-    @item = Item.find(params[:item_id])
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to new_card_path
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card_info = customer.cards.retrieve(card.credit_id)
+    end
   end
 
-  # 動作テスト用のため、createアクションはコメントアウト
   def create
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+      :amount => @item.price,
+      :customer => card.customer_id,
+      :currency => 'jpy'
+    )
     @order = Order.new(item_id: params[:item_id], user_id: current_user.id)
     if @order.save
-      # 失敗した場合にロールバックする処理が必要
-      @item= Item.find(params[:item_id])
+      @item = Item.find(params[:item_id])
       @item.update(status: 1)
-      redirect_to root_path
     else
-      render :new  # 不要（一応残しておく）
+      render :new
     end
   end
 
@@ -23,7 +37,7 @@ class OrdersController < ApplicationController
   end
   
   def update
-    @item = Item.find(params[:item_id])
+    # @item = Item.find(params[:item_id])
     if @item.update(status: 2)
       redirect_to item_order_path
     else
@@ -35,5 +49,9 @@ class OrdersController < ApplicationController
   private
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
