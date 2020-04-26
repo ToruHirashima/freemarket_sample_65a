@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
-    # @item = Item.find(params[:id])
     @comments = @item.comments
     @category = Category.find(params[:id])
     @comment = Comment.new
