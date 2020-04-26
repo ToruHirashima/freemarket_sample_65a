@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe address do
+describe Address do
   describe '#create' do
     # 1. 必須項目が全て存在すれば登録できること
     it "is valid for all" do
