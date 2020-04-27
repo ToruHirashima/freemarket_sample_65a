@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show, :edit]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
 
   # トップページ
@@ -31,6 +32,7 @@ class ItemsController < ApplicationController
 
   # 商品情報編集ページ
   def edit
+    redirect_to item_path(@item) if @item.user_id != current_user.id || @item.status > 0
   end
   
   def update
@@ -43,6 +45,7 @@ class ItemsController < ApplicationController
 
   # 商品削除
   def destroy
+    redirect_to root_path if @item.user_id != current_user.id
     if @item.destroy
       redirect_to root_path
     else
@@ -79,5 +82,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to root_path unless user_signed_in?
   end
 end
