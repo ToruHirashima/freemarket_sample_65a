@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   # トップページ
   def index
-    @items = Item.all.includes(:images)
+    @items = Item.all.includes(:images).where.not(status: "2")
   end
 
   # 商品出品ページ
@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
-    @item = Item.find(params[:id])
     @category = Category.find(params[:id])
+    @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
   end
 
   # 商品情報編集ページ（編集できるのは出品者であること、かつ、取引が成立していないこと）
