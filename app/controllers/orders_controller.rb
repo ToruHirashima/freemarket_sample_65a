@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   require 'payjp'
   
+  before_action :move_to_user_registration
   before_action :set_order, only: [:show, :update]
-  before_action :move_to_index
   before_action :set_item, only: [:new, :create, :update]
 
   # 商品購入確認ページ
@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def move_to_index
-    redirect_to root_path unless user_signed_in?
+  def move_to_user_registration
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 end
