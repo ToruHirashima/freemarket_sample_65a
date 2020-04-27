@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   require 'payjp'
   
+  before_action :move_to_user_registration
   before_action :set_order, only: [:show, :update]
   before_action :set_item, only: [:new, :create, :update]
 
@@ -34,10 +35,10 @@ class OrdersController < ApplicationController
   end
 
   def show
+    redirect_to root_path if @order.user_id != current_user.id && @order.item.user_id != current_user.id
   end
   
   def update
-    # @item = Item.find(params[:item_id])
     if @item.update(status: 2)
       redirect_to item_order_path
     else
@@ -53,5 +54,9 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_user_registration
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 end
