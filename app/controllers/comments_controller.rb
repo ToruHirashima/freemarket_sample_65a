@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :move_to_user_registration
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
@@ -14,5 +15,9 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:body).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def move_to_user_registration
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 end
