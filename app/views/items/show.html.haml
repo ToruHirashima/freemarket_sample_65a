@@ -5,6 +5,8 @@
     .detail-box-heading
       = @item.name
     .detail-box-photo
+      - if @item.status >= 1  # 売買状態が、売却済みの場合
+        .product-list__img--sold
       = image_tag @item.images.first.url.url, alt: 'main_photo', class: :"detail-box-photo__main"
       .detail-box-photo__sub
         - @item.images.each do |image|
@@ -77,9 +79,9 @@
       %button{type: :button, name: :bookmark, class: :"detail-box-button-container__bookmark"}
         = icon 'fa', 'star'
         お気に入り 0
-      = link_to '#', class: :"detail-box-button-container__report" do
-        = icon 'fa', 'flag'
-        不適切な商品の通報
+      -# = link_to '#', class: :"detail-box-button-container__report" do
+      -#   = icon 'fa', 'flag'
+      -#   不適切な商品の通報
   = form_with(url: '#', local: true, method: :get, class: :"detail-comment") do |f|
     = f.text_area :comment, class: :"detail-comment__textbox"
     .detail-comment__notice
@@ -89,12 +91,12 @@
         = icon 'fa', 'comment'
         コメントする
   .detail-link
-    = link_to '#', class: :"detail-link__text" do
-      = icon 'fa', 'angle-left'
-      前の商品
-    = link_to '#', class: :"detail-link__text" do
-      次の商品
-      = icon 'fa', 'angle-right'
+  -#   = link_to '#', class: :"detail-link__text" do
+  -#     = icon 'fa', 'angle-left'
+  -#     前の商品
+  -#   = link_to '#', class: :"detail-link__text" do
+  -#     次の商品
+  -#     = icon 'fa', 'angle-right'
   .detail-category-items
     .detail-category-items__head
       = link_to '家電・スマホ・カメラをもっと見る', '#', class: :"detail-category-items__link"
