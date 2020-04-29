@@ -5,12 +5,13 @@
     .detail-box-heading
       = @item.name
     .detail-box-photo
-      - if @item.status >= 1  # 売買状態が、売却済みの場合
-        .product-list__img--sold
-      = image_tag @item.images.first.url.url, alt: 'main_photo', class: :"detail-box-photo__main"
-      .detail-box-photo__sub
-        - @item.images.each do |image|
-          = image_tag image.url.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
+      .detail-box-photo__wrap
+        - if @item.status >= 1  # 売買状態が、売却済みの場合
+          .detail-box-photo__sold
+        = image_tag @item.images.first.url.url, alt: 'main_photo', class: :"detail-box-photo__main"
+        .detail-box-photo__sub
+          - @item.images.each do |image|
+            = image_tag image.url.url, alt: 'sub_photo', class: :"detail-box-photo__tmb"
 
     .detail-box-price
       .detail-box-price__main
