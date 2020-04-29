@@ -113,12 +113,13 @@
     = link_to '#', class: :"detail-link__text" do
       次の商品
       = icon 'fa', 'angle-right'
-  - if @item.category.is_childless? && @item.category.has_parent? # 自身に子がいない かつ 親がいる = 孫カテゴリまで登録した場合
-    = link_to "#{@item.category.root.category}・#{@item.category.parent.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
-  - elsif @item.category.has_parent? && @item.category.has_children? # 自身に子がいる かつ 親がいる = 子カテゴリまで登録した場合
-    = link_to "#{@item.category.root.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
-  - else # 上記に当てはまらない = 親カテゴリのみ登録した場合
-    = link_to "#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
+  .detail-category-items
+    - if @item.category.is_childless? && @item.category.has_parent? # 自身に子がいない かつ 親がいる = 孫カテゴリまで登録した場合
+      = link_to "#{@item.category.root.category}・#{@item.category.parent.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-items__link"
+    - elsif @item.category.has_parent? && @item.category.has_children? # 自身に子がいる かつ 親がいる = 子カテゴリまで登録した場合
+      = link_to "#{@item.category.root.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-items__link"
+    - else # 上記に当てはまらない = 親カテゴリのみ登録した場合
+      = link_to "#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-items__link"
   .detail-category-items
     .detail-category-items__head
     - @items.each do |item|
