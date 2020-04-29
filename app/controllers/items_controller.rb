@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
-    @category = Category.find(params[:id])
     @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
   end
 

@@ -36,5 +36,9 @@
           %div= "カード情報:" + "**** **** **** " + @card_info.last4
           %div= "有効期限:" + @card_info.exp_month.to_s + ' / ' + @card_info.exp_year.to_s                
           .buy-confirm__buy-item2__inner__form__user-info
+          - if @item.status == 0
             = link_to item_orders_path(@item), method: :post, class: "buy-confirm__buy-item2__inner__form__user-info__btn-link", data: {confirm: "購入しますか？"} do
-              .buy-confirm__buy-item2__inner__form__user-info__btn-link 購入する          
+              .buy-confirm__buy-item2__inner__form__user-info__btn-link 購入する
+          - else          
+            = link_to root_path, class: "buy-confirm__buy-item2__inner__form__user-info__soldout-link" do
+              .buy-confirm__buy-item2__inner__form__user-info__soldout-link この商品は完売しました

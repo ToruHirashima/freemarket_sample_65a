@@ -7,13 +7,17 @@ class OrdersController < ApplicationController
 
   # 商品購入確認ページ
   def new
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to new_card_path
+    if current_user.id == @item.user_id
+      redirect_to root_path
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @card_info = customer.cards.retrieve(card.credit_id)
+      card = Card.where(user_id: current_user.id).first
+      if card.blank?
+        redirect_to new_card_path
+      else
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @card_info = customer.cards.retrieve(card.credit_id)
+      end
     end
   end
 
