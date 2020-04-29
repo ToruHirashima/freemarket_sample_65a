@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_one :delivery, dependent: :destroy
   accepts_nested_attributes_for :delivery
   has_one :order, dependent: :destroy
-  belongs_to :category
+  belongs_to :category, optional: true
   belongs_to :size, optional: true
 
   validates :name, presence: true, length: { maximum: 255 }
