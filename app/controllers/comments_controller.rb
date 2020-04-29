@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     else
       @item = Item.find(params[:item_id])
       @category = Category.find(params[:item_id])
+      @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
       flash.now[:alert] = @comment.errors.full_messages
       render "items/show"
     end
