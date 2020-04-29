@@ -274,18 +274,17 @@ $light_gray: #f8f8f8;
   }
 }
 
-.detail-category-item__link {
-  @include fo_nodec_col($light_green);
-  font-size: 22px;
-  font-weight: bold;
-  padding-left: 300px;
-}
 .detail-category-items {
   width: 700px;
   margin: 0 auto;
   display: flex;
   justify-content: start;
   overflow-x: auto;
+  &__link {
+    @include fo_nodec_col($light_green);
+    font-size: 22px;
+    font-weight: bold;
+  }
   &__head {
     font-size: 22px;
     font-weight: bold;
