@@ -26,6 +26,8 @@ class ItemsController < ApplicationController
 
   # 商品詳細ページ
   def show
+    @comments = @item.comments
+    @comment = Comment.new
     @category = Category.find(params[:id])
     @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
   end
@@ -37,7 +39,7 @@ class ItemsController < ApplicationController
   
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
       render :edit
     end

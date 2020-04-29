@@ -15,7 +15,11 @@
     .detail-box-price
       .detail-box-price__main
         = "¥#{@item.price.to_s(:delimited, delimiter: ',')}"
-      .detail-box-price__sub (税込) 送料込み
+      .detail-box-price__sub
+        - if @item.delivery.fee_burden_before_type_cast == 0
+          (税込) 送料込み
+        - else
+          (税込) 着払い
     .detail-box-action
       - if @item.status > 0
         = link_to root_path, class: :"detail-box-action__link" do
@@ -82,12 +86,24 @@
       = link_to '#', class: :"detail-box-button-container__report" do
         = icon 'fa', 'flag'
         不適切な商品の通報
-  = form_with(url: '#', local: true, method: :get, class: :"detail-comment") do |f|
-    = f.text_area :comment, class: :"detail-comment__textbox"
+  = form_with model: [@item, @comment], local: true, class: :"detail-comment" do |f|
+    - if @item.comments.length > 0
+      - @item.comments.each do |comment|
+        .detail-comment__wrap
+          .detail-comment__left
+            = image_tag 'icon/member_photo_noimage_thumb.png', alt: 'item_photo', class: :'detail-comment__icon'
+            - if @item.user_id == comment.user_id
+              .detail-comment__exhibitor 出品者
+          .detail-comment__right
+            .detail-comment__nickname= comment.user.nickname
+            .detail-comment__body
+              = comment.body
+              .detail-comment__body--time= elapsed_time(comment.created_at)
+    = f.text_area :body, class: :"detail-comment__textbox"
     .detail-comment__notice
       相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となることがあります。
     .detail-comment__button
-      %button{type: :submit, class: :"detail-comment__submit"}
+      = button_tag type: 'submit', class: 'detail-comment__submit' do
         = icon 'fa', 'comment'
         コメントする
   .detail-link
