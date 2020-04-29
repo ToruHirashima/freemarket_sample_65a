@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :move_to_index
   before_action :set_orders, except: [:exhibitor_sale, :exhibitor_progress, :exhibitor_complete, :logout]
   before_action :set_items, only: [:exhibitor_sale, :exhibitor_progress, :exhibitor_complete]
 
@@ -36,5 +37,9 @@ class UsersController < ApplicationController
 
   def set_items
     @items = Item.joins("LEFT OUTER JOIN orders ON items.id = orders.item_id").where('items.user_id = ?', current_user.id).order(created_at: "DESC")
+  end
+
+  def move_to_index
+    redirect_to root_path unless user_signed_in?
   end
 end

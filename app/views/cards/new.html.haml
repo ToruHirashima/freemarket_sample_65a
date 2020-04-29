@@ -1,8 +1,10 @@
+- content_for(:html_title) {"クレジットカード情報登録 - FreemarketSample65a"}
+
 .cardinfo
   カード情報の登録
 .cardinfo_form
   %label カード番号
-  = text_field_tag 'number', '', placeholder: '半角数字のみ', maxlength: '16'
+  = text_field_tag 'number', '', placeholder: '半角数字のみ', maxlength: '16', class: :cardinfo_text
   %br
   %label 有効期限
   = select_tag :exp_month, options_for_select([['01', 1], ['02', 2], ['03', 3], ['04', 4], ['05', 5], ['06', 6], ['07', 7], ['08', 8], ['09', 9], ['10', 10], ['11', 11], ['12', 12]]), {prompt: '--'}
@@ -11,7 +13,7 @@
   %span 年
   %br
   %label セキュリティコード
-  = text_field_tag 'cvc', '', placeholder: 'カード背面3〜4桁の番号', maxlength: '4'
+  = text_field_tag 'cvc', '', placeholder: 'カード背面3〜4桁の番号', maxlength: '4', class: :cardinfo_text
   = form_tag cards_path, method: :post, name: 'inputForm' do
     = hidden_field_tag :payjp_token
     %br

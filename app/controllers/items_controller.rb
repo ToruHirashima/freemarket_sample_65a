@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
+  before_action :move_to_user_registration, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
 
   # トップページ
   def index
-    @items = Item.all.includes(:images)
+    @items = Item.all.includes(:images).where.not(status: "2")
   end
 
   # 商品出品ページ
@@ -26,12 +27,14 @@ class ItemsController < ApplicationController
   # 商品詳細ページ
   def show
     @comments = @item.comments
-    @category = Category.find(params[:id])
     @comment = Comment.new
+    @category = Category.find(params[:id])
+    @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
   end
 
-  # 商品情報編集ページ
+  # 商品情報編集ページ（編集できるのは出品者であること、かつ、取引が成立していないこと）
   def edit
+    redirect_to item_path(@item) unless @item.user_id == current_user.id && @item.status == 0
   end
   
   def update
@@ -42,8 +45,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 商品削除
+  # 商品削除（削除できるのは出品者であること、かつ、取引が成立していないこと）
   def destroy
+    redirect_to root_path unless @item.user_id == current_user.id && @item.status == 0
     if @item.destroy
       redirect_to root_path
     else
@@ -80,5 +84,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_user_registration
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 end

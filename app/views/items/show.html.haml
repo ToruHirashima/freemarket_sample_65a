@@ -1,3 +1,5 @@
+- content_for(:html_title) {"#{@item.name}(¥#{@item.price}) - FreemarketSample65a"}
+
 - breadcrumb :item_show
 = render 'shared/nav_bar'
 .details
@@ -19,14 +21,14 @@
         - else
           (税込) 着払い
     .detail-box-action
-      - if user_signed_in? && current_user.id == @item.user_id
+      - if @item.status > 0
+        = link_to root_path, class: :"detail-box-action__link" do
+          .detail-box-action__button.detail-box-action__button--red この商品は完売しました
+      - elsif user_signed_in? && current_user.id == @item.user_id
         = link_to edit_item_path(@item), class: :"detail-box-action__link" do
           .detail-box-action__button 商品の編集
         = link_to item_path(@item), method: :delete, class: :"detail-box-action__link", data: {confirm: "削除しますか？"} do
           .detail-box-action__button.detail-box-action__button--gray この商品を削除する
-      - elsif @item.status >= 1
-        = link_to root_path, class: :"detail-box-action__link" do
-          .detail-box-action__button.detail-box-action__button--red この商品は完売しました
       - else
         = link_to new_item_order_path(@item), class: :"detail-box-action__link" do
           .detail-box-action__button 購入画面に進む
@@ -111,27 +113,23 @@
     = link_to '#', class: :"detail-link__text" do
       次の商品
       = icon 'fa', 'angle-right'
+  - if @item.category.is_childless? && @item.category.has_parent? # 自身に子がいない かつ 親がいる = 孫カテゴリまで登録した場合
+    = link_to "#{@item.category.root.category}・#{@item.category.parent.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
+  - elsif @item.category.has_parent? && @item.category.has_children? # 自身に子がいる かつ 親がいる = 子カテゴリまで登録した場合
+    = link_to "#{@item.category.root.category}・#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
+  - else # 上記に当てはまらない = 親カテゴリのみ登録した場合
+    = link_to "#{@item.category.category}をもっと見る", category_path(@item.category_id), class: :"detail-category-item__link"
   .detail-category-items
     .detail-category-items__head
-      = link_to '家電・スマホ・カメラをもっと見る', '#', class: :"detail-category-items__link"
-    .detail-category-items__container
-      = link_to item_path(1), class: :"detail-category-items__box" do
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
-        .detail-category-items__content
-          .detail-category-items__content--name Curry Rice
-          .detail-category-items__content--price ¥880
-      = link_to item_path(1), class: :"detail-category-items__box" do
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
-        .detail-category-items__content
-          .detail-category-items__content--name Curry Rice
-          .detail-category-items__content--price ¥880
-      = link_to item_path(1), class: :"detail-category-items__box" do
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
-        .detail-category-items__content
-          .detail-category-items__content--name Curry Rice
-          .detail-category-items__content--price ¥880
-      = link_to item_path(1), class: :"detail-category-items__box" do
-        = image_tag '/temp/a001.png', alt: 'main_photo', class: :"detail-category-items__photo"
-        .detail-category-items__content
-          .detail-category-items__content--name Curry Rice
-          .detail-category-items__content--price ¥880
+    - @items.each do |item|
+      .detail-category-items__container
+        = link_to item_path(item.id), class: :"detail-category-items__box" do
+          = image_tag item.images.first.url.url, alt: "商品画像", class: :"detail-category-items__photo"
+          - if item.status == 1  # 売買状態が、売却済みの場合
+            .detail-category-items__photo--sold
+          .detail-category-items__content
+            .detail-category-items__content--name
+              = item.name
+            .detail-category-items__content--price
+              %ul
+                %li= "#{item.price}円"

@@ -1,3 +1,5 @@
+- content_for(:html_title) {"#{@category.category}の商品一覧(#{@category.root.category}) - FreemarketSample65a"}
+
 - breadcrumb :category_show, @category
 = render 'shared/nav_bar'
 .categories-list
