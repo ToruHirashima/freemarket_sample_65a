@@ -8,15 +8,14 @@
           アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", new_registration_path(resource_name), class: 'User-contents__head__create'
       .User-contents__inner
-        %button#facebook-login.User-contents__inner--facebook
-          = icon('fab','facebook-square')
-          Facebookでログイン
-        = button_to user_google_oauth2_omniauth_authorize_path, class: 'User-contents__inner--google', id: '#google-login' do
-          Googleでログイン
-          = icon('fab','google')
-        -# %button#google-login.User-contents__inner--google
-        -#   Googleでログイン
-        -#   = icon('fab','google')
+        .User-contents__sns
+          -# = button_to user_facebook_omniauth_authorize_path, class: 'User-contents__inner--facebook', id: 'acebook-login' do
+          = button_to '', class: 'User-contents__inner--facebook', id: 'acebook-login' do
+            Facebookでログイン
+            = icon('fab','facebook-square')
+          = button_to user_google_oauth2_omniauth_authorize_path, class: 'User-contents__inner--google', id: 'google-login' do
+            Googleでログイン
+            = icon('fab','google')
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .User-field
           .User-field__input
