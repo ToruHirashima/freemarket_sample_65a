@@ -11,9 +11,12 @@
         %button#facebook-login.User-contents__inner--facebook
           = icon('fab','facebook-square')
           Facebookでログイン
-        %button#google-login.User-contents__inner--google
+        = button_to user_google_oauth2_omniauth_authorize_path, class: 'User-contents__inner--google', id: '#google-login' do
           Googleでログイン
           = icon('fab','google')
+        -# %button#google-login.User-contents__inner--google
+        -#   Googleでログイン
+        -#   = icon('fab','google')
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .User-field
           .User-field__input
