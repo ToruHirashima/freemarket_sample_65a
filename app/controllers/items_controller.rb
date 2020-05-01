@@ -28,8 +28,8 @@ class ItemsController < ApplicationController
   def show
     @comments = @item.comments
     @comment = Comment.new
-    @category = Category.find(params[:id])
     @items = Item.includes(:images).where(category_id: @item.category.subtree_ids).order("id ASC").where.not(status: "2")
+    @like = Like.new
   end
 
   # 商品情報編集ページ（編集できるのは出品者であること、かつ、取引が成立していないこと）

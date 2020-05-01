@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :size, optional: true
   has_many :comments, dependent: :destroy
+  has_many :likes
+  has_many :users, through: :likes
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :text, presence: true, length: { maximum: 1000 }

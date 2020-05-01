@@ -13,5 +13,5 @@
             %li= "#{item.price}円"
             %li
               = icon('fa', 'star')
-              0
+              = Like.where(item_id: item.id).count
           %p (税込)

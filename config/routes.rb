@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :items, except: [:index] do
     resources :orders, only: [:new, :create, :show, :update]
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy]
     collection do
       get 'category_initial'
       get 'category_children'
