@@ -3,6 +3,8 @@
 .User-Account-page
   .User-Account-page__content
     .User-contents
+      = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
+      = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
       %h2.User-contents__head
         会員情報入力
       = form_for(@user, url: user_registration_path) do |f|

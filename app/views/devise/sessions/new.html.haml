@@ -10,10 +10,10 @@
       .User-contents__inner
         %button#facebook-login.User-contents__inner--facebook
           = icon('fab','facebook-square')
-          Facebookでログイン
+          = link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post
         %button#google-login.User-contents__inner--google
-          Googleでログイン
           = icon('fab','google')
+          = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .User-field
           .User-field__input
