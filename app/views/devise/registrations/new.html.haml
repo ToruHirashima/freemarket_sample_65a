@@ -3,8 +3,14 @@
 .User-Account-page
   .User-Account-page__content
     .User-contents
-      = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
-      = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
+      .User-contents__inner
+        .User-contents__sns
+          = button_to user_facebook_omniauth_authorize_path, class: 'User-contents__inner--facebook' do
+            Facebookで登録
+            = icon('fab','facebook-square')
+          = button_to user_google_oauth2_omniauth_authorize_path, class: 'User-contents__inner--google' do
+            Googleで登録
+            = icon('fab','google')
       
       %h2.User-contents__head
         会員情報入力
@@ -16,20 +22,23 @@
             必須
           .User-field__input
             = f.text_field :nickname, placeholder: '例)フリマ太郎', autofocus: true, class: 'User-field__input--inner'
-        .User-field
-          .User-field__label
-            = f.label :email, "メールアドレス"
-          %span.User-field__require
-            必須
-          .User-field__input
-            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'User-field__input--inner'
-        .User-field
-          .User-field__label
-            = f.label :password, "パスワード"
-          %span.User-field__require
-            必須
-          .User-field__input
-            = f.password_field :password, placeholder: '英数字7文字以上', autocomplete: "off", class: 'User-field__input--inner'
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .User-field
+            .User-field__label
+              = f.label :password, "パスワード"
+            %span.User-field__require
+              必須
+            .User-field__input
+              = f.password_field :password, placeholder: '英数字7文字以上', autocomplete: "off", class: 'User-field__input--inner'
+          .User-field
+            .User-field__label
+              = f.label :password_confirmation, "パスワード（確認）"
+            %span.User-field__require
+              必須
+            .User-field__input
+              = f.password_field :password_confirmation, autocomplete: "off", class: 'User-field__input--inner'
         .User-field
           .User-field__label
             = f.label :password_confirmation, "パスワード（確認）"
