@@ -14,7 +14,7 @@ class User < ApplicationRecord
       sns.user = user
       sns.save
     end
-    user
+    { user: user, sns: sns }
   end
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
