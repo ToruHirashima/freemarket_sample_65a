@@ -17,8 +17,8 @@ class Item < ApplicationRecord
   enum condition: [:'新品、未使用', :'未使用に近い', :'目立った傷や汚れなし', :'やや傷や汚れあり', :'傷や汚れあり', :'全体的に状態が悪い']
 
   def self.search(search)
-    return Item.all unless search
+    return Item.where.not(status: 2) unless search
     search = "%#{search}%"
-    Item.find_by_sql(["select * from items where text like ? or name like ?", search, search])
+    Item.find_by_sql(["select * from items where items.status < 2 and (text like ? or name like ?)", search, search])
   end
 end
