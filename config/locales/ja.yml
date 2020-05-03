@@ -9,7 +9,7 @@ ja:
         price: '販売価格'
         brand_name: 'ブランド名'
         images: '商品画像'
-        category: '商品カテゴリ'
+        category_id: '商品カテゴリ'
       delivery:
         fee_burden: '配送料の負担'
         service: '配送の方法'
