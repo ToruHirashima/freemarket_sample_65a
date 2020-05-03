@@ -3,11 +3,15 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.create(user_id: current_user.id, item_id: @item.id)
+    render :json
+    end
   end
 
   def destroy
     @like = Like.find_by(user_id: current_user.id, item_id: @item.id)
-    @like.destroy
+    @like_delete = @like.destroy
+    render :json
+    end
   end
 
   private

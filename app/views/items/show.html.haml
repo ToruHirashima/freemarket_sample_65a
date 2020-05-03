@@ -73,19 +73,18 @@
         %tr
           %th.detail-box-table__th 発送元の地域
           %td.detail-box-table__td
-            = link_to '#', class: :"detail-box-table__link" do
-              = @item.delivery.area
+            = @item.delivery.area
         %tr
           %th.detail-box-table__th 発送日の目安
           %td.detail-box-table__td
             = @item.delivery.handling_time
     .detail-box-button-container
     - if Like.exists?(user_id: current_user.id, item_id: @item.id)
-      = button_to item_like_path(@item), method: :delete, name: :bookmark, class: "detail-box-button-container__bookmark" do
+      = button_to item_like_path(@item), method: :delete, id: "delete_star", name: :bookmark, class: "detail-box-button-container__bookmark", remote:true do
         = icon 'fa', 'star'
         お気に入りから削除
     - else
-      = button_to item_likes_path(@item), method: :post, name: :bookmark, class: "detail-box-button-container__bookmark" do
+      = button_to item_likes_path(@item), method: :post, id: "star", name: :bookmark, class: "detail-box-button-container__bookmark", remote: true do
         = icon 'far fa', 'star'
         お気に入りに登録
       = link_to '#', class: :"detail-box-button-container__report" do
