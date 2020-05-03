@@ -5,6 +5,9 @@ $(document).on('turbolinks:load', ()=> {
     dataType: "json"
   })
   .done(function(data) {
+    bookMark(data);
+  });
+  function bookMark(data) {
     $('#create_star').on("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -30,7 +33,7 @@ $(document).on('turbolinks:load', ()=> {
           $('#detail__star').addClass('far fa fa-star');
           $('#detail__star-text').html("お気に入り " + data.count);
         })
-      }
+      };
     });
-  });
+  };
 }); 
