@@ -1,28 +1,31 @@
 $(document).on('turbolinks:load', ()=> {
-  $(function () {
-    $('#create_star').on("click", function(e) {
-      e.preventDefault();
-      let url = location.href + "/likes"
-      console.log(url);
+  $('#create_star').on("click", function(e) {
+    e.preventDefault();
+    if ($('#detail__star').attr("class") == 'far fa fa-star') {
       $.ajax({
-        url: url,
+        url: location.href + "/likes",
         type: "POST",
-        // data: {},
         dataType: "json"
       })
       .done(function(data) {
-        console.log(data);
         $('#detail__star').removeClass();
         $('#detail__star').addClass('fa fa-star');
         $('#detail__star-text').html("お気に入り " + data.count);
       })
-    });
-    // $('#star').on("ajax:success", function(){
-    //   if ($('.detail-box-button-container__bookmark').hasId('#star')) {
-    //     $('.detail-box-button-container__bookmark').removeId('#star').addId('#delete_star');
-    //   } else {
-    //     $('.detail-box-button-container__bookmark').removeId('#delete_star').addId('#star');
-    //   }
-    // });
+    } else {
+      $.ajax({
+        url: location.href + "/likes/" + "1",
+        type: "DELETE",
+        dataType: "json"
+      })
+      .done(function(data) {
+        $('#detail__star').removeClass();
+        $('#detail__star').addClass('far fa fa-star');
+        $('#detail__star-text').html("お気に入り " + data.count);
+      })
+    }
+
+
+
   });
 }); 
