@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get 'category_initial'
       get 'category_children'
+      get 'user_id'
     end
   end
   resources :users, only: [:index] do

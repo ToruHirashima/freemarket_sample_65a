@@ -77,6 +77,10 @@ class ItemsController < ApplicationController
     @category_children = Category.find(params[:parent_id]).children
   end
 
+  def user_id
+    render json: {user_id: current_user.id}
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :text, :condition, :price, :user_id, :category_id, :size_id, :brand_name, delivery_attributes: [:fee_burden, :service, :area, :handling_time], images_attributes: [:id, :url, :_destroy]).merge(user_id: current_user.id, status: 0)
