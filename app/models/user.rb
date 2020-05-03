@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  # メソッドは末尾に置くべきだが、エラーが生じるわけではないのでこのまま
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     # sns認証したことがあればアソシエーションで取得
@@ -16,6 +18,7 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
