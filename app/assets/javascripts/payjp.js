@@ -1,10 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
+$(document).on('turbolinks:load', ()=> {
   if (document.getElementById('token_submit') == null) { return; }
   let key = document.getElementById('payjp_public_key').value;
   Payjp.setPublicKey(key);
   document.getElementById('token_submit').addEventListener('click', function(e){
     e.preventDefault();
-    console.log("koko");
     let card = {
       number: document.getElementById('number').value,
       cvc: document.getElementById('cvc').value,
@@ -12,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
       exp_year: document.getElementById('exp_year').value
     };
     Payjp.createToken(card, function(status, response) {
-      console.log(status);
-      if(status == 200) {
+      if (status == 200) {
         document.getElementById('payjp_token').setAttribute("value", response.id);
         document.inputForm.submit();
       } else{
