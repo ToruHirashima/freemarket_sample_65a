@@ -86,3 +86,7 @@ gem 'fog-aws'
 gem 'ancestry'
 gem 'payjp'
 gem 'gretel'
+
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
