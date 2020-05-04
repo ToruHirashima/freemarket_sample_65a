@@ -4,8 +4,9 @@ $(document).on('turbolinks:load', ()=> {
     $('#star').on("click", function(){
       url = 
       $.ajax({
-        type: 'POST'
-        url: url
+        type: 'POST',
+        url: url,
+        datatype: 'json'
     
         if ($('.detail-box-button-container__bookmark').hasId('#star')) {
           $('.detail-box-button-container__bookmark').removeId('#star').addId('#delete_star');
