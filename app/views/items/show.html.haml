@@ -81,16 +81,14 @@
     .detail-box-button-container
       - if Like.exists?(user_id: current_user.id, item_id: @item.id)
         = button_to item_like_path(@item), method: :delete, id: "delete_likes", name: :bookmark, class: "detail-box-button-container__bookmark", remote:true do
-          = icon 'fa', 'star', {id: "create_star"}
-          お気に入り
-          %span
-          = @item.likes.length
+          = icon 'fa', 'star', {id: "likes_star"}
+          %span{id: 'likes_star_text'}
+            = "お気に入り #{@item.likes.length}"
       - else
         = button_to item_likes_path(@item), method: :post, id: "create_likes", name: :bookmark, class: "detail-box-button-container__bookmark", remote: true do
-          = icon 'far fa', 'star', {id: "delete_star"}
-          お気に入り
-          %span
-          = @item.likes.length
+          = icon 'far fa', 'star', {id: "likes_star"}
+          %span{id: 'likes_star_text'}
+            = "お気に入り #{@item.likes.length}"
       = link_to '#', class: :"detail-box-button-container__report" do
         = icon 'fa', 'flag'
         不適切な商品の通報
